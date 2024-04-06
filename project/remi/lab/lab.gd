@@ -196,6 +196,25 @@ func _on_ice_core_holder_selected(target: Node2D):
 				and $World/YSort/Desk1Anchor/IceCoreHolder3.get_child(1) is IceCore2
 				and $World/YSort/Desk1Anchor/IceCoreHolder4.get_child(1) is IceCore3
 				and $World/YSort/Desk1Anchor/IceCoreHolder5.get_child(1) is IceCore4):
-				print("success")
+				pass
+				$World/YSort/EndDeskAnchor/End.activate()
+				$World/YSort/EndDeskAnchor/End/TextureButton.disabled = false
+				$World/YSort/EndDeskAnchor/End/TextureButton.focus_mode = Control.FOCUS_ALL
+				$World/YSort/EndDeskAnchor/End.selected.connect(_on_end_selected.bind($World/YSort/EndDeskAnchor/End))
+				$World/YSort/Desk1Anchor/Label7.show()
 			else:
-				print("failure")
+				print("failure") # TODO: Feedback
+
+func _on_end_selected(target: Node2D):
+	# wait animation end
+	play_move_alexia_animation_to_target(target.global_position)
+	await tween_moving.finished
+	$World/YSort/Alexia.stop_idle_animation()
+	await $World/YSort/Alexia.tween_idle.finished
+	# transition animation
+	var tween_transition: Tween = create_tween()
+	tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	await tween_transition.finished
+	# change scene
+	get_tree().change_scene_to_file("res://remi/model_plot/model.tscn")

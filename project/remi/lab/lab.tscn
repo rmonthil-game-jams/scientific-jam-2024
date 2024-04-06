@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=33 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
@@ -29,6 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://vh7w75tofhlj" path="res://remi/lab/assets/tableaux 4.png" id="20_mun5f"]
 [ext_resource type="Texture2D" uid="uid://dx8nvyitr185h" path="res://remi/lab/assets/tableaux 5.png" id="22_ngrgt"]
 [ext_resource type="Texture2D" uid="uid://bx3607eorarxj" path="res://remi/lab/assets/tableaux 6.png" id="24_tiec1"]
+[ext_resource type="Texture2D" uid="uid://bxvdqc5yp51mw" path="res://remi/lab/assets/tableaux 5-1.png" id="25_ljjei"]
+[ext_resource type="FontFile" uid="uid://djhmic6riyixb" path="res://assets/MochiyPopPOne-Regular.ttf" id="30_mjud1"]
+[ext_resource type="PackedScene" uid="uid://bmo4kclrgl70r" path="res://remi/lab/targets/end.tscn" id="31_uk5as"]
 
 [node name="Lab" type="Node"]
 script = ExtResource("1_tsc10")
@@ -149,7 +152,7 @@ texture = ExtResource("19_pt66a")
 
 [node name="Tableaux3" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
 position = Vector2(1634, -472)
-texture = ExtResource("22_ngrgt")
+texture = ExtResource("25_ljjei")
 
 [node name="Table4" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
 position = Vector2(2313, -138)
@@ -157,7 +160,7 @@ texture = ExtResource("20_j1k5o")
 
 [node name="Tableaux4" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
 position = Vector2(2427, -472)
-texture = ExtResource("24_tiec1")
+texture = ExtResource("22_ngrgt")
 
 [node name="Tableaux5" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
 position = Vector2(3170, -472)
@@ -187,8 +190,30 @@ offset_left = -152.0
 offset_top = -695.0
 offset_right = 146.0
 offset_bottom = -650.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "Période Glaciaire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = -786.0
+offset_top = -507.0
+offset_right = -358.0
+offset_bottom = -357.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
+theme_override_font_sizes/font_size = 32
+text = "L'analyse terminée,
+Il faut retrouver l'ordre 
+des carottes glaciaires"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -197,6 +222,11 @@ offset_left = 632.0
 offset_top = -695.0
 offset_right = 930.0
 offset_bottom = -650.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "Moyen-Âge"
 horizontal_alignment = 1
@@ -207,6 +237,11 @@ offset_left = 1374.0
 offset_top = -695.0
 offset_right = 1672.0
 offset_bottom = -650.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "Période Industrielle"
 horizontal_alignment = 1
@@ -217,6 +252,11 @@ offset_left = 2158.0
 offset_top = -695.0
 offset_right = 2456.0
 offset_bottom = -650.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "Période Moderne"
 horizontal_alignment = 1
@@ -227,10 +267,41 @@ offset_left = 2919.0
 offset_top = -695.0
 offset_right = 3217.0
 offset_bottom = -650.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "Future !"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = 3822.0
+offset_top = -647.0
+offset_right = 4680.0
+offset_bottom = -548.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("30_mjud1")
+theme_override_font_sizes/font_size = 32
+text = "Qu'est-ce qui nous attends dans le futur ?
+Analisons ce qui a pu provoquer ces résultats !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndDeskAnchor" type="Node2D" parent="World/YSort"]
+position = Vector2(5937, 0)
+
+[node name="End" parent="World/YSort/EndDeskAnchor" instance=ExtResource("31_uk5as")]
+position = Vector2(0, -110)
+
+[node name="Table6" type="Sprite2D" parent="World/YSort/EndDeskAnchor"]
+position = Vector2(0, 150)
+texture = ExtResource("18_pirlv")
 
 [node name="Gui" type="CanvasLayer" parent="."]
 

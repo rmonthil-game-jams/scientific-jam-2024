@@ -1,13 +1,15 @@
 extends Node2D
 
-class_name IceCore4
-
 signal selected
 
 const Y_FACTOR_TEMPERATURE: float = 0.0238931498339 * 0.125
 const Y_MINUS_TEMPERATURE: float = 184
 const Y_FACTOR_RADIOACTIVITY: float = 0.05059668132491 * 6e-2
 const Y_FACTOR_POLLEN: float = 0.02083333333333
+
+func activate():
+	$Plots.show()
+	$Plots2.show()
 
 func _on_texture_button_pressed():
 	selected.emit()
@@ -25,6 +27,10 @@ func model_radioactivity(t: float, nuclear_war_intensity: float, fossil_fuel_int
 	return Y_FACTOR_RADIOACTIVITY * (5.0 * exp(-(pow((x - 2250)/1000, 2))/(2*0.00005))/sqrt(2*PI*0.00005)+2.8) * nuclear_war_intensity
 
 func _ready():
-	LibPlot.plot_func($Plots/Line2DBiodiversity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_biodiversity(x, 1.0, 0.5, 0.22), 256.0, 256.0, "biodiversity")
-	LibPlot.plot_func($Plots/Line2DRadioactivity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_radioactivity(x, 1.0, 0.5, 0.22), 256.0, 256.0, "radioactivity")
-	LibPlot.plot_func($Plots/Line2DTemperature, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_temperature(x, 1.0, 0.5, 0.22), 256.0, 256.0, "temperature")
+	LibPlot.plot_func($Plots/Line2DBiodiversity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_biodiversity(x, 0.0, 0.0, 0.0), 200.0, 120.0, "biodiversity")
+	LibPlot.plot_func($Plots/Line2DRadioactivity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_radioactivity(x, 0.0, 0.0, 0.0), 200.0, 120.0, "radioactivity")
+	LibPlot.plot_func($Plots/Line2DTemperature, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_temperature(x, 0.0, 0.0, 0.0), 200.0, 120.0, "temperature")
+	# more
+	LibPlot.plot_func($Plots2/Line2DBiodiversity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_biodiversity(x, 1.0, 0.5, 0.22), 200.0, 120.0, "biodiversity")
+	LibPlot.plot_func($Plots2/Line2DRadioactivity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_radioactivity(x, 1.0, 0.5, 0.22), 200.0, 120.0, "radioactivity")
+	LibPlot.plot_func($Plots2/Line2DTemperature, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_temperature(x, 1.0, 0.5, 0.22), 200.0, 120.0, "temperature")
