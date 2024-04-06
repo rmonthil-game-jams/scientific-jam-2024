@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c47w0lc5iumgs"]
+
+[node name="MicroBody" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Polygon2DPlaceholder" type="Polygon2D" parent="Sprite2D"]
+position = Vector2(6, -11)
+polygon = PackedVector2Array(-18, -10, -33, 11, -20, 34, 9, 35, 24, 12, 8, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
