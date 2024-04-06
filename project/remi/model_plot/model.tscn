@@ -1,53 +1,154 @@
-[gd_scene load_steps=2 format=3 uid="uid://cp01wh6mjpf16"]
+[gd_scene load_steps=16 format=3 uid="uid://cp01wh6mjpf16"]
 
 [ext_resource type="Script" path="res://remi/model_plot/model.gd" id="1_sgbxi"]
+[ext_resource type="Texture2D" uid="uid://bm6c7hsqh7bd3" path="res://remi/lab/assets/fin.png" id="2_kbqha"]
+[ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="2_sbtux"]
+[ext_resource type="FontFile" uid="uid://djhmic6riyixb" path="res://assets/MochiyPopPOne-Regular.ttf" id="4_m0v03"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ocqj7"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hvfqn"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0kvii"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l3m4v"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hh1ss"]
+bg_color = Color(0.0784314, 0.258824, 0.137255, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.239216, 0.423529, 0.219608, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iehaw"]
+bg_color = Color(0.223529, 0.74902, 0.4, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.533333, 0.8, 0.360784, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0u41"]
+bg_color = Color(0.258824, 0.0980392, 0.0666667, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.713726, 0.388235, 0.25098, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdqsl"]
+bg_color = Color(0.74902, 0.462745, 0.309804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.627451, 0.529412, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpxiy"]
+bg_color = Color(0.74902, 0.462745, 0.309804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.627451, 0.529412, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqvqj"]
+bg_color = Color(0.113725, 0.172549, 0.258824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.328209, 0.364348, 0.652344, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lv7w5"]
+bg_color = Color(0.239216, 0.564706, 0.74902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.368627, 0.792157, 0.8, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 
 [node name="Model" type="Node"]
 script = ExtResource("1_sgbxi")
 
+[node name="Background2" type="Sprite2D" parent="."]
+texture = ExtResource("2_sbtux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kbqha")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+
 [node name="ModelGraph" type="Node2D" parent="."]
-position = Vector2(128, 512)
+position = Vector2(-825, 45)
 
 [node name="Line2DTemperature" type="Line2D" parent="ModelGraph"]
-width = 4.0
-default_color = Color(1, 0.498039, 0.34902, 1)
+width = 8.0
+default_color = Color(0.921569, 0.462745, 0.321569, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2DRadioactivity" type="Line2D" parent="ModelGraph"]
-width = 4.0
-default_color = Color(0.45098, 1, 0.478431, 1)
+width = 8.0
+default_color = Color(0.396078, 0.878431, 0.423529, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2DBiodiversity" type="Line2D" parent="ModelGraph"]
-width = 4.0
-default_color = Color(0.25098, 0.658824, 1, 1)
+width = 8.0
+default_color = Color(0.235294, 0.619608, 0.937255, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="DataGraph" type="Node2D" parent="."]
-position = Vector2(640, 512)
+position = Vector2(120, 45)
 
 [node name="Line2DTemperature" type="Line2D" parent="DataGraph"]
-width = 4.0
-default_color = Color(1, 0.498039, 0.34902, 1)
+width = 8.0
+default_color = Color(0.921569, 0.462745, 0.321569, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2DRadioactivity" type="Line2D" parent="DataGraph"]
-width = 4.0
-default_color = Color(0.45098, 1, 0.478431, 1)
+width = 8.0
+default_color = Color(0.396078, 0.878431, 0.423529, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2DBiodiversity" type="Line2D" parent="DataGraph"]
+width = 8.0
+default_color = Color(0.235294, 0.619608, 0.937255, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Input" type="Node2D" parent="."]
-position = Vector2(246, 607)
+position = Vector2(-669, 270)
 
 [node name="Control" type="Control" parent="Input"]
 custom_minimum_size = Vector2(400, 150)
@@ -65,50 +166,92 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="GridContainer" type="GridContainer" parent="Input/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Input/Control"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 20
+
+[node name="GridContainer" type="GridContainer" parent="Input/Control/HBoxContainer"]
+layout_mode = 2
 theme_override_constants/h_separation = 20
 columns = 2
 
-[node name="Label" type="Label" parent="Input/Control/GridContainer"]
+[node name="NuclearWarStart" type="HSlider" parent="Input/Control/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-text = "Nuclear War Start"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NuclearWarStart" type="HSlider" parent="Input/Control/GridContainer"]
-custom_minimum_size = Vector2(200, 30)
-layout_mode = 2
+size_flags_horizontal = 4
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_ocqj7")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_hvfqn")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_0kvii")
+theme_override_icons/tick = SubResource("PlaceholderTexture2D_l3m4v")
+theme_override_styles/slider = SubResource("StyleBoxFlat_hh1ss")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_iehaw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_iehaw")
 max_value = 1.0
 step = 0.1
-value = 1.0
 
-[node name="Label2" type="Label" parent="Input/Control/GridContainer"]
+[node name="Label" type="Label" parent="Input/Control/HBoxContainer/GridContainer"]
 layout_mode = 2
-text = "Fossil Fuel Consumption Rate"
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.403922, 0.831373, 0.278431, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_m0v03")
+theme_override_font_sizes/font_size = 28
+text = "Guerre Nucléaire"
 vertical_alignment = 1
 
-[node name="FossilFuelConsumptionRate" type="HSlider" parent="Input/Control/GridContainer"]
-custom_minimum_size = Vector2(200, 30)
+[node name="FossilFuelConsumptionRate" type="HSlider" parent="Input/Control/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_ocqj7")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_hvfqn")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_0kvii")
+theme_override_icons/tick = SubResource("PlaceholderTexture2D_l3m4v")
+theme_override_styles/slider = SubResource("StyleBoxFlat_c0u41")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_mdqsl")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_gpxiy")
 max_value = 1.0
 step = 0.1
-value = 1.0
 
-[node name="Label3" type="Label" parent="Input/Control/GridContainer"]
+[node name="Label2" type="Label" parent="Input/Control/HBoxContainer/GridContainer"]
 layout_mode = 2
-text = "Deforestation Rate"
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.831373, 0.529412, 0.176471, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_m0v03")
+theme_override_font_sizes/font_size = 28
+text = "Consomation d'Energie Fossile"
 vertical_alignment = 1
 
-[node name="DeforestationRate" type="HSlider" parent="Input/Control/GridContainer"]
-custom_minimum_size = Vector2(200, 30)
+[node name="DeforestationRate" type="HSlider" parent="Input/Control/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_ocqj7")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_hvfqn")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_0kvii")
+theme_override_icons/tick = SubResource("PlaceholderTexture2D_l3m4v")
+theme_override_styles/slider = SubResource("StyleBoxFlat_rqvqj")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lv7w5")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_lv7w5")
 max_value = 1.0
 step = 0.1
-value = 1.0
 
-[connection signal="value_changed" from="Input/Control/GridContainer/NuclearWarStart" to="." method="_on_nuclear_war_start_value_changed"]
+[node name="Label3" type="Label" parent="Input/Control/HBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.498039, 0.52549, 0.831373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_m0v03")
+theme_override_font_sizes/font_size = 28
+text = "Déforestation"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Input/Control/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Validate"
+
+[connection signal="value_changed" from="Input/Control/HBoxContainer/GridContainer/NuclearWarStart" to="." method="_on_nuclear_war_start_value_changed"]
+[connection signal="value_changed" from="Input/Control/HBoxContainer/GridContainer/FossilFuelConsumptionRate" to="." method="_on_fossil_fuel_consumption_rate_value_changed"]
+[connection signal="value_changed" from="Input/Control/HBoxContainer/GridContainer/DeforestationRate" to="." method="_on_deforestation_rate_value_changed"]
+[connection signal="pressed" from="Input/Control/HBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ynjrj7ys6umd"]
+[gd_scene load_steps=6 format=3 uid="uid://ynjrj7ys6umd"]
 
 [ext_resource type="PackedScene" uid="uid://dh0mke6rsqtg8" path="res://remi/lab/target.tscn" id="1_u2qi2"]
+[ext_resource type="Texture2D" uid="uid://bofomak6rl4ey" path="res://remi/lab/assets/porte carotte.png" id="2_rgbp4"]
+[ext_resource type="Texture2D" uid="uid://c2av8htdo7ick" path="res://remi/lab/assets/porte carotte on.png" id="3_xcqf0"]
+[ext_resource type="Texture2D" uid="uid://c2aedsvyvi8kh" path="res://remi/lab/assets/porte carotte hover.png" id="4_7tatu"]
+[ext_resource type="Texture2D" uid="uid://dshdrbqij2ka3" path="res://remi/lab/assets/porte carotte focus.png" id="5_sp8an"]
 
 [node name="IceCoreHolder" instance=ExtResource("1_u2qi2")]
 
-[node name="Polygon2D" type="Polygon2D" parent="TextureButton" index="0"]
-polygon = PackedVector2Array(-1, -1, 44, -1, 43, 43, -3, 42)
+[node name="TextureButton" parent="." index="0"]
+offset_left = -160.0
+offset_top = -25.0
+offset_right = 158.0
+offset_bottom = 47.0
+texture_normal = ExtResource("2_rgbp4")
+texture_pressed = ExtResource("3_xcqf0")
+texture_hover = ExtResource("4_7tatu")
+texture_disabled = ExtResource("2_rgbp4")
+texture_focused = ExtResource("5_sp8an")

@@ -1,17 +1,26 @@
-[gd_scene load_steps=23 format=3 uid="uid://dapbeuncd0cqp"]
+[gd_scene load_steps=32 format=3 uid="uid://dapbeuncd0cqp"]
 
 [ext_resource type="Script" path="res://remi/ams/ams.gd" id="1_43nqk"]
-[ext_resource type="Texture2D" uid="uid://dsgvpwpsowhli" path="res://remi/ams/assets/ADP adp.png" id="2_0e6hr"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="2_tn8w8"]
-[ext_resource type="Texture2D" uid="uid://drpga6qmb0pj5" path="res://remi/ams/assets/ADP ui.png" id="3_5vtsw"]
-[ext_resource type="Texture2D" uid="uid://cs4u27yv65b88" path="res://remi/ams/assets/ADP feu.png" id="4_8ieqo"]
+[ext_resource type="Texture2D" uid="uid://cqqexe585a2lt" path="res://remi/ams/assets/accelerateur.png" id="3_at1t4"]
 [ext_resource type="Texture2D" uid="uid://pvophqtht0m1" path="res://remi/ams/assets/ADP deriver ouvert.png" id="4_vcrmb"]
+[ext_resource type="Texture2D" uid="uid://cenkmig3jiwbo" path="res://remi/ams/assets/accelerateur_table.png" id="5_3qcxi"]
 [ext_resource type="Texture2D" uid="uid://dsafvxfj5qulr" path="res://remi/ams/assets/ADP deriver hover.png" id="5_ak51g"]
-[ext_resource type="Texture2D" uid="uid://d0ygkht5wm5e2" path="res://remi/ams/assets/ADP feu hover.png" id="5_jsrh5"]
-[ext_resource type="Texture2D" uid="uid://bs2a5wo1btj8q" path="res://remi/ams/assets/ADP manivelle 2.png" id="6_45no1"]
-[ext_resource type="Texture2D" uid="uid://1p2awpdm0las" path="res://remi/ams/assets/ADP deriver ferme.png" id="6_ocu3p"]
-[ext_resource type="Texture2D" uid="uid://dv6rq1xbt5s0e" path="res://remi/ams/assets/ADP manivelle 1.png" id="6_up13t"]
+[ext_resource type="Texture2D" uid="uid://notb25vmn1g4" path="res://remi/ams/assets/deriver_ouvert.png" id="5_ue744"]
+[ext_resource type="Texture2D" uid="uid://dmq0faonppods" path="res://remi/ams/assets/deriver_ferme.png" id="7_0dqo0"]
+[ext_resource type="Texture2D" uid="uid://fsbylcvjw08l" path="res://remi/ams/assets/feu_ouvert.png" id="9_quov6"]
+[ext_resource type="Texture2D" uid="uid://c0g2exahbd64j" path="res://remi/ams/assets/feu_ouvert_hover.png" id="10_jupd2"]
+[ext_resource type="Texture2D" uid="uid://bnaf3xry7pd1x" path="res://remi/ams/assets/manivelle.png" id="10_muofa"]
+[ext_resource type="Texture2D" uid="uid://dyryuarct6tno" path="res://remi/ams/assets/manivelle_hover.png" id="11_b6ida"]
+[ext_resource type="Texture2D" uid="uid://cn14njqek8fpo" path="res://remi/ams/assets/feu_ferme.png" id="11_vmnbl"]
 [ext_resource type="FontFile" uid="uid://djhmic6riyixb" path="res://assets/MochiyPopPOne-Regular.ttf" id="12_woiae"]
+[ext_resource type="Texture2D" uid="uid://35y45rkxb2xv" path="res://remi/ams/assets/accelerateur_grille.png" id="15_o1c8b"]
+[ext_resource type="Texture2D" uid="uid://c47ydyg1yvy11" path="res://remi/ams/assets/jauge.png" id="16_t8aww"]
+[ext_resource type="Texture2D" uid="uid://cmfx6ceiivnq" path="res://remi/ams/assets/jauge_1.png" id="17_y7rb8"]
+[ext_resource type="Texture2D" uid="uid://endes0mv0mof" path="res://remi/ams/assets/jauge_2.png" id="18_un6pt"]
+[ext_resource type="Texture2D" uid="uid://dlnennscfg1pj" path="res://remi/ams/assets/jauge_3.png" id="19_61e0r"]
+[ext_resource type="Texture2D" uid="uid://deeuivwuys8v3" path="res://remi/ams/assets/jauge_4.png" id="20_kkkjl"]
+[ext_resource type="Texture2D" uid="uid://bjml42nqtw0ew" path="res://remi/ams/assets/jauge_5.png" id="21_pel0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1syu"]
 size = Vector2(1282, 424)
@@ -20,7 +29,7 @@ size = Vector2(1282, 424)
 size = Vector2(684, 602)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pespy"]
-size = Vector2(73.5, 37)
+size = Vector2(274, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4re4"]
 size = Vector2(1284, 424)
@@ -91,12 +100,16 @@ zoom = Vector2(0.61, 0.61)
 texture = ExtResource("2_tn8w8")
 
 [node name="AdpAdp" type="Sprite2D" parent="World/UI"]
-position = Vector2(-12, -134)
-texture = ExtResource("2_0e6hr")
+position = Vector2(-25, -211)
+texture = ExtResource("3_at1t4")
 
 [node name="AdpUi" type="Sprite2D" parent="World/UI"]
-position = Vector2(-2, 394)
-texture = ExtResource("3_5vtsw")
+position = Vector2(-2, 399)
+texture = ExtResource("5_3qcxi")
+
+[node name="AccelerateurGrille" type="Sprite2D" parent="World"]
+position = Vector2(611, 121)
+texture = ExtResource("15_o1c8b")
 
 [node name="Boundaries" type="Area2D" parent="World"]
 monitorable = false
@@ -113,19 +126,11 @@ shape = SubResource("RectangleShape2D_783b0")
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Obstacles"]
-position = Vector2(420.5, -272.5)
-shape = SubResource("RectangleShape2D_pespy")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Obstacles"]
-position = Vector2(551, -272)
+position = Vector2(412, -254)
 shape = SubResource("RectangleShape2D_pespy")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="World/Obstacles"]
-position = Vector2(677, -272)
-shape = SubResource("RectangleShape2D_pespy")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/Obstacles"]
-position = Vector2(809, -272)
+position = Vector2(786, -254)
 shape = SubResource("RectangleShape2D_pespy")
 
 [node name="Source" type="Marker2D" parent="World"]
@@ -176,7 +181,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_1cjpb")
 
 [node name="LauncherInput" type="Node2D" parent="World"]
-position = Vector2(176, 405)
+position = Vector2(21, 405)
 
 [node name="TextureButton" type="TextureButton" parent="World/LauncherInput"]
 anchors_preset = 8
@@ -184,23 +189,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -105.0
-offset_top = -126.0
-offset_right = 98.0
-offset_bottom = 129.0
+offset_left = -118.0
+offset_top = -200.0
+offset_right = 105.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 disabled = true
-texture_normal = ExtResource("4_vcrmb")
+texture_normal = ExtResource("5_ue744")
 texture_pressed = ExtResource("4_vcrmb")
 texture_hover = ExtResource("5_ak51g")
-texture_disabled = ExtResource("6_ocu3p")
+texture_disabled = ExtResource("7_0dqo0")
 texture_focused = ExtResource("4_vcrmb")
 stretch_mode = 3
 
 [node name="DeviatorInput" type="Node2D" parent="World"]
-position = Vector2(357, 406)
+position = Vector2(199, 351)
 
 [node name="TextureButton" type="TextureButton" parent="World/DeviatorInput"]
 anchors_preset = 8
@@ -214,13 +219,16 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("4_8ieqo")
-texture_pressed = ExtResource("4_8ieqo")
-texture_hover = ExtResource("5_jsrh5")
-texture_focused = ExtResource("4_8ieqo")
+focus_mode = 0
+disabled = true
+texture_normal = ExtResource("9_quov6")
+texture_pressed = ExtResource("9_quov6")
+texture_hover = ExtResource("10_jupd2")
+texture_disabled = ExtResource("11_vmnbl")
+texture_focused = ExtResource("9_quov6")
 
 [node name="ProgressBar2" type="Node2D" parent="World"]
-position = Vector2(457, 406)
+position = Vector2(302, 406)
 
 [node name="ProgressBar" type="ProgressBar" parent="World/ProgressBar2"]
 anchors_preset = 8
@@ -241,37 +249,31 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_x4aj8")
 show_percentage = false
 
 [node name="AcceleratorInput" type="Node2D" parent="World"]
-position = Vector2(-457, 405)
+position = Vector2(-291, 412)
 
-[node name="AdpManivelle1" type="Sprite2D" parent="World/AcceleratorInput"]
-position = Vector2(2, 0.5)
-texture = ExtResource("6_up13t")
-
-[node name="Handle" type="Node2D" parent="World/AcceleratorInput"]
-position = Vector2(0, 0.5)
-
-[node name="TextureButton" type="TextureButton" parent="World/AcceleratorInput/Handle"]
+[node name="TextureButton" type="TextureButton" parent="World/AcceleratorInput"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 95.0
-offset_top = -34.0
-offset_right = 164.0
-offset_bottom = 96.0
+offset_left = 137.0
+offset_top = -55.0
+offset_right = 245.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.56527
+size_flags_horizontal = 4
 keep_pressed_outside = true
-texture_normal = ExtResource("6_45no1")
-texture_pressed = ExtResource("6_45no1")
-texture_hover = ExtResource("6_45no1")
-texture_focused = ExtResource("6_45no1")
+texture_normal = ExtResource("10_muofa")
+texture_pressed = ExtResource("10_muofa")
+texture_hover = ExtResource("11_b6ida")
+texture_focused = ExtResource("10_muofa")
 stretch_mode = 3
 
 [node name="ProgressBar" type="Node2D" parent="World"]
-position = Vector2(-337, 406)
+position = Vector2(-137, 413)
 
 [node name="ProgressBar" type="ProgressBar" parent="World/ProgressBar"]
 anchors_preset = 8
@@ -316,7 +318,7 @@ text = "Mesure du taux de Radiation"
 horizontal_alignment = 1
 
 [node name="Info2" type="Node2D" parent="World"]
-position = Vector2(-412, 253)
+position = Vector2(-174, 255)
 
 [node name="Label" type="Label" parent="World/Info2"]
 anchors_preset = 8
@@ -364,7 +366,7 @@ text = "Dévier les Particules"
 horizontal_alignment = 1
 
 [node name="Info4" type="Node2D" parent="World"]
-position = Vector2(656, 141)
+position = Vector2(670, 222)
 
 [node name="Label" type="Label" parent="World/Info4"]
 anchors_preset = 8
@@ -372,10 +374,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -390.0
-offset_top = 11.0
-offset_right = 304.0
-offset_bottom = 105.0
+offset_left = -399.0
+offset_top = -203.0
+offset_right = 295.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -388,7 +390,7 @@ text = "Viser le Capteur"
 horizontal_alignment = 1
 
 [node name="Info5" type="Node2D" parent="World"]
-position = Vector2(402, 259)
+position = Vector2(293, 254)
 
 [node name="Label" type="Label" parent="World/Info5"]
 anchors_preset = 8
@@ -396,10 +398,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -390.0
-offset_top = 11.0
-offset_right = 304.0
-offset_bottom = 105.0
+offset_left = -385.0
+offset_top = 223.0
+offset_right = 309.0
+offset_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
@@ -412,7 +414,7 @@ text = "Impulsion"
 horizontal_alignment = 1
 
 [node name="Info6" type="Node2D" parent="World"]
-position = Vector2(210, 258)
+position = Vector2(61, 466)
 
 [node name="Label" type="Label" parent="World/Info6"]
 anchors_preset = 8
@@ -436,36 +438,30 @@ text = "Lacher"
 horizontal_alignment = 1
 
 [node name="Leds2" type="Node2D" parent="World"]
+position = Vector2(252, -129)
 
-[node name="Polygon2D" type="Polygon2D" parent="World/Leds2"]
-visible = false
-position = Vector2(265, -89)
-color = Color(0.8, 1, 0.8, 0.8)
-polygon = PackedVector2Array(-19, 10, -19, -11, 2, -11, 19, -12, 18, 10, -8, 10)
+[node name="Sprite2D" type="Sprite2D" parent="World/Leds2"]
+texture = ExtResource("16_t8aww")
 
-[node name="Polygon2D2" type="Polygon2D" parent="World/Leds2"]
+[node name="Sprite2D2" type="Sprite2D" parent="World/Leds2"]
 visible = false
-position = Vector2(265, -116)
-color = Color(0.8, 1, 0.8, 0.8)
-polygon = PackedVector2Array(-19, 10, -19, -11, 2, -11, 19, -12, 18, 10, -8, 10)
+texture = ExtResource("17_y7rb8")
 
-[node name="Polygon2D3" type="Polygon2D" parent="World/Leds2"]
+[node name="Sprite2D3" type="Sprite2D" parent="World/Leds2"]
 visible = false
-position = Vector2(266, -142)
-color = Color(0.8, 1, 0.8, 0.8)
-polygon = PackedVector2Array(-19, 10, -19, -14, 2, -14, 16, -14, 17, 10, -8, 10)
+texture = ExtResource("18_un6pt")
 
-[node name="Polygon2D4" type="Polygon2D" parent="World/Leds2"]
+[node name="Sprite2D4" type="Sprite2D" parent="World/Leds2"]
 visible = false
-position = Vector2(265, -165)
-color = Color(0.8, 1, 0.8, 0.8)
-polygon = PackedVector2Array(-18, 3, -19, -14, 2, -14, 16, -14, 16, 3, -3, 3)
+texture = ExtResource("19_61e0r")
 
-[node name="Polygon2D5" type="Polygon2D" parent="World/Leds2"]
+[node name="Sprite2D5" type="Sprite2D" parent="World/Leds2"]
 visible = false
-position = Vector2(265, -188)
-color = Color(0.8, 1, 0.8, 0.8)
-polygon = PackedVector2Array(-18, 3, -19, -18, 1, -17, 17, -18, 16, 3, -3, 3)
+texture = ExtResource("20_kkkjl")
+
+[node name="Sprite2D6" type="Sprite2D" parent="World/Leds2"]
+visible = false
+texture = ExtResource("21_pel0c")
 
 [connection signal="body_exited" from="World/Boundaries" to="." method="_on_boundaries_body_exited"]
 [connection signal="body_entered" from="World/Obstacles" to="." method="_on_obstacles_body_entered"]
@@ -473,5 +469,5 @@ polygon = PackedVector2Array(-18, 3, -19, -18, 1, -17, 17, -18, 16, 3, -3, 3)
 [connection signal="body_entered" from="World/Target2" to="." method="_on_target_2_body_entered"]
 [connection signal="pressed" from="World/LauncherInput/TextureButton" to="." method="_on_launcher_input_pressed"]
 [connection signal="pressed" from="World/DeviatorInput/TextureButton" to="." method="_on_deviator_input_pressed"]
-[connection signal="button_down" from="World/AcceleratorInput/Handle/TextureButton" to="." method="_on_accelerator_input_button_down"]
-[connection signal="button_up" from="World/AcceleratorInput/Handle/TextureButton" to="." method="_on_accelerator_input_button_up"]
+[connection signal="button_down" from="World/AcceleratorInput/TextureButton" to="." method="_on_accelerator_input_button_down"]
+[connection signal="button_up" from="World/AcceleratorInput/TextureButton" to="." method="_on_accelerator_input_button_up"]

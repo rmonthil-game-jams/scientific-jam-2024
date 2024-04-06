@@ -24,18 +24,18 @@ func _plot(line_2d: Line2D, filename: String, factor: float, minus: float):
 	var lines: PackedStringArray = content.split("\n")
 	lines.reverse()
 	var x: Array[float] = []
-	x.resize(lines.size()/5)
+	x.resize(lines.size()/4)
 	var y: Array[float] = []
-	y.resize(lines.size()/5)
-	for index in range(lines.size()/5):
-		x[index] = float(lines[index + 3*lines.size()/5].split(',')[0])
-		y[index] = float(lines[index + 3*lines.size()/5].split(',')[1])
+	y.resize(lines.size()/4)
+	for index in range(lines.size()/4):
+		x[index] = float(lines[index + 3*lines.size()/4].split(',')[0])
+		y[index] = float(lines[index + 3*lines.size()/4].split(',')[1])
 	# post_processing
 	## reverse
 	var x_0: float = x[0]
 	var x_max: float = x.max() - x_0
 	## center
-	for index in range(lines.size()/5):
+	for index in range(lines.size()/4):
 		x[index] = (x[index] - x_0) / x_max
 		y[index] = factor * (y[index] - minus)
 	# plot
