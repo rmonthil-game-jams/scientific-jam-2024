@@ -8,7 +8,7 @@ const PARTICLE_INITIAL_VELOCITY: float = 64.0
 const DEVIATOR_ACCELERATION: float = 2e3
 const ACCELERATOR_ACCELERATION: float = 8e2
 
-const ENERGY_INCREASE_FACTOR: float = 2e-2
+const ENERGY_INCREASE_FACTOR: float = 20
 const ENERGY_DECREASE_RATE: float = 2e1
 
 const ParticleA = preload("res://remi/ams/particle_a.tscn")
@@ -29,8 +29,9 @@ func _process(delta: float):
 	if is_turning:
 		var new_right: Vector2 = ($World.get_global_mouse_position() - $World/AcceleratorInput.global_position).normalized()
 		var angle_diff: float = $World/AcceleratorInput.transform.x.angle_to(new_right)
+		print(angle_diff)
 		if angle_diff > 0:
-			$World/ProgressBar/ProgressBar.value += ENERGY_INCREASE_FACTOR * angle_diff/TAU/delta
+			$World/ProgressBar/ProgressBar.value += ENERGY_INCREASE_FACTOR * angle_diff/TAU
 			$World/AcceleratorInput.rotation = new_right.angle()
 	$World/ProgressBar/ProgressBar.value -= ENERGY_DECREASE_RATE * delta
 	# update
