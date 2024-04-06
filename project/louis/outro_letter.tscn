@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwxs5evp31v8e"]
+[gd_scene load_steps=4 format=3 uid="uid://bwxs5evp31v8e"]
 
 [ext_resource type="Texture2D" uid="uid://bj74m1kqo5gfm" path="res://louis/intro_assets/Outro-LettreScientifique (1)-1.png" id="1_iludn"]
 [ext_resource type="Script" path="res://louis/letters.gd" id="1_mryv6"]
+[ext_resource type="PackedScene" uid="uid://coawt8ggq5hss" path="res://louis/main_menu/main_menu.tscn" id="2_kfed3"]
 
 [node name="OutroLetter" type="Node2D"]
 script = ExtResource("1_mryv6")
+target_scene = ExtResource("2_kfed3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(576, -335)

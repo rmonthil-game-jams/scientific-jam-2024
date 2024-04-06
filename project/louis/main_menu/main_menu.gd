@@ -16,6 +16,8 @@ var capsule_initial_y : float
 @onready var h_slider_sounds = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2/HSliderSounds
 @onready var capsule = $TextureRect/Capsule
 @onready var shadow = $TextureRect/Shadow
+@onready var margin_container_dialog = $HBoxContainerMain/VBoxContainer/MarginContainerDialog
+@onready var margin_container_button_exit = $MarginContainerButtonExit
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,6 +52,8 @@ func _on_button_play_button_up():
 	var tween: Tween = create_tween()
 	tween.tween_property(v_box_container_buttons, "modulate", Color(1,1,1,0), 1.0).set_trans(Tween.TRANS_QUAD)
 	tween.parallel().tween_property(shadow, "modulate", Color(1,1,1,1), 1.0)
+	tween.parallel().tween_property(margin_container_dialog, "modulate", Color(1,1,1,0), 1.0)
+	tween.parallel().tween_property(margin_container_button_exit, "modulate", Color(1,1,1,0), 1.0)
 	await tween.finished
 	await get_tree().create_timer(1.5).timeout
 	var tween_transition: Tween = create_tween()
