@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmjd8cwqh43nx"]
+[gd_scene load_steps=3 format=3 uid="uid://cmjd8cwqh43nx"]
 
 [ext_resource type="Script" path="res://remi/game.gd" id="1_uueqx"]
+[ext_resource type="PackedScene" uid="uid://db5mxwicdtw26" path="res://remi/lab/lab.tscn" id="2_0s1aa"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_uueqx")
+
+[node name="Lab" parent="." instance=ExtResource("2_0s1aa")]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp1lotvirv7y8"]
+
+[ext_resource type="Script" path="res://remi/ams/particle_a.gd" id="1_qvoao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmmyf"]
+
+[node name="ParticleA" type="RigidBody2D"]
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_qvoao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nmmyf")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(1, 0.0980392, 0, 1)
+polygon = PackedVector2Array(-1, 10, -9, 5, -9, -5, 0, -10, 8, -5, 8, 5)

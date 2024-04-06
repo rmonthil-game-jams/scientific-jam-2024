@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://db5mxwicdtw26"]
+
+[ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
+[ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
+[ext_resource type="PackedScene" uid="uid://c7562hhd8en41" path="res://remi/lab/alexia.tscn" id="2_kv3l1"]
+[ext_resource type="PackedScene" uid="uid://d1a5sgpejl0w7" path="res://remi/text_stack/text_stack.tscn" id="5_4dofh"]
+[ext_resource type="Texture2D" uid="uid://ckur8q0gamic3" path="res://remi/lab/assets/table.png" id="5_ltqkj"]
+[ext_resource type="Texture2D" uid="uid://dickiwe2gov2w" path="res://remi/lab/assets/meuble.png" id="8_sh0ga"]
+[ext_resource type="PackedScene" uid="uid://cb36jofe2qkf3" path="res://remi/lab/targets/ams.tscn" id="9_lfy5p"]
+[ext_resource type="PackedScene" uid="uid://dgvn070fh71cj" path="res://remi/lab/targets/cuve.tscn" id="10_0otpv"]
+[ext_resource type="Texture2D" uid="uid://i2dh0cxvg8sc" path="res://remi/lab/assets/outils.png" id="10_vowus"]
+[ext_resource type="PackedScene" uid="uid://bvugr8c1yj8qj" path="res://remi/lab/targets/microscope.tscn" id="11_cyf5e"]
+[ext_resource type="Texture2D" uid="uid://bbrxywjdednlq" path="res://remi/lab/assets/patere.png" id="11_sucpr"]
+[ext_resource type="Texture2D" uid="uid://bc52p3kndx36s" path="res://remi/lab/assets/refroidissement.png" id="12_nabsr"]
+[ext_resource type="Texture2D" uid="uid://cbsdbt0a8y43a" path="res://remi/lab/assets/tableau.png" id="13_snhlj"]
+[ext_resource type="Texture2D" uid="uid://ny2mre5vvxms" path="res://remi/lab/assets/tubes.png" id="14_3gryl"]
+
+[node name="Lab" type="Node"]
+script = ExtResource("1_tsc10")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="World"]
+modulate = Color(1, 1, 1, 0.498039)
+texture = ExtResource("2_1r5bo")
+
+[node name="YSort" type="Node2D" parent="World"]
+y_sort_enabled = true
+
+[node name="Alexia" parent="World/YSort" instance=ExtResource("2_kv3l1")]
+position = Vector2(-396, 412)
+
+[node name="Camera2D" type="Camera2D" parent="World/YSort/Alexia"]
+position = Vector2(396, -412)
+zoom = Vector2(0.6, 0.6)
+limit_left = -950
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 1.0
+drag_right_margin = 1.0
+
+[node name="DeskAnchor" type="Node2D" parent="World/YSort"]
+position = Vector2(197, 268)
+
+[node name="Table" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(83, -116)
+texture = ExtResource("5_ltqkj")
+
+[node name="Meuble" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(-276, -31)
+texture = ExtResource("8_sh0ga")
+
+[node name="Ams" parent="World/YSort/DeskAnchor" instance=ExtResource("9_lfy5p")]
+position = Vector2(476, -195)
+
+[node name="Cuve" parent="World/YSort/DeskAnchor" instance=ExtResource("10_0otpv")]
+position = Vector2(190, -422)
+
+[node name="Microscope" parent="World/YSort/DeskAnchor" instance=ExtResource("11_cyf5e")]
+position = Vector2(-285, -285)
+
+[node name="Outils" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(-464, -504)
+texture = ExtResource("10_vowus")
+
+[node name="Patere" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(-798, -346)
+texture = ExtResource("11_sucpr")
+
+[node name="Refroidissement" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(-231, -313)
+texture = ExtResource("12_nabsr")
+
+[node name="Tableau" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(-138, -545)
+texture = ExtResource("13_snhlj")
+
+[node name="Tubes" type="Sprite2D" parent="World/YSort/DeskAnchor"]
+position = Vector2(-101, -244)
+texture = ExtResource("14_3gryl")
+
+[node name="Gui" type="CanvasLayer" parent="."]
+
+[node name="TextStack" parent="Gui" instance=ExtResource("5_4dofh")]
+offset_left = -10.0
+offset_right = 10.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 0

@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb36jofe2qkf3"]
+
+[ext_resource type="PackedScene" uid="uid://dh0mke6rsqtg8" path="res://remi/lab/target.tscn" id="1_7kxnq"]
+[ext_resource type="Texture2D" uid="uid://c3eh6dke8e8b3" path="res://remi/lab/assets/accelerateur.png" id="2_s0ydi"]
+[ext_resource type="Texture2D" uid="uid://hgyrum3t0lm7" path="res://remi/lab/assets/accelerateur on.png" id="3_puiyp"]
+[ext_resource type="Texture2D" uid="uid://b5s5f5ru1je5g" path="res://remi/lab/assets/accelerateur hover.png" id="4_8uhhg"]
+[ext_resource type="Texture2D" uid="uid://dvqi5tkit22m2" path="res://remi/lab/assets/accelerateur focus.png" id="5_t58xk"]
+
+[node name="Ams" instance=ExtResource("1_7kxnq")]
+
+[node name="TextureButton" parent="." index="0"]
+texture_normal = ExtResource("2_s0ydi")
+texture_pressed = ExtResource("3_puiyp")
+texture_hover = ExtResource("4_8uhhg")
+texture_disabled = ExtResource("2_s0ydi")
+texture_focused = ExtResource("5_t58xk")

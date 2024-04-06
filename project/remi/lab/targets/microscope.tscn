@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvugr8c1yj8qj"]
+
+[ext_resource type="PackedScene" uid="uid://dh0mke6rsqtg8" path="res://remi/lab/target.tscn" id="1_8062e"]
+[ext_resource type="Texture2D" uid="uid://cumj4cjx3n1cr" path="res://remi/lab/assets/microscope.png" id="2_18ajs"]
+[ext_resource type="Texture2D" uid="uid://e8eye8evrg6t" path="res://remi/lab/assets/microscope on.png" id="3_welex"]
+[ext_resource type="Texture2D" uid="uid://bh6aevl5lxa4p" path="res://remi/lab/assets/microscope hover.png" id="4_mbvgv"]
+[ext_resource type="Texture2D" uid="uid://brktfgd63fqtb" path="res://remi/lab/assets/microscope focus.png" id="5_l8sm2"]
+
+[node name="Microscope" instance=ExtResource("1_8062e")]
+
+[node name="TextureButton" parent="." index="0"]
+texture_normal = ExtResource("2_18ajs")
+texture_pressed = ExtResource("3_welex")
+texture_hover = ExtResource("4_mbvgv")
+texture_disabled = ExtResource("2_18ajs")
+texture_focused = ExtResource("5_l8sm2")

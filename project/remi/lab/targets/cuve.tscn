@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgvn070fh71cj"]
+
+[ext_resource type="PackedScene" uid="uid://dh0mke6rsqtg8" path="res://remi/lab/target.tscn" id="1_nrsma"]
+[ext_resource type="Texture2D" uid="uid://brs8k5invc3lg" path="res://remi/lab/assets/cuve.png" id="2_rdjww"]
+[ext_resource type="Texture2D" uid="uid://b5jfe0slnom1e" path="res://remi/lab/assets/cuve on.png" id="3_onmf4"]
+[ext_resource type="Texture2D" uid="uid://drl21x24bc81a" path="res://remi/lab/assets/cuve hover.png" id="4_1lups"]
+[ext_resource type="Texture2D" uid="uid://1e3oluxett08" path="res://remi/lab/assets/cuve focus.png" id="5_qqj4t"]
+
+[node name="Cuve" instance=ExtResource("1_nrsma")]
+
+[node name="TextureButton" parent="." index="0"]
+texture_normal = ExtResource("2_rdjww")
+texture_pressed = ExtResource("3_onmf4")
+texture_hover = ExtResource("4_1lups")
+texture_disabled = ExtResource("2_rdjww")
+texture_focused = ExtResource("5_qqj4t")

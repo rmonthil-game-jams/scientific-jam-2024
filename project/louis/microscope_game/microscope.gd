@@ -24,7 +24,10 @@ func _ready():
 	h_slider.value = 0
 	var random = RandomNumberGenerator.new()
 	random.randomize()
-
+	# fade in animation
+	modulate = Color.BLACK
+	var tween: Tween = create_tween()
+	tween.tween_property(self, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
 
 func _process(delta):
 	if moving_left:
@@ -48,10 +51,21 @@ func generate_bodies():
 		micro_bodies.add_child(micro_plastic)
 
 func success():
-	print("success")
+	# change state of game
+	LabState.microscope_done = true
+	# color
+	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.add_theme_color_override("font_color", Color.GREEN)
+	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.text = "SUCCESS"
+	await get_tree().create_timer(0.5).timeout
+	# transition
+	var tween_transition: Tween = create_tween()
+	tween_transition.tween_property(self, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	await tween_transition.finished
+	get_tree().change_scene_to_file("res://remi/lab/lab.tscn")
 
 func failure():
-	print("failure")
+	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.add_theme_color_override("font_color", Color.RED)
+	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.text = "FAILURE"
 
 
 
@@ -87,3 +101,7 @@ func _on_button_move_left_button_up():
 
 func _on_button_move_right_button_up():
 	moving_right = false
+
+
+func _on_line_edit_text_submitted(new_text):
+	_on_button_button_down()

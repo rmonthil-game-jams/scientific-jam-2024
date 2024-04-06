@@ -1,0 +1,195 @@
+[gd_scene load_steps=7 format=3 uid="uid://dapbeuncd0cqp"]
+
+[ext_resource type="Script" path="res://remi/ams/ams.gd" id="1_43nqk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r1syu"]
+size = Vector2(1152, 302)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_783b0"]
+size = Vector2(401, 688)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4re4"]
+size = Vector2(650, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0aguv"]
+size = Vector2(400, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cjpb"]
+size = Vector2(200, 200)
+
+[node name="AMS" type="Node"]
+script = ExtResource("1_43nqk")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="World"]
+
+[node name="Boundaries" type="Area2D" parent="World"]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Boundaries"]
+position = Vector2(1, -121)
+shape = SubResource("RectangleShape2D_r1syu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/Boundaries"]
+position = Vector2(376.5, 72)
+shape = SubResource("RectangleShape2D_783b0")
+
+[node name="Source" type="Marker2D" parent="World"]
+position = Vector2(-478, -118)
+
+[node name="Accelerator" type="Area2D" parent="World"]
+position = Vector2(-184, -118)
+monitorable = false
+gravity_space_override = 3
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+gravity = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Accelerator"]
+shape = SubResource("RectangleShape2D_m4re4")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Accelerator"]
+color = Color(0.52549, 0.52549, 0.52549, 1)
+polygon = PackedVector2Array(-326, 149, -326, -154, 323, -154, 326, 150)
+
+[node name="Deviator" type="Area2D" parent="World"]
+position = Vector2(377, -70)
+monitorable = false
+gravity_space_override = 3
+gravity_point = true
+gravity_point_center = Vector2(-400, 400)
+gravity_direction = Vector2(-400, 400)
+gravity = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Deviator"]
+shape = SubResource("RectangleShape2D_0aguv")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Deviator"]
+position = Vector2(87, -67)
+color = Color(0.511719, 0.511719, 0.511719, 1)
+polygon = PackedVector2Array(-296, -127, -57, -90, 38, 50, 35, 210, -141, 208, -151, 111, -218, 33, -341, 43, -344, -128)
+
+[node name="Target" type="Area2D" parent="World"]
+position = Vector2(419, 315)
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Target"]
+shape = SubResource("RectangleShape2D_1cjpb")
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Target"]
+color = Color(0.639216, 1, 0.588235, 1)
+polygon = PackedVector2Array(-91, 91, -91, -97, 94, -97, 96, 87)
+
+[node name="Leds" type="Node2D" parent="World/Target"]
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Target/Leds"]
+position = Vector2(-65, -11)
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(10, 10, -10, 10, -10, -10, 10, -10)
+
+[node name="Polygon2D2" type="Polygon2D" parent="World/Target/Leds"]
+position = Vector2(-30, -12)
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(10, 10, -10, 10, -10, -10, 10, -10)
+
+[node name="Polygon2D3" type="Polygon2D" parent="World/Target/Leds"]
+position = Vector2(2, -11)
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(10, 10, -10, 10, -10, -10, 10, -10)
+
+[node name="Polygon2D4" type="Polygon2D" parent="World/Target/Leds"]
+position = Vector2(35, -11)
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(10, 10, -10, 10, -10, -10, 10, -10)
+
+[node name="DeviatorInput" type="Node2D" parent="World"]
+position = Vector2(236, 62)
+
+[node name="TextureButton" type="TextureButton" parent="World/DeviatorInput"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="World/DeviatorInput/TextureButton"]
+color = Color(1, 0.254902, 0.952941, 1)
+polygon = PackedVector2Array(-1, 0, 36, 1, 36, 36, -2, 37)
+
+[node name="AcceleratorInput" type="Node2D" parent="World"]
+position = Vector2(-210, 168)
+
+[node name="Stick" type="Polygon2D" parent="World/AcceleratorInput"]
+color = Color(0.529412, 0.529412, 0.529412, 1)
+polygon = PackedVector2Array(-12, 12, -12, -14, 98, -9, 99, 9)
+
+[node name="Handle" type="Node2D" parent="World/AcceleratorInput"]
+position = Vector2(100, 0)
+
+[node name="TextureButton" type="TextureButton" parent="World/AcceleratorInput/Handle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+keep_pressed_outside = true
+
+[node name="Polygon2D" type="Polygon2D" parent="World/AcceleratorInput/Handle/TextureButton"]
+color = Color(0.811765, 0.290196, 1, 1)
+polygon = PackedVector2Array(-1, 0, 36, 1, 36, 36, -2, 37)
+
+[node name="ProgressBar" type="Node2D" parent="World"]
+position = Vector2(-370, 166)
+
+[node name="ProgressBar" type="ProgressBar" parent="World/ProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -14.0
+offset_right = 69.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(68, 13)
+value = 50.0
+show_percentage = false
+
+[node name="Info" type="Node2D" parent="World"]
+
+[node name="Label" type="Label" parent="World/Info"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[connection signal="body_exited" from="World/Boundaries" to="." method="_on_boundaries_body_exited"]
+[connection signal="body_entered" from="World/Target" to="." method="_on_target_body_entered"]
+[connection signal="button_down" from="World/DeviatorInput/TextureButton" to="." method="_on_deviator_input_button_down"]
+[connection signal="button_up" from="World/DeviatorInput/TextureButton" to="." method="_on_deviator_input_button_up"]
+[connection signal="button_down" from="World/AcceleratorInput/Handle/TextureButton" to="." method="_on_accelerator_input_button_down"]
+[connection signal="button_up" from="World/AcceleratorInput/Handle/TextureButton" to="." method="_on_accelerator_input_button_up"]
