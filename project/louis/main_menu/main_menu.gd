@@ -1,5 +1,7 @@
 extends Control
 
+var t : float = 0.5
+var capsule_initial_y : float
 @onready var main_menu = $"."
 @onready var v_box_container_buttons = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons
 @onready var margin_container_exit_dialog = $MarginContainerExitDialog
@@ -12,10 +14,13 @@ extends Control
 @onready var button_credits = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits/ButtonCredits
 @onready var h_slider_music = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer2/HSliderMusic
 @onready var h_slider_sounds = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2/HSliderSounds
+@onready var capsule = $TextureRect/Capsule
+@onready var shadow = $TextureRect/Shadow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	margin_container_exit_dialog.hide()
+	shadow.modulate = Color(1,1,1,0)
 	hide_dialogs()
 	volume(1, h_slider_music.value)
 	volume(2, h_slider_sounds.value)
@@ -23,10 +28,12 @@ func _ready():
 	main_menu.modulate = Color.BLACK
 	var tween: Tween = create_tween()
 	tween.tween_property(main_menu, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
+	capsule_initial_y = capsule.position.y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	t += delta
+	capsule.position.y = capsule_initial_y + 7 * sin(0.7*t)
 
 
 func hide_dialogs():
@@ -42,11 +49,13 @@ func volume(bus_index, value):
 func _on_button_play_button_up():
 	var tween: Tween = create_tween()
 	tween.tween_property(v_box_container_buttons, "modulate", Color(1,1,1,0), 1.0).set_trans(Tween.TRANS_QUAD)
+	tween.parallel().tween_property(shadow, "modulate", Color(1,1,1,1), 1.0)
 	await tween.finished
+	await get_tree().create_timer(1.5).timeout
 	var tween_transition: Tween = create_tween()
-	tween_transition.tween_property(main_menu, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	tween_transition.tween_property(main_menu, "modulate", Color.BLACK, 1.5).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
-	get_tree().change_scene_to_file("res://remi/lab/lab.tscn")
+	get_tree().change_scene_to_file("res://louis/close_up_capsule.tscn")
 
 
 func _on_button_exit_button_up():

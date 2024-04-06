@@ -1,19 +1,25 @@
-[gd_scene load_steps=15 format=3 uid="uid://coawt8ggq5hss"]
+[gd_scene load_steps=21 format=3 uid="uid://coawt8ggq5hss"]
 
 [ext_resource type="Script" path="res://louis/main_menu/main_menu.gd" id="1_u6e4t"]
-[ext_resource type="Texture2D" uid="uid://bkw6bvrfdsfu5" path="res://louis/main_menu/main_menu_assets/temporary_bg.png" id="2_dvxnr"]
 [ext_resource type="Texture2D" uid="uid://d1rp3xd5343xt" path="res://louis/main_menu/main_menu_assets/Group 17fenêtre texte menu.png" id="2_ggsc3"]
+[ext_resource type="Texture2D" uid="uid://c7i45ysiswpbx" path="res://louis/intro_assets/intro_1_decor.png" id="2_kbqp7"]
 [ext_resource type="Texture2D" uid="uid://bgp5guwk7luqh" path="res://louis/main_menu/main_menu_assets/Group 15placeholder logo.png" id="3_2ye61"]
 [ext_resource type="Texture2D" uid="uid://pmgu8lj4qkse" path="res://louis/main_menu/main_menu_assets/Group 11jouer.png" id="3_05i5m"]
+[ext_resource type="Texture2D" uid="uid://c4248yoqmwpxm" path="res://louis/intro_assets/intro_1_agent.png" id="3_cuv5h"]
+[ext_resource type="Texture2D" uid="uid://clt3olygk6x32" path="res://louis/intro_assets/intro_1_capsule.png" id="3_w2ukh"]
 [ext_resource type="Texture2D" uid="uid://bpu5dn8p1ivo2" path="res://louis/main_menu/main_menu_assets/Group_17jouer_hover.png" id="4_muqud"]
 [ext_resource type="Texture2D" uid="uid://cw4loxx2jg6uv" path="res://louis/main_menu/main_menu_assets/Group 12comment jouer.png" id="4_wjodd"]
+[ext_resource type="Texture2D" uid="uid://dt46rqif7b8hf" path="res://louis/main_menu/main_menu_assets/Group_21jouer_select.png" id="5_l0w5t"]
 [ext_resource type="Texture2D" uid="uid://btm624ukwdcti" path="res://louis/main_menu/main_menu_assets/Group 13options.png" id="5_oq78x"]
 [ext_resource type="Texture2D" uid="uid://irkq1cam6cdg" path="res://louis/main_menu/main_menu_assets/Group 14crédits.png" id="6_kr1nl"]
 [ext_resource type="Texture2D" uid="uid://31ustltpn6vq" path="res://louis/main_menu/main_menu_assets/Group_18comment_jouer_hover.png" id="6_tvgut"]
+[ext_resource type="Texture2D" uid="uid://bgu7rtb4whc34" path="res://louis/main_menu/main_menu_assets/Group_22comment_jouer_select.png" id="8_tvfo2"]
 [ext_resource type="Texture2D" uid="uid://copv67rs0wvqs" path="res://louis/main_menu/main_menu_assets/Group_19options_hover.png" id="8_uruns"]
 [ext_resource type="Texture2D" uid="uid://ccfgtmdyq0dud" path="res://louis/main_menu/main_menu_assets/Group_20credits_hover.png" id="10_qnpmm"]
+[ext_resource type="Texture2D" uid="uid://ds5ktpq63mxei" path="res://louis/main_menu/main_menu_assets/Group_23options_select.png" id="11_8e021"]
 [ext_resource type="Texture2D" uid="uid://cxyo3k8giwmlt" path="res://louis/main_menu/main_menu_assets/Group 16quitter.png" id="12_h6dyn"]
 [ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="13_sq7a2"]
+[ext_resource type="Texture2D" uid="uid://ciwj66pycwdgl" path="res://louis/main_menu/main_menu_assets/Group_24credits_select.png" id="14_7ot82"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,8 +30,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u6e4t")
 
-[node name="Shadow" type="Sprite2D" parent="."]
-
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -33,8 +37,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_dvxnr")
+texture = ExtResource("2_kbqp7")
 expand_mode = 1
+
+[node name="Shadow" type="Sprite2D" parent="TextureRect"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(241, 473)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_cuv5h")
+
+[node name="Capsule" type="Sprite2D" parent="TextureRect"]
+position = Vector2(962, 325)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_w2ukh")
 
 [node name="HBoxContainerMain" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -79,6 +94,7 @@ theme_override_constants/margin_bottom = 16
 [node name="ButtonPlay" type="TextureButton" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonPlay"]
 layout_mode = 2
 texture_normal = ExtResource("3_05i5m")
+texture_pressed = ExtResource("5_l0w5t")
 texture_hover = ExtResource("4_muqud")
 ignore_texture_size = true
 stretch_mode = 0
@@ -95,6 +111,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("4_wjodd")
+texture_pressed = ExtResource("8_tvfo2")
 texture_hover = ExtResource("6_tvgut")
 ignore_texture_size = true
 stretch_mode = 0
@@ -111,6 +128,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("5_oq78x")
+texture_pressed = ExtResource("11_8e021")
 texture_hover = ExtResource("8_uruns")
 ignore_texture_size = true
 stretch_mode = 0
@@ -127,6 +145,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 toggle_mode = true
 texture_normal = ExtResource("6_kr1nl")
+texture_pressed = ExtResource("14_7ot82")
 texture_hover = ExtResource("10_qnpmm")
 ignore_texture_size = true
 stretch_mode = 0
@@ -141,9 +160,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.94902, 0.423529, 0.423529, 0)
-
-[node name="Capsule" type="Sprite2D" parent="HBoxContainerMain/VBoxContainer/ColorRectPlaceholder"]
-position = Vector2(-463, 0)
 
 [node name="MarginContainerDialog" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer"]
 layout_mode = 2
@@ -284,6 +300,7 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="MarginContainerExitDialog" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

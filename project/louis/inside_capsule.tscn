@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvqxgekq762m4"]
+
+[ext_resource type="Script" path="res://louis/inside_capsule.gd" id="1_sivfe"]
+[ext_resource type="Texture2D" uid="uid://c7i45ysiswpbx" path="res://louis/intro_assets/intro_1_decor.png" id="2_ur7ns"]
+
+[node name="InsideCapsule" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sivfe")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ur7ns")
+expand_mode = 1
+
+[node name="Shadow" type="Sprite2D" parent="TextureRect"]
+position = Vector2(630, 663)
+
+[node name="Polygon2D" type="Polygon2D" parent="TextureRect/Shadow"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-46, 14, -46, -90, -102, -57, -39, -124, -62, -141, -59, -157, -25, -172, 9, -166, 0, -135, -8, -125, 28, -70, -7, -85, 17, 18)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
