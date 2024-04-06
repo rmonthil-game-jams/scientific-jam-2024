@@ -9,10 +9,8 @@ var move_range : int = 300
 var moving_left : bool = false
 var moving_right : bool = false
 @onready var line_edit = $HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/LineEdit
-@onready var v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VSlider
-@onready var h_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider
-@onready var label_v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/LabelVSlider
-@onready var label_h_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/LabelHSlider
+@onready var v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/VSlider
+@onready var label_v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/LabelVSlider
 @onready var sample = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample
 @onready var micro_bodies = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/MicroBodies
 @onready var circle_lense = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense
@@ -20,10 +18,12 @@ var moving_right : bool = false
 var pollen_scene : PackedScene = preload("res://louis/microscope_game/pollen.tscn")
 var micro_plastic_scene : PackedScene = preload("res://louis/microscope_game/micro_plastic.tscn")
 
+var optimal_focus_value: float
 func _ready():
+	optimal_focus_value = randf_range(-1.0, 1.0)
+	_set_pixelization(round(1.0 + 12.0 * abs(0.0 - optimal_focus_value)))
 	generate_bodies()
 	v_slider.value = 0
-	h_slider.value = 0
 	var random = RandomNumberGenerator.new()
 	random.randomize()
 	# fade in animation
@@ -79,15 +79,13 @@ func _on_button_button_down():
 	else:
 		failure()
 
-
 func _on_v_slider_value_changed(value):
 	label_v_slider.text = str(value)
+	_set_pixelization(round(1.0 + 12.0 * abs(value - optimal_focus_value)))
 
-func _on_h_slider_value_changed(value):
-	label_h_slider.text = str(value)
-
-
-
+func _set_pixelization(value: int):
+	$HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer.stretch_shrink = value
+	$HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense/Camera2D.zoom = Vector2.ONE * (1.0/value)
 
 func _on_button_move_right_button_down():
 	moving_right = true
