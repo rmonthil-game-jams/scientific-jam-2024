@@ -22,6 +22,6 @@ func _ready():
 
 func _on_timer_timeout():
 	var tween_transition = create_tween()
-	tween_transition.tween_property(inside_capsule, "modulate", Color.BLACK, 0.5).set_trans(Tween.TRANS_QUAD)
+	tween_transition.tween_property(inside_capsule, "modulate", Color.BLACK, 0.2).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
-	get_tree().change_scene_to_file("res://louis/letters.tscn")
+	get_tree().change_scene_to_file("res://louis/capsule_wall.tscn")
