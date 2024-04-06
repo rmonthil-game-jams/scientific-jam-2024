@@ -3,6 +3,7 @@ extends Control
 signal microscope_ok
 var pollen_number : int
 var move_speed : int = 200
+var gen_radius_spread : int = 400
 @onready var line_edit = $HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/LineEdit
 @onready var v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VSlider
 @onready var h_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider
@@ -10,26 +11,41 @@ var move_speed : int = 200
 @onready var label_h_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/LabelHSlider
 var moving_left : bool = false
 var moving_right : bool = false
-@onready var camera_2d = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate/Camera2D
 @onready var sample = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample
+@onready var micro_bodies = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/MicroBodies
+@onready var circle_lense = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense
 
+var pollen_scene : PackedScene = preload("res://louis/microscope_game/pollen.tscn")
+var micro_plastic_scene : PackedScene = preload("res://louis/microscope_game/micro_plastic.tscn")
 
 func _ready():
 	generate_bodies()
 	v_slider.value = 0
 	h_slider.value = 0
+	var random = RandomNumberGenerator.new()
+	random.randomize()
 
 
 func _process(delta):
 	if moving_left:
-		camera_2d.position.x -= move_speed * delta
+		circle_lense.position.x -= move_speed * delta
 	if moving_right:
-		camera_2d.position.x += move_speed * delta
+		circle_lense.position.x += move_speed * delta
 
 #randomly generates micro bodies
 func generate_bodies():
-	pollen_number = 10 #todo: generate number 'around' 10
+	pollen_number = randi() % 5 + 6 #entier entre 6 et 10 inclus
+	var micro_plastic_number = randi() % 5 + 4 #entier entre 4 et 8 inclus
 	#generate bodies
+	
+	for i in range(pollen_number):
+		var pollen = pollen_scene.instantiate() as RigidBody2D
+		pollen.position = Vector2((2*randf()-1) * gen_radius_spread, (2*randf()-1) * gen_radius_spread)
+		micro_bodies.add_child(pollen)
+	for i in range(micro_plastic_number):
+		var micro_plastic = micro_plastic_scene.instantiate() as RigidBody2D
+		micro_plastic.position = Vector2((2*randf()-1) * gen_radius_spread, (2*randf()-1) * gen_radius_spread)
+		micro_bodies.add_child(micro_plastic)
 
 func success():
 	print("success")

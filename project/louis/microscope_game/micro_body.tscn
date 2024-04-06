@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://c47w0lc5iumgs"]
+[gd_scene load_steps=2 format=3 uid="uid://c47w0lc5iumgs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rda1j"]
+radius = 34.0
 
 [node name="MicroBody" type="RigidBody2D"]
 
@@ -6,6 +9,7 @@
 
 [node name="Polygon2DPlaceholder" type="Polygon2D" parent="Sprite2D"]
 position = Vector2(6, -11)
-polygon = PackedVector2Array(-18, -10, -33, 11, -20, 34, 9, 35, 24, 12, 8, -8)
+polygon = PackedVector2Array(-27, -15, -40, 14, -25, 39, 19, 34, 27, 5, 10, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rda1j")

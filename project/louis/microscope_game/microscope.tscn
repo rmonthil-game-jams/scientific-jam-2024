@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1sucnaub2yhn"]
+[gd_scene load_steps=2 format=3 uid="uid://c1sucnaub2yhn"]
 
 [ext_resource type="Script" path="res://louis/microscope_game/microscope.gd" id="1_u0ooi"]
-[ext_resource type="PackedScene" uid="uid://ddfxscqngi6l4" path="res://louis/microscope_game/pollen.tscn" id="2_mbumj"]
-[ext_resource type="PackedScene" uid="uid://c078stpptl7i2" path="res://louis/microscope_game/micro_plastic.tscn" id="3_rmekv"]
 
 [node name="Microscope" type="Control"]
 layout_mode = 3
@@ -113,19 +111,19 @@ render_target_update_mode = 4
 
 [node name="Polygon2D" type="Polygon2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate/Sprite2D"]
 color = Color(0.694118, 0.694118, 0.694118, 1)
-polygon = PackedVector2Array(-144, -229, -254, -110, -246, 116, -127, 254, 134, 254, 279, 109, 272, -124, 123, -235)
+polygon = PackedVector2Array(-227, -437, -484, -181, -488, 186, -224, 471, 244, 485, 532, 207, 511, -185, 268, -466)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate"]
 
-[node name="Camera2D" type="Camera2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate"]
-
 [node name="MicroBodies" type="Node2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample"]
 
-[node name="Pollen" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/MicroBodies" instance=ExtResource("2_mbumj")]
-position = Vector2(-131, 105)
+[node name="CircleLense" type="Sprite2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample"]
 
-[node name="MicroPlastic" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/MicroBodies" instance=ExtResource("3_rmekv")]
-position = Vector2(103, -77)
+[node name="Polygon2D" type="Polygon2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense"]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-230, 165, -238, -155, 216, -161, 217, 163, -149, 168, -166, 19, -84, 72, -8, 87, 88, 84, 145, 53, 151, 3, 147, -47, 117, -92, 72, -106, -12, -116, -47, -112, -84, -88, -110, -42, -116, -2, -93, 63, -168, 15, -151, 168)
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense"]
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
