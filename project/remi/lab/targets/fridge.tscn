@@ -1,0 +1,48 @@
+[gd_scene load_steps=13 format=3 uid="uid://ofnx5y4fjfk3"]
+
+[ext_resource type="PackedScene" uid="uid://dh0mke6rsqtg8" path="res://remi/lab/target.tscn" id="1_nlsxc"]
+[ext_resource type="Script" path="res://remi/lab/targets/fridge.gd" id="2_onoya"]
+[ext_resource type="Texture2D" uid="uid://b0yteqbkecghl" path="res://remi/lab/assets/frigo fermé.png" id="3_45h0g"]
+[ext_resource type="Texture2D" uid="uid://b5lnc1wev8sx4" path="res://remi/lab/assets/frigo ouvert on.png" id="3_bp6wp"]
+[ext_resource type="Texture2D" uid="uid://cxn08futq2c6t" path="res://remi/lab/assets/frigo ouvert hover.png" id="3_l3iog"]
+[ext_resource type="Texture2D" uid="uid://jyvk6k0nvk05" path="res://remi/lab/assets/frigo ouvert.png" id="3_otk1q"]
+[ext_resource type="Texture2D" uid="uid://b4lpv7dgor82g" path="res://remi/lab/assets/frigo ouvert focus.png" id="4_x3pki"]
+[ext_resource type="Texture2D" uid="uid://nt7jrfcmcpg7" path="res://remi/lab/assets/frigo_carotte 1.png" id="8_6s7q5"]
+[ext_resource type="Texture2D" uid="uid://ccggyeeha60be" path="res://remi/lab/assets/frigo_carotte 2.png" id="9_7cnwy"]
+[ext_resource type="Texture2D" uid="uid://b2b8dw3msh0hy" path="res://remi/lab/assets/frigo_carotte 3.png" id="10_tvrfq"]
+[ext_resource type="Texture2D" uid="uid://dk3wfubjohk8g" path="res://remi/lab/assets/frigo_carotte 4.png" id="11_y6fpr"]
+[ext_resource type="Texture2D" uid="uid://dqpcknduqmujp" path="res://remi/lab/assets/frigo_carotte 5.png" id="12_ypwaw"]
+
+[node name="Fridge" instance=ExtResource("1_nlsxc")]
+script = ExtResource("2_onoya")
+
+[node name="TextureButton" parent="." index="0"]
+offset_left = -136.0
+offset_top = -119.0
+offset_right = 116.0
+offset_bottom = 65.0
+texture_normal = ExtResource("3_otk1q")
+texture_pressed = ExtResource("3_bp6wp")
+texture_hover = ExtResource("3_l3iog")
+texture_disabled = ExtResource("3_45h0g")
+texture_focused = ExtResource("4_x3pki")
+
+[node name="FrigoCarotte1" type="Sprite2D" parent="." index="1"]
+position = Vector2(73, -48)
+texture = ExtResource("8_6s7q5")
+
+[node name="FrigoCarotte2" type="Sprite2D" parent="." index="2"]
+position = Vector2(49, -43)
+texture = ExtResource("9_7cnwy")
+
+[node name="FrigoCarotte3" type="Sprite2D" parent="." index="3"]
+position = Vector2(-35, -56)
+texture = ExtResource("10_tvrfq")
+
+[node name="FrigoCarotte4" type="Sprite2D" parent="." index="4"]
+position = Vector2(-47, -73)
+texture = ExtResource("11_y6fpr")
+
+[node name="FrigoCarotte5" type="Sprite2D" parent="." index="5"]
+position = Vector2(-71, -53)
+texture = ExtResource("12_ypwaw")

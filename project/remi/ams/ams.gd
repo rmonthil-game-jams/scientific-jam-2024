@@ -21,10 +21,6 @@ var current_led_on_number: int = 0
 # output
 var is_turning: bool = false
 
-func _ready():
-	await get_tree().create_timer(SOURCE_PARTICLE_INTERVAL).timeout
-	_particle_source()
-
 func _process(delta: float):
 	if is_turning:
 		var new_right: Vector2 = ($World.get_global_mouse_position() - $World/AcceleratorInput.global_position).normalized()
@@ -72,33 +68,37 @@ func _on_accelerator_input_button_down():
 func _on_accelerator_input_button_up():
 	is_turning = false
 
+func _on_source_input_pressed():
+	_spawn_particle()
+
 func _on_target_body_entered(body):
 	if body is ParticleB:
-		current_led_on_number += 1
-		$World/Target/Leds.get_child(current_led_on_number-1).color.v = 1.0
-		var tween: Tween = create_tween()
-		tween.tween_property($World/Target/Leds.get_child(current_led_on_number-1), "modulate", Color.GREEN, 0.0625).set_trans(Tween.TRANS_QUAD)
-		tween.tween_property($World/Target/Leds.get_child(current_led_on_number-1), "modulate", Color.WHITE, 0.0625).set_trans(Tween.TRANS_QUAD)
-		tween.set_loops(3)
-		if current_led_on_number == LED_NUMBER:
-			# animation
-			for index in range(current_led_on_number):
-				tween = create_tween()
-				tween.tween_property($World/Target/Leds.get_child(index), "modulate", Color.GREEN, 0.0625).set_trans(Tween.TRANS_QUAD)
-				tween.tween_property($World/Target/Leds.get_child(index), "modulate", Color.WHITE, 0.0625).set_trans(Tween.TRANS_QUAD)
-				tween.set_loops(3)
-			tween = create_tween()
-			tween.tween_property($World/Target, "modulate", Color.GREEN, 0.0625).set_trans(Tween.TRANS_QUAD)
-			tween.tween_property($World/Target, "modulate", Color.WHITE, 0.0625).set_trans(Tween.TRANS_QUAD)
+		if current_led_on_number < LED_NUMBER:
+			current_led_on_number += 1
+			$World/Target/Leds.get_child(current_led_on_number-1).color.v = 1.0
+			var tween: Tween = create_tween()
+			tween.tween_property($World/Target/Leds.get_child(current_led_on_number-1), "modulate", Color.GREEN, 0.0625).set_trans(Tween.TRANS_QUAD)
+			tween.tween_property($World/Target/Leds.get_child(current_led_on_number-1), "modulate", Color.WHITE, 0.0625).set_trans(Tween.TRANS_QUAD)
 			tween.set_loops(3)
-			# change state of game
-			LabState.ams_done = true
-			# transition
-			var tween_transition: Tween = create_tween()
-			tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
-			await tween_transition.finished
-			get_tree().change_scene_to_file("res://remi/lab/lab.tscn")
-			return
+			if current_led_on_number == LED_NUMBER:
+				# animation
+				for index in range(current_led_on_number):
+					tween = create_tween()
+					tween.tween_property($World/Target/Leds.get_child(index), "modulate", Color.GREEN, 0.0625).set_trans(Tween.TRANS_QUAD)
+					tween.tween_property($World/Target/Leds.get_child(index), "modulate", Color.WHITE, 0.0625).set_trans(Tween.TRANS_QUAD)
+					tween.set_loops(3)
+				tween = create_tween()
+				tween.tween_property($World/Target, "modulate", Color.GREEN, 0.0625).set_trans(Tween.TRANS_QUAD)
+				tween.tween_property($World/Target, "modulate", Color.WHITE, 0.0625).set_trans(Tween.TRANS_QUAD)
+				tween.set_loops(3)
+				# change state of game
+				LabState.ams_done = true
+				# transition
+				var tween_transition: Tween = create_tween()
+				tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+				await tween_transition.finished
+				get_tree().change_scene_to_file("res://remi/lab/lab.tscn")
+				return
 	else:
 		# reset ui
 		for index in range(LED_NUMBER):

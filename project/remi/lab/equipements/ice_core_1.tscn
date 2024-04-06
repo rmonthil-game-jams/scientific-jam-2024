@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bixcxudt2bts"]
+
+[ext_resource type="PackedScene" uid="uid://ckmm4kiepleal" path="res://remi/lab/equipment.tscn" id="1_lxrys"]
+[ext_resource type="Texture2D" uid="uid://np6w3f0e2fko" path="res://remi/lab/assets/Carotte.png" id="2_iv2sc"]
+[ext_resource type="Texture2D" uid="uid://hknv12ys7g2s" path="res://remi/lab/assets/Carotte on.png" id="3_jxdpp"]
+[ext_resource type="Texture2D" uid="uid://c6gerog7vnpeo" path="res://remi/lab/assets/Carotte hover.png" id="4_hkuxj"]
+[ext_resource type="Texture2D" uid="uid://u60dwogdy5h4" path="res://remi/lab/assets/Carotte focus.png" id="5_ir5v4"]
+
+[node name="IceCore" instance=ExtResource("1_lxrys")]
+
+[node name="TextureButton" parent="." index="0"]
+offset_left = -166.0
+offset_top = -26.5
+offset_right = 166.0
+offset_bottom = 26.5
+texture_normal = ExtResource("2_iv2sc")
+texture_pressed = ExtResource("3_jxdpp")
+texture_hover = ExtResource("4_hkuxj")
+texture_disabled = ExtResource("2_iv2sc")
+texture_focused = ExtResource("5_ir5v4")

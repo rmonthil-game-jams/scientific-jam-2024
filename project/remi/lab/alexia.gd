@@ -13,8 +13,7 @@ const IDLE_SCALE_DURATION: float = 0.5
 # output
 var is_idling: bool = false
 var is_walking: bool = false
-var is_equiping: bool = false
-var is_equiped: bool = false
+var is_carrying: bool = false
 
 var equipement: Node2D = null
 
@@ -26,27 +25,36 @@ var tween_equiping: Tween = null
 # TODO: THERE MIGHT BE A PROBLEM WHEN EQUIP IS CALLED WHEN ALREADY EQUIPING
 
 ## grabbing
-func equip(new_equipement: Node2D):
-	var new_equipement_global_position: Vector2 = new_equipement.global_position
-	# stop tween
-	is_equiping = true
-	tween_walking = create_tween()
-	if is_equiped:
-		tween_walking.parallel().tween_property(equipement, "global_position", new_equipement_global_position, EQUIPING_DURATION).set_trans(Tween.TRANS_QUAD)
-	tween_walking.tween_property(new_equipement, "global_position", $Anchor/EquipementHolder.global_position, EQUIPING_DURATION).set_trans(Tween.TRANS_QUAD)
-	await tween_walking.finished
-	# logic
-	if is_equiped:
-		$Anchor/EquipementHolde.remove_child(equipement)
-		equipement.global_position = new_equipement_global_position
-		new_equipement.get_parent().add_child(equipement)
-		equipement.get_node("TextureButton").disabled = false
-	new_equipement.get_parent().remove_child(new_equipement)
-	new_equipement.position = Vector2.ZERO
-	$Anchor/EquipementHolder.add_child(new_equipement)
-	new_equipement.get_node("TextureButton").disabled = true
-	# state update
-	is_equiped = true
+func carry_ice_core():
+	is_carrying = true
+	# ui
+	$Anchor/Sprite2DIdleNormal/Sprite2DIdleNormal.hide()
+	$Anchor/Sprite2DIdleNormal/Sprite2DIdleCarrying.show()
+	$Anchor/Sprite2DIdleNormal/IceCore.show()
+	$Anchor/Sprite2DIdleNormal/Hands.show()
+	$Anchor/Sprite2DWalkingNormal/Sprite2DWalkingNormal.hide()
+	$Anchor/Sprite2DWalkingNormal/Sprite2DWalkingCarrying.show()
+	$Anchor/Sprite2DWalkingNormal/IceCore.show()
+	$Anchor/Sprite2DWalkingNormal/Hands.show()
+
+func drop_ice_core(target: Node2D, instantiate: bool = true):
+	# drop
+	if instantiate:
+		var new_ice_core: Node2D = load("res://remi/lab/equipements/ice_core_" + str(4 - LabState.remaining_ice_cores_in_the_fridge) + ".tscn").instantiate()
+		new_ice_core.position = target.position
+		target.get_parent().add_child(new_ice_core)
+		new_ice_core.selected.connect(get_tree().current_scene._on_ice_core_selected.bind(new_ice_core))
+	# ui
+	$Anchor/Sprite2DIdleNormal/Sprite2DIdleNormal.show()
+	$Anchor/Sprite2DIdleNormal/Sprite2DIdleCarrying.hide()
+	$Anchor/Sprite2DIdleNormal/IceCore.hide()
+	$Anchor/Sprite2DIdleNormal/Hands.hide()
+	$Anchor/Sprite2DWalkingNormal/Sprite2DWalkingNormal.show()
+	$Anchor/Sprite2DWalkingNormal/Sprite2DWalkingCarrying.hide()
+	$Anchor/Sprite2DWalkingNormal/IceCore.hide()
+	$Anchor/Sprite2DWalkingNormal/Hands.hide()
+	# bool
+	is_carrying = false
 
 ## walking
 func play_walking_animation():

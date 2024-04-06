@@ -1,28 +1,38 @@
-[gd_scene load_steps=15 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=20 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
 [ext_resource type="PackedScene" uid="uid://c7562hhd8en41" path="res://remi/lab/alexia.tscn" id="2_kv3l1"]
+[ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="3_er4tn"]
 [ext_resource type="PackedScene" uid="uid://d1a5sgpejl0w7" path="res://remi/text_stack/text_stack.tscn" id="5_4dofh"]
 [ext_resource type="Texture2D" uid="uid://ckur8q0gamic3" path="res://remi/lab/assets/table.png" id="5_ltqkj"]
 [ext_resource type="Texture2D" uid="uid://dickiwe2gov2w" path="res://remi/lab/assets/meuble.png" id="8_sh0ga"]
 [ext_resource type="PackedScene" uid="uid://cb36jofe2qkf3" path="res://remi/lab/targets/ams.tscn" id="9_lfy5p"]
 [ext_resource type="PackedScene" uid="uid://dgvn070fh71cj" path="res://remi/lab/targets/cuve.tscn" id="10_0otpv"]
 [ext_resource type="Texture2D" uid="uid://i2dh0cxvg8sc" path="res://remi/lab/assets/outils.png" id="10_vowus"]
+[ext_resource type="Texture2D" uid="uid://cx7gsvdge8f7l" path="res://remi/lab/assets/refroidissement_0.png" id="11_5vjj5"]
 [ext_resource type="PackedScene" uid="uid://bvugr8c1yj8qj" path="res://remi/lab/targets/microscope.tscn" id="11_cyf5e"]
 [ext_resource type="Texture2D" uid="uid://bbrxywjdednlq" path="res://remi/lab/assets/patere.png" id="11_sucpr"]
 [ext_resource type="Texture2D" uid="uid://bc52p3kndx36s" path="res://remi/lab/assets/refroidissement.png" id="12_nabsr"]
 [ext_resource type="Texture2D" uid="uid://cbsdbt0a8y43a" path="res://remi/lab/assets/tableau.png" id="13_snhlj"]
+[ext_resource type="PackedScene" uid="uid://ofnx5y4fjfk3" path="res://remi/lab/targets/fridge.tscn" id="14_1hftv"]
 [ext_resource type="Texture2D" uid="uid://ny2mre5vvxms" path="res://remi/lab/assets/tubes.png" id="14_3gryl"]
+[ext_resource type="PackedScene" uid="uid://ynjrj7ys6umd" path="res://remi/lab/targets/ice_core_holder.tscn" id="15_ecbqv"]
+[ext_resource type="Texture2D" uid="uid://dhdcwub821scd" path="res://remi/lab/assets/Table 2.png" id="16_wu32x"]
 
 [node name="Lab" type="Node"]
 script = ExtResource("1_tsc10")
 
 [node name="World" type="Node2D" parent="."]
 
-[node name="Background" type="Sprite2D" parent="World"]
-modulate = Color(1, 1, 1, 0.498039)
+[node name="Background" type="Node2D" parent="World"]
+
+[node name="Background" type="Sprite2D" parent="World/Background"]
 texture = ExtResource("2_1r5bo")
+
+[node name="Background2" type="Sprite2D" parent="World/Background"]
+position = Vector2(1913, 0)
+texture = ExtResource("3_er4tn")
 
 [node name="YSort" type="Node2D" parent="World"]
 y_sort_enabled = true
@@ -70,7 +80,7 @@ texture = ExtResource("11_sucpr")
 
 [node name="Refroidissement" type="Sprite2D" parent="World/YSort/DeskAnchor"]
 position = Vector2(-231, -313)
-texture = ExtResource("12_nabsr")
+texture = ExtResource("11_5vjj5")
 
 [node name="Tableau" type="Sprite2D" parent="World/YSort/DeskAnchor"]
 position = Vector2(-138, -545)
@@ -79,6 +89,23 @@ texture = ExtResource("13_snhlj")
 [node name="Tubes" type="Sprite2D" parent="World/YSort/DeskAnchor"]
 position = Vector2(-101, -244)
 texture = ExtResource("14_3gryl")
+
+[node name="Fridge" parent="World/YSort" instance=ExtResource("14_1hftv")]
+position = Vector2(1123, 230)
+
+[node name="Desk1Anchor" type="Node2D" parent="World/YSort"]
+position = Vector2(1685, 288)
+
+[node name="Table" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(128, -131)
+texture = ExtResource("16_wu32x")
+
+[node name="IceCoreHolder" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
+position = Vector2(445, -251)
+
+[node name="Refroidissement2" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(173, -465)
+texture = ExtResource("12_nabsr")
 
 [node name="Gui" type="CanvasLayer" parent="."]
 

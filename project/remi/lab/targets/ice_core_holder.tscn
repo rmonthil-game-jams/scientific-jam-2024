@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ynjrj7ys6umd"]
+
+[ext_resource type="PackedScene" uid="uid://dh0mke6rsqtg8" path="res://remi/lab/target.tscn" id="1_u2qi2"]
+
+[node name="IceCoreHolder" instance=ExtResource("1_u2qi2")]
+
+[node name="Polygon2D" type="Polygon2D" parent="TextureButton" index="0"]
+polygon = PackedVector2Array(-1, -1, 44, -1, 43, 43, -3, 42)

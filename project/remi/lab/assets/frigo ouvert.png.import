@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://07hm0j7isydf"
-path="res://.godot/imported/background.png-df1ccd7e8ea134b5edbc11c5c35fb236.ctex"
+uid="uid://jyvk6k0nvk05"
+path="res://.godot/imported/frigo ouvert.png-693db8641b884d96d74ba10cc697162b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://remi/lab/assets/background.png"
-dest_files=["res://.godot/imported/background.png-df1ccd7e8ea134b5edbc11c5c35fb236.ctex"]
+source_file="res://remi/lab/assets/frigo ouvert.png"
+dest_files=["res://.godot/imported/frigo ouvert.png-693db8641b884d96d74ba10cc697162b.ctex"]
 
 [params]
 
