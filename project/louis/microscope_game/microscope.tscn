@@ -111,7 +111,7 @@ render_target_update_mode = 4
 
 [node name="Polygon2D" type="Polygon2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate/Sprite2D"]
 color = Color(0.694118, 0.694118, 0.694118, 1)
-polygon = PackedVector2Array(-227, -437, -484, -181, -488, 186, -224, 471, 244, 485, 532, 207, 511, -185, 268, -466)
+polygon = PackedVector2Array(-484, -181, -488, 186, 532, 207, 511, -185)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate"]
 

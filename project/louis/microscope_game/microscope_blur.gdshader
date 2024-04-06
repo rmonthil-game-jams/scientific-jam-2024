@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform float lod;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -10,8 +10,7 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	COLOR.rgb = textureLod(TEXTURE, UV, lod).rgb;
-	COLOR.rgb = texture(TEXTURE, 0.5*UV).rgb;
+	COLOR.rgb = textureLod(screen_texture, SCREEN_UV, 0.7).rgb;
 }
 
 //void light() {
