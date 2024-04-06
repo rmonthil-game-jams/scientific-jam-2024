@@ -37,7 +37,6 @@ func hide_dialogs():
 
 func volume(bus_index, value):
 	AudioServer.set_bus_volume_db(bus_index, log(value))
-	print(AudioServer.get_bus_volume_db(bus_index))
 
 
 func _on_button_play_button_up():
