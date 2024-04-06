@@ -3,14 +3,16 @@ extends Control
 signal microscope_ok
 var pollen_number : int
 var move_speed : int = 200
-var gen_radius_spread : int = 400
+var spawn_radius_height : int = 70
+var spawn_radius_width : int = 350
+var move_range : int = 300
+var moving_left : bool = false
+var moving_right : bool = false
 @onready var line_edit = $HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/LineEdit
 @onready var v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VSlider
 @onready var h_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider
 @onready var label_v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/LabelVSlider
 @onready var label_h_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/LabelHSlider
-var moving_left : bool = false
-var moving_right : bool = false
 @onready var sample = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample
 @onready var micro_bodies = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/MicroBodies
 @onready var circle_lense = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense
@@ -34,6 +36,7 @@ func _process(delta):
 		circle_lense.position.x -= move_speed * delta
 	if moving_right:
 		circle_lense.position.x += move_speed * delta
+	circle_lense.position.x = clamp(-move_range, circle_lense.position.x, move_range)
 
 #randomly generates micro bodies
 func generate_bodies():
@@ -43,11 +46,11 @@ func generate_bodies():
 	
 	for i in range(pollen_number):
 		var pollen = pollen_scene.instantiate() as RigidBody2D
-		pollen.position = Vector2((2*randf()-1) * gen_radius_spread, (2*randf()-1) * gen_radius_spread)
+		pollen.position = Vector2((2*randf()-1) * spawn_radius_width, (2*randf()-1) * spawn_radius_height)
 		micro_bodies.add_child(pollen)
 	for i in range(micro_plastic_number):
 		var micro_plastic = micro_plastic_scene.instantiate() as RigidBody2D
-		micro_plastic.position = Vector2((2*randf()-1) * gen_radius_spread, (2*randf()-1) * gen_radius_spread)
+		micro_plastic.position = Vector2((2*randf()-1) * spawn_radius_width, (2*randf()-1) * spawn_radius_height)
 		micro_bodies.add_child(micro_plastic)
 
 func success():

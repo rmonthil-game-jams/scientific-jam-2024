@@ -1,0 +1,87 @@
+extends Control
+
+@onready var main_menu = $"."
+@onready var v_box_container_buttons = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons
+@onready var margin_container_exit_dialog = $MarginContainerExitDialog
+@onready var texture_rect_dialog = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog
+@onready var rich_text_label_how_to = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/RichTextLabelHowTo
+@onready var v_box_container_options = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions
+@onready var rich_text_label_credits = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/RichTextLabelCredits
+@onready var button_how_to = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo/ButtonHowTo
+@onready var button_options = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonOptions/ButtonOptions
+@onready var button_credits = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits/ButtonCredits
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	margin_container_exit_dialog.hide()
+	hide_dialogs()
+	# fade in animation
+	main_menu.modulate = Color.BLACK
+	var tween: Tween = create_tween()
+	tween.tween_property(main_menu, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func hide_dialogs():
+	texture_rect_dialog.hide()
+	rich_text_label_how_to.hide()
+	v_box_container_options.hide()
+	rich_text_label_credits.hide()
+
+
+func _on_button_play_button_up():
+	var tween: Tween = create_tween()
+	tween.tween_property(v_box_container_buttons, "modulate", Color(1,1,1,0), 1.0).set_trans(Tween.TRANS_QUAD)
+	await tween.finished
+	var tween_transition: Tween = create_tween()
+	tween_transition.tween_property(main_menu, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	await tween_transition.finished
+	get_tree().change_scene_to_file("res://remi/lab/lab.tscn")
+
+
+func _on_button_exit_button_up():
+	margin_container_exit_dialog.show()
+
+func _on_button_no_button_up():
+	margin_container_exit_dialog.hide()
+
+func _on_button_yes_button_up():
+	get_tree().quit()
+
+
+func _on_button_how_to_toggled(toggled_on):
+	hide_dialogs()
+	if toggled_on:
+		button_options.button_pressed = false
+		button_credits.button_pressed = false
+		texture_rect_dialog.show()
+		rich_text_label_how_to.show()
+	else:
+		texture_rect_dialog.hide()
+		rich_text_label_how_to.hide()
+
+func _on_button_options_toggled(toggled_on):
+	hide_dialogs()
+	if toggled_on:
+		button_how_to.button_pressed = false
+		button_credits.button_pressed = false
+		texture_rect_dialog.show()
+		v_box_container_options.show()
+	else:
+		texture_rect_dialog.hide()
+		v_box_container_options.hide()
+
+func _on_button_credits_toggled(toggled_on):
+	hide_dialogs()
+	if toggled_on:
+		button_how_to.button_pressed = false
+		button_options.button_pressed = false
+		texture_rect_dialog.show()
+		rich_text_label_credits.show()
+	else:
+		texture_rect_dialog.hide()
+		rich_text_label_credits.hide()
