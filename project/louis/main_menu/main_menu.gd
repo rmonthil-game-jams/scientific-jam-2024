@@ -10,16 +10,21 @@ extends Control
 @onready var button_how_to = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo/ButtonHowTo
 @onready var button_options = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonOptions/ButtonOptions
 @onready var button_credits = $HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits/ButtonCredits
+@onready var h_slider_music = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer2/HSliderMusic
+@onready var h_slider_sounds = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2/HSliderSounds
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	margin_container_exit_dialog.hide()
 	hide_dialogs()
+	volume(1, h_slider_music.value)
+	volume(2, h_slider_sounds.value)
+	print(AudioServer.get_bus_volume_db(1))
+	print(AudioServer.get_bus_volume_db(2))
 	# fade in animation
 	main_menu.modulate = Color.BLACK
 	var tween: Tween = create_tween()
 	tween.tween_property(main_menu, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -31,6 +36,10 @@ func hide_dialogs():
 	rich_text_label_how_to.hide()
 	v_box_container_options.hide()
 	rich_text_label_credits.hide()
+
+func volume(bus_index, value):
+	AudioServer.set_bus_volume_db(bus_index, log(value))
+	print(AudioServer.get_bus_volume_db(bus_index))
 
 
 func _on_button_play_button_up():
@@ -85,3 +94,18 @@ func _on_button_credits_toggled(toggled_on):
 	else:
 		texture_rect_dialog.hide()
 		rich_text_label_credits.hide()
+
+
+func _on_check_button_fullscreen_toggled(toggled_on):
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+
+func _on_h_slider_music_value_changed(value):
+	volume(1, value)
+
+func _on_h_slider_sounds_value_changed(value):
+	volume(2, value)

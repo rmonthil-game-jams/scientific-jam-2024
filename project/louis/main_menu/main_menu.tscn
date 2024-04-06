@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://coawt8ggq5hss"]
+[gd_scene load_steps=4 format=3 uid="uid://coawt8ggq5hss"]
 
 [ext_resource type="Script" path="res://louis/main_menu/main_menu.gd" id="1_u6e4t"]
+[ext_resource type="Texture2D" uid="uid://bkw6bvrfdsfu5" path="res://louis/main_menu/main_menu_assets/temporary_bg.png" id="2_dvxnr"]
 [ext_resource type="Texture2D" uid="uid://d1rp3xd5343xt" path="res://louis/main_menu/main_menu_assets/Group 17fenêtre texte menu.png" id="2_ggsc3"]
 
 [node name="MainMenu" type="Control"]
@@ -21,6 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_dvxnr")
+expand_mode = 1
 
 [node name="HBoxContainerMain" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -117,7 +120,7 @@ size_flags_stretch_ratio = 1.5
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.94902, 0.423529, 0.423529, 0.211765)
+color = Color(0.94902, 0.423529, 0.423529, 0)
 
 [node name="Capsule" type="Sprite2D" parent="HBoxContainerMain/VBoxContainer/ColorRectPlaceholder"]
 position = Vector2(-463, 0)
@@ -181,9 +184,11 @@ text = "Musique:"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer2"]
+[node name="HSliderMusic" type="HSlider" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
+min_value = 1.0
+value = 50.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions"]
 layout_mode = 2
@@ -201,9 +206,11 @@ text = "Effets sonores:"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2"]
+[node name="HSliderSounds" type="HSlider" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 4
+min_value = 1.0
+value = 50.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions"]
 layout_mode = 2
@@ -221,7 +228,7 @@ text = "Fullscreen:"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CheckButton" type="CheckButton" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer2"]
+[node name="CheckButtonFullscreen" type="CheckButton" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -324,6 +331,9 @@ text = "Non"
 [connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo/ButtonHowTo" to="." method="_on_button_how_to_toggled"]
 [connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonOptions/ButtonOptions" to="." method="_on_button_options_toggled"]
 [connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits/ButtonCredits" to="." method="_on_button_credits_toggled"]
+[connection signal="value_changed" from="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer2/HSliderMusic" to="." method="_on_h_slider_music_value_changed"]
+[connection signal="value_changed" from="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2/HSliderSounds" to="." method="_on_h_slider_sounds_value_changed"]
+[connection signal="toggled" from="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer2/CheckButtonFullscreen" to="." method="_on_check_button_fullscreen_toggled"]
 [connection signal="button_up" from="MarginContainerButtonExit/ButtonExit" to="." method="_on_button_exit_button_up"]
 [connection signal="button_up" from="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonYes/ButtonYes" to="." method="_on_button_yes_button_up"]
 [connection signal="button_up" from="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonNo/ButtonNo" to="." method="_on_button_no_button_up"]
