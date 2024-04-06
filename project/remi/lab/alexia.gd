@@ -41,8 +41,8 @@ func drop_ice_core(target: Node2D, instantiate: bool = true):
 	# drop
 	if instantiate:
 		var new_ice_core: Node2D = load("res://remi/lab/equipements/ice_core_" + str(4 - LabState.remaining_ice_cores_in_the_fridge) + ".tscn").instantiate()
-		new_ice_core.position = target.position
-		target.get_parent().add_child(new_ice_core)
+		new_ice_core.position = Vector2.ZERO
+		target.add_child(new_ice_core)
 		new_ice_core.selected.connect(get_tree().current_scene._on_ice_core_selected.bind(new_ice_core))
 	# ui
 	$Anchor/Sprite2DIdleNormal/Sprite2DIdleNormal.show()

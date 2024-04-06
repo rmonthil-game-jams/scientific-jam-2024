@@ -73,6 +73,11 @@ func _ready():
 	if LabState.ams_done and LabState.microscope_done and LabState.remaining_ice_cores_in_the_fridge == 5:
 		$World/YSort/Fridge.selected.connect(_on_fridge_selected)
 		$World/YSort/Desk1Anchor/IceCoreHolder.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder))
+		$World/YSort/Desk1Anchor/IceCoreHolder2.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder2))
+		$World/YSort/Desk1Anchor/IceCoreHolder3.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder3))
+		$World/YSort/Desk1Anchor/IceCoreHolder4.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder4))
+		$World/YSort/Desk1Anchor/IceCoreHolder5.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder5))
+		$World/YSort/Fridge.open()
 	else:
 		$World/YSort/Fridge/TextureButton.disabled = true
 		$World/YSort/Fridge/TextureButton.focus_mode = Control.FOCUS_NONE
@@ -93,7 +98,7 @@ func _ready():
 # input
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
-		if not event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
 			play_move_alexia_animation_to_target($World.get_global_mouse_position())
 
 # signals
@@ -144,6 +149,11 @@ func _on_fridge_selected():
 		LabState.remaining_ice_cores_in_the_fridge -= 1
 		# create new ice_core
 		$World/YSort/Alexia.carry_ice_core()
+		$World/YSort/Fridge.take()
+		# pomme
+		if (LabState.remaining_ice_cores_in_the_fridge == 0):
+			$World/YSort/Fridge/TextureButton.disabled = true
+			$World/YSort/Fridge/TextureButton.focus_mode = Control.FOCUS_NONE
 
 func _on_ice_core_selected(equipement: Node2D):
 	# wait animation end
@@ -151,6 +161,13 @@ func _on_ice_core_selected(equipement: Node2D):
 	await tween_moving.finished
 	$World/YSort/Alexia.stop_idle_animation()
 	await $World/YSort/Alexia.tween_idle.finished
+	# drop ice core
+	if current_ice_core:
+		current_ice_core.position = Vector2.ZERO
+		equipement.get_parent().add_child(current_ice_core)
+		current_ice_core = null
+	elif $World/YSort/Alexia.is_carrying:
+		$World/YSort/Alexia.drop_ice_core(equipement.get_parent())
 	# grab ice core
 	$World/YSort/Alexia.carry_ice_core()
 	# set current
@@ -172,3 +189,13 @@ func _on_ice_core_holder_selected(target: Node2D):
 			$World/YSort/Alexia.drop_ice_core(target, false)
 		else:
 			$World/YSort/Alexia.drop_ice_core(target)
+		await get_tree().process_frame
+		if (LabState.remaining_ice_cores_in_the_fridge == 0):
+			if ($World/YSort/Desk1Anchor/IceCoreHolder.get_child(1) is IceCore0
+				and $World/YSort/Desk1Anchor/IceCoreHolder2.get_child(1) is IceCore1
+				and $World/YSort/Desk1Anchor/IceCoreHolder3.get_child(1) is IceCore2
+				and $World/YSort/Desk1Anchor/IceCoreHolder4.get_child(1) is IceCore3
+				and $World/YSort/Desk1Anchor/IceCoreHolder5.get_child(1) is IceCore4):
+				print("success")
+			else:
+				print("failure")

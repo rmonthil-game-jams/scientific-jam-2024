@@ -33,7 +33,6 @@ func _plot(line_2d: Line2D, filename: String, factor: float):
 	var x_max: float = x.max() - x_0
 	y.reverse()
 	var y_max: float = y.max()
-	print(1.0/y_max)
 	## center
 	for index in range(lines.size()/5):
 		x[index] = (x[index] - x_0) / x_max

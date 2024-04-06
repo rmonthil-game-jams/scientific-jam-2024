@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=30 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
 [ext_resource type="PackedScene" uid="uid://c7562hhd8en41" path="res://remi/lab/alexia.tscn" id="2_kv3l1"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="3_er4tn"]
+[ext_resource type="Texture2D" uid="uid://dnlu4g4fpoafy" path="res://remi/lab/assets/fond 3.png" id="4_8c3ds"]
 [ext_resource type="PackedScene" uid="uid://d1a5sgpejl0w7" path="res://remi/text_stack/text_stack.tscn" id="5_4dofh"]
 [ext_resource type="Texture2D" uid="uid://ckur8q0gamic3" path="res://remi/lab/assets/table.png" id="5_ltqkj"]
 [ext_resource type="Texture2D" uid="uid://dickiwe2gov2w" path="res://remi/lab/assets/meuble.png" id="8_sh0ga"]
@@ -18,7 +19,16 @@
 [ext_resource type="PackedScene" uid="uid://ofnx5y4fjfk3" path="res://remi/lab/targets/fridge.tscn" id="14_1hftv"]
 [ext_resource type="Texture2D" uid="uid://ny2mre5vvxms" path="res://remi/lab/assets/tubes.png" id="14_3gryl"]
 [ext_resource type="PackedScene" uid="uid://ynjrj7ys6umd" path="res://remi/lab/targets/ice_core_holder.tscn" id="15_ecbqv"]
-[ext_resource type="Texture2D" uid="uid://dhdcwub821scd" path="res://remi/lab/assets/Table 2.png" id="16_wu32x"]
+[ext_resource type="Texture2D" uid="uid://0lhe6hjadrhm" path="res://remi/lab/assets/refroidissement 3.png" id="18_g013k"]
+[ext_resource type="Texture2D" uid="uid://ccs1nx7fflogs" path="res://remi/lab/assets/tableaux 3.png" id="18_kg5fs"]
+[ext_resource type="Texture2D" uid="uid://byf6n40yv3t14" path="res://remi/lab/assets/table 4.png" id="18_pirlv"]
+[ext_resource type="Texture2D" uid="uid://dpee2bkgaj2ut" path="res://remi/lab/assets/table 3.png" id="18_suyeu"]
+[ext_resource type="Texture2D" uid="uid://dqugjbexnij3o" path="res://remi/lab/assets/refroidissement 4.png" id="19_2yn6f"]
+[ext_resource type="Texture2D" uid="uid://b2dc6bcmtiphf" path="res://remi/lab/assets/table 5.png" id="19_pt66a"]
+[ext_resource type="Texture2D" uid="uid://7h6xaflym1f3" path="res://remi/lab/assets/table 6.png" id="20_j1k5o"]
+[ext_resource type="Texture2D" uid="uid://vh7w75tofhlj" path="res://remi/lab/assets/tableaux 4.png" id="20_mun5f"]
+[ext_resource type="Texture2D" uid="uid://dx8nvyitr185h" path="res://remi/lab/assets/tableaux 5.png" id="22_ngrgt"]
+[ext_resource type="Texture2D" uid="uid://bx3607eorarxj" path="res://remi/lab/assets/tableaux 6.png" id="24_tiec1"]
 
 [node name="Lab" type="Node"]
 script = ExtResource("1_tsc10")
@@ -33,6 +43,14 @@ texture = ExtResource("2_1r5bo")
 [node name="Background2" type="Sprite2D" parent="World/Background"]
 position = Vector2(1913, 0)
 texture = ExtResource("3_er4tn")
+
+[node name="Background3" type="Sprite2D" parent="World/Background"]
+position = Vector2(3837, 0)
+texture = ExtResource("4_8c3ds")
+
+[node name="Background4" type="Sprite2D" parent="World/Background"]
+position = Vector2(5767, 0)
+texture = ExtResource("4_8c3ds")
 
 [node name="YSort" type="Node2D" parent="World"]
 y_sort_enabled = true
@@ -96,16 +114,123 @@ position = Vector2(1123, 230)
 [node name="Desk1Anchor" type="Node2D" parent="World/YSort"]
 position = Vector2(1685, 288)
 
-[node name="Table" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
-position = Vector2(128, -131)
-texture = ExtResource("16_wu32x")
-
-[node name="IceCoreHolder" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
-position = Vector2(445, -251)
-
 [node name="Refroidissement2" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
 position = Vector2(173, -465)
 texture = ExtResource("12_nabsr")
+
+[node name="Refroidissement3" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(2100, -751)
+texture = ExtResource("18_g013k")
+
+[node name="Refroidissement4" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(4027, -751)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_2yn6f")
+
+[node name="Table" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(-4, -138)
+texture = ExtResource("18_suyeu")
+
+[node name="Tableaux" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(109, -472)
+texture = ExtResource("18_kg5fs")
+
+[node name="Table2" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(776, -138)
+texture = ExtResource("18_pirlv")
+
+[node name="Tableaux2" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(886, -472)
+texture = ExtResource("20_mun5f")
+
+[node name="Table3" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(1529, -138)
+texture = ExtResource("19_pt66a")
+
+[node name="Tableaux3" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(1634, -472)
+texture = ExtResource("22_ngrgt")
+
+[node name="Table4" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(2313, -138)
+texture = ExtResource("20_j1k5o")
+
+[node name="Tableaux4" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(2427, -472)
+texture = ExtResource("24_tiec1")
+
+[node name="Tableaux5" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(3170, -472)
+texture = ExtResource("24_tiec1")
+
+[node name="Table5" type="Sprite2D" parent="World/YSort/Desk1Anchor"]
+position = Vector2(3056, -138)
+texture = ExtResource("20_j1k5o")
+
+[node name="IceCoreHolder" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
+position = Vector2(-10, -245)
+
+[node name="IceCoreHolder2" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
+position = Vector2(2326, -255)
+
+[node name="IceCoreHolder3" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
+position = Vector2(1533, -249)
+
+[node name="IceCoreHolder4" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
+position = Vector2(750, -253)
+
+[node name="IceCoreHolder5" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
+position = Vector2(3069, -250)
+
+[node name="Label" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = -152.0
+offset_top = -695.0
+offset_right = 146.0
+offset_bottom = -650.0
+theme_override_font_sizes/font_size = 32
+text = "Ere Glaciaire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = 632.0
+offset_top = -695.0
+offset_right = 930.0
+offset_bottom = -650.0
+theme_override_font_sizes/font_size = 32
+text = "Moyen-Âge"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = 1374.0
+offset_top = -695.0
+offset_right = 1672.0
+offset_bottom = -650.0
+theme_override_font_sizes/font_size = 32
+text = "Ere Industrielle"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = 2158.0
+offset_top = -695.0
+offset_right = 2456.0
+offset_bottom = -650.0
+theme_override_font_sizes/font_size = 32
+text = "Ere Moderne"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="World/YSort/Desk1Anchor"]
+offset_left = 2919.0
+offset_top = -695.0
+offset_right = 3217.0
+offset_bottom = -650.0
+theme_override_font_sizes/font_size = 32
+text = "Future ?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Gui" type="CanvasLayer" parent="."]
 

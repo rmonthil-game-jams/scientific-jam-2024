@@ -1,20 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://jj5jjo2nk30p"]
+[gd_scene load_steps=7 format=3 uid="uid://jj5jjo2nk30p"]
 
-[ext_resource type="PackedScene" uid="uid://ckmm4kiepleal" path="res://remi/lab/equipment.tscn" id="1_p2fx4"]
-[ext_resource type="Texture2D" uid="uid://np6w3f0e2fko" path="res://remi/lab/assets/Carotte.png" id="2_026ld"]
-[ext_resource type="Texture2D" uid="uid://hknv12ys7g2s" path="res://remi/lab/assets/Carotte on.png" id="3_x1exd"]
-[ext_resource type="Texture2D" uid="uid://c6gerog7vnpeo" path="res://remi/lab/assets/Carotte hover.png" id="4_ccrst"]
-[ext_resource type="Texture2D" uid="uid://u60dwogdy5h4" path="res://remi/lab/assets/Carotte focus.png" id="5_81p15"]
+[ext_resource type="PackedScene" uid="uid://ckmm4kiepleal" path="res://remi/lab/equipment.tscn" id="1_35ido"]
+[ext_resource type="Script" path="res://remi/lab/equipements/ice_core_2.gd" id="2_5s73k"]
+[ext_resource type="Texture2D" uid="uid://np6w3f0e2fko" path="res://remi/lab/assets/Carotte.png" id="2_8x2i5"]
+[ext_resource type="Texture2D" uid="uid://hknv12ys7g2s" path="res://remi/lab/assets/Carotte on.png" id="3_2p3g5"]
+[ext_resource type="Texture2D" uid="uid://c6gerog7vnpeo" path="res://remi/lab/assets/Carotte hover.png" id="4_e61us"]
+[ext_resource type="Texture2D" uid="uid://u60dwogdy5h4" path="res://remi/lab/assets/Carotte focus.png" id="5_qj0y8"]
 
-[node name="IceCore" instance=ExtResource("1_p2fx4")]
+[node name="IceCore" instance=ExtResource("1_35ido")]
+script = ExtResource("2_5s73k")
 
 [node name="TextureButton" parent="." index="0"]
 offset_left = -166.0
 offset_top = -26.5
 offset_right = 166.0
 offset_bottom = 26.5
-texture_normal = ExtResource("2_026ld")
-texture_pressed = ExtResource("3_x1exd")
-texture_hover = ExtResource("4_ccrst")
-texture_disabled = ExtResource("2_026ld")
-texture_focused = ExtResource("5_81p15")
+texture_normal = ExtResource("2_8x2i5")
+texture_pressed = ExtResource("3_2p3g5")
+texture_hover = ExtResource("4_e61us")
+texture_disabled = ExtResource("2_8x2i5")
+texture_focused = ExtResource("5_qj0y8")
+
+[node name="Plots" type="Node2D" parent="." index="1"]
+position = Vector2(-180, -100)
+
+[node name="Line2DTemperature" type="Line2D" parent="Plots" index="0"]
+width = 6.0
+default_color = Color(1, 0.368627, 0.380392, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2DRadioactivity" type="Line2D" parent="Plots" index="1"]
+width = 6.0
+default_color = Color(0.498039, 1, 0.505882, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2DBiodiversity" type="Line2D" parent="Plots" index="2"]
+width = 6.0
+default_color = Color(0.498039, 0.756863, 1, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
