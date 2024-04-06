@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1sucnaub2yhn"]
+[gd_scene load_steps=7 format=3 uid="uid://c1sucnaub2yhn"]
 
 [ext_resource type="Script" path="res://louis/microscope_game/microscope.gd" id="1_u0ooi"]
+[ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="2_5m4lv"]
+[ext_resource type="Texture2D" uid="uid://b0it4whx126xh" path="res://louis/microscope_game/microscope_assets/icone pollen.png" id="3_53rks"]
+[ext_resource type="Texture2D" uid="uid://cbxfh0bqepgg4" path="res://louis/microscope_game/microscope_assets/icone plastique.png" id="4_x52tj"]
+[ext_resource type="Texture2D" uid="uid://dxx2b4xlryko7" path="res://louis/microscope_game/microscope_assets/lentille.png" id="5_gnjp8"]
+[ext_resource type="Texture2D" uid="uid://cngo1t8qdyvpt" path="res://louis/microscope_game/microscope_assets/fleche.png" id="6_tgx8m"]
 
 [node name="Microscope" type="Control"]
 layout_mode = 3
@@ -27,6 +32,8 @@ size_flags_stretch_ratio = 3.0
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
+theme = ExtResource("2_5m4lv")
+theme_override_font_sizes/font_size = 30
 text = "Find the right number of pollen in the sample"
 horizontal_alignment = 1
 
@@ -37,6 +44,7 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,13 +53,15 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 48
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
+texture = ExtResource("3_53rks")
+expand_mode = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -62,6 +72,7 @@ size_flags_stretch_ratio = 0.7
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
+theme = ExtResource("2_5m4lv")
 text = "Pollen"
 horizontal_alignment = 1
 
@@ -72,13 +83,15 @@ size_flags_vertical = 3
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 64
 
-[node name="ColorRect" type="ColorRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer2"]
+[node name="ColorRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer2"]
 layout_mode = 2
+texture = ExtResource("4_x52tj")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -89,6 +102,7 @@ size_flags_stretch_ratio = 0.7
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
+theme = ExtResource("2_5m4lv")
 text = "Micro 
 Plastic"
 horizontal_alignment = 1
@@ -100,7 +114,7 @@ size_flags_stretch_ratio = 2.0
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(400, 300)
+size = Vector2i(600, 400)
 render_target_update_mode = 4
 
 [node name="Sample" type="Node2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport"]
@@ -110,16 +124,21 @@ render_target_update_mode = 4
 [node name="Sprite2D" type="Sprite2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate"]
 
 [node name="Polygon2D" type="Polygon2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate/Sprite2D"]
-color = Color(0.694118, 0.694118, 0.694118, 1)
-polygon = PackedVector2Array(-484, -181, -488, 186, 532, 207, 511, -185)
+color = Color(0.356863, 0.847059, 0.890196, 1)
+polygon = PackedVector2Array(-629, -224, -660, 304, 610, 336, 590, -246)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/Plate"]
 
 [node name="MicroBodies" type="Node2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample"]
 
 [node name="CircleLense" type="Sprite2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_gnjp8")
+region_enabled = true
+region_rect = Rect2(182.616, 115.18, 1200, 800)
 
 [node name="Polygon2D" type="Polygon2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense"]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-230, 165, -238, -155, 216, -161, 217, 163, -149, 168, -166, 19, -84, 72, -8, 87, 88, 84, 145, 53, 151, 3, 147, -47, 117, -92, 72, -106, -12, -116, -47, -112, -84, -88, -110, -42, -116, -2, -93, 63, -168, 15, -151, 168)
 
@@ -128,27 +147,29 @@ polygon = PackedVector2Array(-230, 165, -238, -155, 216, -161, 217, 163, -149, 1
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 48
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 
-[node name="ButtonMoveLeft" type="Button" parent="HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
+[node name="ButtonMoveLeft" type="TextureButton" parent="HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+texture_normal = ExtResource("6_tgx8m")
+flip_h = true
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_5m4lv")
 text = "Move"
 horizontal_alignment = 1
 
-[node name="ButtonMoveRight" type="Button" parent="HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
+[node name="ButtonMoveRight" type="TextureButton" parent="HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+texture_normal = ExtResource("6_tgx8m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -166,6 +187,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_5m4lv")
 text = "Focus"
 horizontal_alignment = 1
 
@@ -181,9 +203,6 @@ min_value = -1.0
 max_value = 1.0
 step = 0.1
 value = -1.0
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -202,11 +221,13 @@ size_flags_stretch_ratio = 0.2
 [node name="LabelVSlider" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_5m4lv")
 horizontal_alignment = 1
 
 [node name="LabelHSlider" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_5m4lv")
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
@@ -224,12 +245,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme = ExtResource("2_5m4lv")
 text = "Pollen Number"
 horizontal_alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_5m4lv")
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
@@ -238,11 +261,13 @@ layout_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_5m4lv")
 text = "Submit"
 
 [node name="LabelValidated" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme = ExtResource("2_5m4lv")
 horizontal_alignment = 1
 vertical_alignment = 1
 
