@@ -28,21 +28,26 @@ texture_disabled = ExtResource("3_45h0g")
 texture_focused = ExtResource("4_x3pki")
 
 [node name="FrigoCarotte1" type="Sprite2D" parent="." index="1"]
+visible = false
 position = Vector2(73, -48)
 texture = ExtResource("8_6s7q5")
 
 [node name="FrigoCarotte2" type="Sprite2D" parent="." index="2"]
+visible = false
 position = Vector2(49, -43)
 texture = ExtResource("9_7cnwy")
 
 [node name="FrigoCarotte3" type="Sprite2D" parent="." index="3"]
+visible = false
 position = Vector2(-35, -56)
 texture = ExtResource("10_tvrfq")
 
 [node name="FrigoCarotte4" type="Sprite2D" parent="." index="4"]
+visible = false
 position = Vector2(-47, -73)
 texture = ExtResource("11_y6fpr")
 
 [node name="FrigoCarotte5" type="Sprite2D" parent="." index="5"]
+visible = false
 position = Vector2(-71, -53)
 texture = ExtResource("12_ypwaw")

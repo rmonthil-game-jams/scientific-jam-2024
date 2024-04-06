@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7562hhd8en41"]
+[gd_scene load_steps=6 format=3 uid="uid://c7562hhd8en41"]
 
 [ext_resource type="Script" path="res://remi/lab/alexia.gd" id="1_1f227"]
 [ext_resource type="Texture2D" uid="uid://2r4n7wprjape" path="res://remi/lab/assets/alexia_idle.png" id="2_b5dmk"]
 [ext_resource type="Texture2D" uid="uid://g1iesgwlbjx5" path="res://remi/lab/assets/alexia_idle_carry.png" id="3_crw60"]
-[ext_resource type="Texture2D" uid="uid://bqa2dmpb8on5h" path="res://remi/lab/assets/alexia_walk_0.png" id="3_kb50f"]
-[ext_resource type="Texture2D" uid="uid://ne4b3cbitmwi" path="res://remi/lab/assets/alexia_walk_carry.png" id="4_xyvyt"]
 [ext_resource type="Texture2D" uid="uid://cirh8de8xuj6b" path="res://remi/lab/assets/ice_core.png" id="5_8qind"]
 [ext_resource type="Texture2D" uid="uid://c1k0ojlwok7ub" path="res://remi/lab/assets/hands.png" id="5_i46r0"]
 
@@ -39,12 +37,12 @@ visible = false
 
 [node name="Sprite2DWalkingNormal" type="Sprite2D" parent="Anchor/Sprite2DWalkingNormal"]
 position = Vector2(0, -320)
-texture = ExtResource("3_kb50f")
+texture = ExtResource("2_b5dmk")
 
 [node name="Sprite2DWalkingCarrying" type="Sprite2D" parent="Anchor/Sprite2DWalkingNormal"]
 visible = false
 position = Vector2(0, -320)
-texture = ExtResource("4_xyvyt")
+texture = ExtResource("3_crw60")
 
 [node name="IceCore" type="Sprite2D" parent="Anchor/Sprite2DWalkingNormal"]
 visible = false
