@@ -1,0 +1,329 @@
+[gd_scene load_steps=3 format=3 uid="uid://coawt8ggq5hss"]
+
+[ext_resource type="Script" path="res://louis/main_menu/main_menu.gd" id="1_u6e4t"]
+[ext_resource type="Texture2D" uid="uid://d1rp3xd5343xt" path="res://louis/main_menu/main_menu_assets/Group 17fenêtre texte menu.png" id="2_ggsc3"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6e4t")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainerMain" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainerMenu" type="VBoxContainer" parent="HBoxContainerMain"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainerTitle" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerTitle"]
+layout_mode = 2
+text = "Les carottes sont cuites"
+horizontal_alignment = 1
+
+[node name="MarginContainerButtons" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.3
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainerButtons" type="VBoxContainer" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons"]
+layout_mode = 2
+
+[node name="MarginContainerButtonPlay" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="ButtonPlay" type="Button" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonPlay"]
+layout_mode = 2
+text = "Play"
+
+[node name="MarginContainerButtonHowTo" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="ButtonHowTo" type="Button" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo"]
+layout_mode = 2
+toggle_mode = true
+text = "How to play"
+
+[node name="MarginContainerButtonOptions" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="ButtonOptions" type="Button" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonOptions"]
+layout_mode = 2
+toggle_mode = true
+text = "Options"
+
+[node name="MarginContainerButtonCredits" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="ButtonCredits" type="Button" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits"]
+layout_mode = 2
+toggle_mode = true
+text = "Credits"
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits/ButtonCredits"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainerMain"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="ColorRectPlaceholder" type="ColorRect" parent="HBoxContainerMain/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.94902, 0.423529, 0.423529, 0.211765)
+
+[node name="Capsule" type="Sprite2D" parent="HBoxContainerMain/VBoxContainer/ColorRectPlaceholder"]
+position = Vector2(-463, 0)
+
+[node name="MarginContainerDialog" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="TextureRectDialog" type="TextureRect" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog"]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_ggsc3")
+expand_mode = 1
+
+[node name="MarginContainerInner" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="RichTextLabelHowTo" type="RichTextLabel" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[b]Contrôle[/b] 		Interagir = Clic gauche
+
+[b]Objectif : Donner le scénario du futur au gouvernement.[/b]
+
+Etape 1 : Analyser les carottes via les outils sur la table
+Etape 2 : Récupérer et déposer les carottes sur les tables en inox
+Etape 3 : Assembler le scénario du futur devant la dernière table"
+
+[node name="VBoxContainerOptions" type="VBoxContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Musique:"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+text = "Effets sonores:"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+text = "Fullscreen:"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="RichTextLabelCredits" type="RichTextLabel" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner"]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[i]Doctorant : 		Alexis LAMOTHE
+Game Designer : 	Nicolas ROLAND
+Game Artist :		Stella POIGNET, Andy POGGI
+Développeurs : 		Rémi MONTHILLER, Louis YASSA
+Sound Designer :	Jakub TOKARCZYK[/i]
+
+Jeu conçu pendant la scientifique game jam 2024 de Grenoble
+"
+
+[node name="MarginContainerButtonExit" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="ButtonExit" type="Button" parent="MarginContainerButtonExit"]
+layout_mode = 2
+text = "Quitter"
+
+[node name="MarginContainerExitDialog" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 220
+theme_override_constants/margin_top = 220
+theme_override_constants/margin_right = 220
+theme_override_constants/margin_bottom = 220
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainerExitDialog"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainerExitDialog/TextureRect"]
+layout_mode = 2
+offset_right = 712.0
+offset_bottom = 208.0
+color = Color(0.654232, 0.654232, 0.654232, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerExitDialog/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainerExitDialog/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Voulez-vous vraiment condamner la Terre ?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainerExitDialog/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainerButtonYes" type="MarginContainer" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonYes" type="Button" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonYes"]
+layout_mode = 2
+text = "Oui"
+
+[node name="MarginContainerButtonNo" type="MarginContainer" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ButtonNo" type="Button" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonNo"]
+layout_mode = 2
+text = "Non"
+
+[connection signal="button_up" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonPlay/ButtonPlay" to="." method="_on_button_play_button_up"]
+[connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo/ButtonHowTo" to="." method="_on_button_how_to_toggled"]
+[connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonOptions/ButtonOptions" to="." method="_on_button_options_toggled"]
+[connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonCredits/ButtonCredits" to="." method="_on_button_credits_toggled"]
+[connection signal="button_up" from="MarginContainerButtonExit/ButtonExit" to="." method="_on_button_exit_button_up"]
+[connection signal="button_up" from="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonYes/ButtonYes" to="." method="_on_button_yes_button_up"]
+[connection signal="button_up" from="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonNo/ButtonNo" to="." method="_on_button_no_button_up"]
