@@ -19,8 +19,6 @@ func _ready():
 	hide_dialogs()
 	volume(1, h_slider_music.value)
 	volume(2, h_slider_sounds.value)
-	print(AudioServer.get_bus_volume_db(1))
-	print(AudioServer.get_bus_volume_db(2))
 	# fade in animation
 	main_menu.modulate = Color.BLACK
 	var tween: Tween = create_tween()
