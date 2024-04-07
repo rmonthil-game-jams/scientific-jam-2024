@@ -49,17 +49,20 @@ func _ready():
 	match LabState.alexia_state:
 		"ams":
 			$World/YSort/Alexia.global_position.x = $World/YSort/DeskAnchor/Ams.global_position.x
-			TextStack.push_line("J'aime bien imaginer les mollecules se ballader dans l'accelerateur,")
+			$Node/AudioStreamPlayerImagineMolecules.play()
+			TextStack.push_line("J'aime bien imaginer les molécules se ballader dans l'accelerateur,")
 			await get_tree().create_timer(3.0).timeout
-			TextStack.push_line("ça me rappel les jeux de tir de mon enfance *piou piou*.")
+			TextStack.push_line("ça me rappelle les jeux de tir de mon enfance *piou piou*.")
 		"cuve":
 			$World/YSort/Alexia.global_position.x = $World/YSort/DeskAnchor/Cuve.global_position.x
+			$Node/AudioStreamPlayerAvecImagination.play()
 			TextStack.push_line("Avec un peu d'imagination,")
 			await get_tree().create_timer(3.0).timeout
 			TextStack.push_line("les molécules ressemblent à des bonbons !")
 			await get_tree().create_timer(4.0).timeout
-			TextStack.push_line("Mais un bonbon fait de Co2 ne doit pas avoir bon goût...")
+			TextStack.push_line("Mais un bonbon fait de CO2 ne doit pas avoir bon goût...")
 		"microscope":
+			$Node/AudioStreamPlayerDroleImagination.play()
 			$World/YSort/Alexia.global_position.x = $World/YSort/DeskAnchor/Microscope.global_position.x
 			TextStack.push_line("C'est toujours drole d'imaginer que les pollens")
 			await get_tree().create_timer(3.0).timeout
@@ -83,9 +86,9 @@ func _ready():
 		$World/YSort/DeskAnchor/Microscope/TextureButton.disabled = true
 		$World/YSort/DeskAnchor/Microscope/TextureButton.focus_mode = Control.FOCUS_NONE
 	if LabState.ams_done and LabState.cuve_done and LabState.microscope_done and LabState.remaining_ice_cores_in_the_fridge == 5:
-		TextStack.push_line("Super maintenant que j'ai récolté toutes les données !")
 		await get_tree().create_timer(3.0).timeout
-		TextStack.push_line("Je vais pouvoir récupéré les carotte au frigo.")
+		$Node/AudioStreamPlayerVoilaFait.play()
+		TextStack.push_line("Super maintenant que j'ai récolté toutes les données !")
 		await get_tree().create_timer(3.0).timeout
 		TextStack.push_line("Je vais pouvoir récupéré les carotte au frigo.")
 		await get_tree().create_timer(3.0).timeout
@@ -108,7 +111,7 @@ func _ready():
 	# test text
 	if not LabState.alexia_state:
 		await get_tree().create_timer(0.5).timeout
-		TextStack.push_line("Bon maintenant que les carrotes sont au frigo,")
+		TextStack.push_line("Bon maintenant que les carottes sont au frigo,")
 		await get_tree().create_timer(3.0).timeout
 		TextStack.push_line("je peux les analyser!")
 		await get_tree().create_timer(4.0).timeout
@@ -184,6 +187,7 @@ func _on_fridge_selected():
 			$World/YSort/Alexia.carry_ice_core()
 			$World/YSort/Fridge.take()
 			# dialogue
+			$Node/AudioStreamPlayerBrrr.play()
 			TextStack.push_line("Brrrr ... C'est vraiment gelé.")
 			await get_tree().create_timer(3.0).timeout
 			TextStack.push_line("Posons vite cette carotte sur une table.")
@@ -235,20 +239,21 @@ func _on_ice_core_holder_selected(target: Node2D):
 				and $World/YSort/Desk1Anchor/IceCoreHolder3.get_child(1) is IceCore2
 				and $World/YSort/Desk1Anchor/IceCoreHolder4.get_child(1) is IceCore3
 				and $World/YSort/Desk1Anchor/IceCoreHolder5.get_child(1) is IceCore4):
-				TextStack.push_line("Les données correspondent !")
-				await get_tree().create_timer(3.0).timeout
-				TextStack.push_line("Les carrottes sont dans le bon ordre !")
-				await get_tree().create_timer(3.0).timeout
-				TextStack.push_line("Passons à la modélisation !")
 				$AudioStreamPlayerSuccess2.play()
 				$World/YSort/EndDeskAnchor/End.activate()
 				$World/YSort/EndDeskAnchor/End/TextureButton.disabled = false
 				$World/YSort/EndDeskAnchor/End/TextureButton.focus_mode = Control.FOCUS_ALL
 				$World/YSort/EndDeskAnchor/End.selected.connect(_on_end_selected.bind($World/YSort/EndDeskAnchor/End))
 				$World/YSort/Desk1Anchor/Label7.show()
+				$Node/AudioStreamPlayerCarotteFutur.play()
+				TextStack.push_line("Les données correspondent !")
+				await get_tree().create_timer(3.0).timeout
+				TextStack.push_line("Les carottes sont dans le bon ordre !")
+				await get_tree().create_timer(3.0).timeout
+				TextStack.push_line("Passons à la modélisation !")
 			else:
 				$AudioStreamPlayerFail.play()
-				# pass
+				$Node/AudioStreamPlayerNonPasBon.play()
 				TextStack.push_line("Hmmm ... Non, ca ne semble pas bon. !")
 				await get_tree().create_timer(3.0).timeout
 				TextStack.push_line("Les données ne sont pas continues.")

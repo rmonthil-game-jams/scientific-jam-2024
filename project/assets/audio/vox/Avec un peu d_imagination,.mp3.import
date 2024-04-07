@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://da6ldthtgq50a"
+path="res://.godot/imported/Avec un peu d_imagination,.mp3-74b2dd641bd2c2801811199b22731658.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/vox/Avec un peu d_imagination,.mp3"
+dest_files=["res://.godot/imported/Avec un peu d_imagination,.mp3-74b2dd641bd2c2801811199b22731658.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

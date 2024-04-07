@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c4qkfat2u8dru"
+path="res://.godot/imported/Brrrr ... C_est vraiment gelé..mp3-e498b371796556e8fabd5194b89d58cd.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/vox/Brrrr ... C_est vraiment gelé..mp3"
+dest_files=["res://.godot/imported/Brrrr ... C_est vraiment gelé..mp3-e498b371796556e8fabd5194b89d58cd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

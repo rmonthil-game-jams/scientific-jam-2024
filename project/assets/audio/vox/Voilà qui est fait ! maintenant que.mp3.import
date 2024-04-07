@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di326kgbu6y3p"
+path="res://.godot/imported/Voilà qui est fait ! maintenant que.mp3-65e7a32b7d9b2d1d736be259271c9ea6.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/vox/Voilà qui est fait ! maintenant que.mp3"
+dest_files=["res://.godot/imported/Voilà qui est fait ! maintenant que.mp3-65e7a32b7d9b2d1d736be259271c9ea6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

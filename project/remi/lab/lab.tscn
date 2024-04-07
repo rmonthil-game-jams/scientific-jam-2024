@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=53 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
@@ -36,6 +36,17 @@
 [ext_resource type="AudioStream" uid="uid://d25pmruq3l3ti" path="res://assets/audio/Labolatoire ambience.mp3" id="34_ku103"]
 [ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="36_lhli2"]
 [ext_resource type="AudioStream" uid="uid://bwstt64llqyk2" path="res://assets/audio/music/Main Theme Carrotes .mp3" id="37_je463"]
+[ext_resource type="AudioStream" uid="uid://d0wwlgg0jeffm" path="res://assets/audio/vox/Alors, qu’est ce que je pourrai mesurer.mp3" id="37_ow7p1"]
+[ext_resource type="AudioStream" uid="uid://c4qkfat2u8dru" path="res://assets/audio/vox/Brrrr ... C_est vraiment gelé..mp3" id="38_f16vt"]
+[ext_resource type="AudioStream" uid="uid://da6ldthtgq50a" path="res://assets/audio/vox/Avec un peu d_imagination,.mp3" id="39_0mkxa"]
+[ext_resource type="AudioStream" uid="uid://b1k7f7cf2x0dj" path="res://assets/audio/vox/C_est toujours drole d_imaginer.mp3" id="40_4h7cu"]
+[ext_resource type="AudioStream" uid="uid://icmbwhf5epw" path="res://assets/audio/vox/C’était donc vrai ! La carotte vient du futur !.mp3" id="41_25473"]
+[ext_resource type="AudioStream" uid="uid://dlkhcchfbhoy3" path="res://assets/audio/vox/Hmmm ... Non, ca ne semble pas bon.mp3" id="42_5i55u"]
+[ext_resource type="AudioStream" uid="uid://u785vpndyqrb" path="res://assets/audio/vox/Hmmm En effet, les donnée semble correspondre..mp3" id="43_pv715"]
+[ext_resource type="AudioStream" uid="uid://d3wl7jfm0262l" path="res://assets/audio/vox/Je dois faire quoi déjà … .mp3" id="44_vjw2u"]
+[ext_resource type="AudioStream" uid="uid://oxthi3wde1rb" path="res://assets/audio/vox/Il me tarde de voir les résultats.mp3" id="44_vw0h5"]
+[ext_resource type="AudioStream" uid="uid://bvlwpo8gqj22f" path="res://assets/audio/vox/J_imagine bien les mollecules s_ecrase violement.mp3" id="45_a5tjr"]
+[ext_resource type="AudioStream" uid="uid://di326kgbu6y3p" path="res://assets/audio/vox/Voilà qui est fait ! maintenant que.mp3" id="46_ydl6s"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bq2q7"]
 random_pitch = 1.5
@@ -313,7 +324,7 @@ theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
-text = "Future !"
+text = "Futur !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -370,3 +381,38 @@ volume_db = -6.0
 [node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("37_je463")
 autoplay = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayerQuoiMesurer" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("37_ow7p1")
+
+[node name="AudioStreamPlayerBrrr" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("38_f16vt")
+
+[node name="AudioStreamPlayerAvecImagination" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("39_0mkxa")
+
+[node name="AudioStreamPlayerDroleImagination" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("40_4h7cu")
+
+[node name="AudioStreamPlayerCarotteFutur" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("41_25473")
+
+[node name="AudioStreamPlayerNonPasBon" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("42_5i55u")
+
+[node name="AudioStreamPlayerOkBon" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("43_pv715")
+
+[node name="AudioStreamPlayerTardeResultats" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("44_vw0h5")
+
+[node name="AudioStreamPlayerJeDoisFaireQuoi" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("44_vjw2u")
+
+[node name="AudioStreamPlayerImagineMolecules" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("45_a5tjr")
+
+[node name="AudioStreamPlayerVoilaFait" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("46_ydl6s")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0wwlgg0jeffm"
+path="res://.godot/imported/Alors, qu’est ce que je pourrai mesurer.mp3-4be255469d0341ca451165a390addfac.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/vox/Alors, qu’est ce que je pourrai mesurer.mp3"
+dest_files=["res://.godot/imported/Alors, qu’est ce que je pourrai mesurer.mp3-4be255469d0341ca451165a390addfac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
