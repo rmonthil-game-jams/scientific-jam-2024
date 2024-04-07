@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg60wmpwr4n5b"]
+
+[ext_resource type="Script" path="res://louis/letters.gd" id="1_3tdl5"]
+[ext_resource type="PackedScene" uid="uid://coawt8ggq5hss" path="res://louis/main_menu/main_menu.tscn" id="2_7deo1"]
+[ext_resource type="Texture2D" uid="uid://bj74m1kqo5gfm" path="res://louis/intro_assets/Outro-LettreScientifique (1)-1.png" id="3_mmxja"]
+[ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="4_qn1nd"]
+
+[node name="OutroLetter" type="Node2D"]
+script = ExtResource("1_3tdl5")
+target_scene = ExtResource("2_7deo1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, -335)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_mmxja")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qn1nd")
+volume_db = -3.0
+autoplay = true

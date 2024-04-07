@@ -40,8 +40,6 @@ func _ready():
 	co2_array = generate_molecules(co2_scene, molecule_number, co2_array)
 	ch4_array = generate_molecules(ch4_scene, molecule_number, ch4_array)
 	n2o_array = generate_molecules(n2o_scene, molecule_number, n2o_array)
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

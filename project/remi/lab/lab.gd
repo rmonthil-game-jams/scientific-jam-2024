@@ -110,6 +110,7 @@ func _ready():
 	tween.tween_property($World, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
 	# test text
 	if not LabState.alexia_state:
+		$Node/AudioStreamPlayerJeDoisFaireQuoi.play()
 		await get_tree().create_timer(0.5).timeout
 		TextStack.push_line("Bon maintenant que les carottes sont au frigo,")
 		await get_tree().create_timer(3.0).timeout
