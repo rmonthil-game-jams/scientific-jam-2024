@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dia1n4r2j5o14"]
+
+[ext_resource type="PackedScene" uid="uid://c47w0lc5iumgs" path="res://louis/microscope_game/micro_body.tscn" id="1_q22ox"]
+[ext_resource type="Texture2D" uid="uid://bw0bv8ya0fy7k" path="res://louis/microscope_game/microscope_assets/tardigrade.png" id="2_fsry6"]
+[ext_resource type="Script" path="res://louis/microscope_game/tardigrade.gd" id="2_hgac0"]
+
+[node name="Tardigrade" instance=ExtResource("1_q22ox")]
+mass = 8.0
+script = ExtResource("2_hgac0")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_fsry6")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+enabled = false

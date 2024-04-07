@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbmsvvrxb80ba"]
+
+[ext_resource type="Texture2D" uid="uid://c7i45ysiswpbx" path="res://louis/intro_assets/intro_1_decor.png" id="1_hhq4m"]
+[ext_resource type="PackedScene" uid="uid://dia1n4r2j5o14" path="res://louis/microscope_game/tardigrade.tscn" id="2_5y2fb"]
+
+[node name="template" type="Node2D"]
+
+[node name="Intro1Decor" type="Sprite2D" parent="."]
+position = Vector2(448, 417)
+texture = ExtResource("1_hhq4m")
+
+[node name="Tardigrade" parent="." instance=ExtResource("2_5y2fb")]
+position = Vector2(79, 205)
+linear_damp = 0.0
+angular_damp = 0.0

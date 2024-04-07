@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://c078stpptl7i2"]
 
 [ext_resource type="PackedScene" uid="uid://c47w0lc5iumgs" path="res://louis/microscope_game/micro_body.tscn" id="1_nr74m"]
-[ext_resource type="Texture2D" uid="uid://dfsqw0mb7f27b" path="res://louis/microscope_game/microscope_assets/plastique.png" id="2_8mym0"]
+[ext_resource type="Texture2D" uid="uid://d2uqedrlioo4a" path="res://louis/microscope_game/microscope_assets/microplastique_res.png" id="2_hwcuu"]
 
 [node name="MicroPlastic" instance=ExtResource("1_nr74m")]
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_8mym0")
+texture = ExtResource("2_hwcuu")

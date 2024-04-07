@@ -1,12 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://c47w0lc5iumgs"]
+[gd_scene load_steps=3 format=3 uid="uid://c47w0lc5iumgs"]
+
+[ext_resource type="Texture2D" uid="uid://bw0bv8ya0fy7k" path="res://louis/microscope_game/microscope_assets/tardigrade.png" id="1_yg4es"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rda1j"]
-radius = 33.0151
+radius = 25.0
 
 [node name="MicroBody" type="RigidBody2D"]
+linear_damp = 100.0
+angular_damp = 100.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yg4es")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rda1j")
