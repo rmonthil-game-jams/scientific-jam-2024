@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=43 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://r7bg8pnm30f6" path="res://assets/audio/Aspiration.wav" id="33_qk1q0"]
 [ext_resource type="AudioStream" uid="uid://d25pmruq3l3ti" path="res://assets/audio/Labolatoire ambience.mp3" id="34_ku103"]
 [ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="36_lhli2"]
+[ext_resource type="AudioStream" uid="uid://bwstt64llqyk2" path="res://assets/audio/music/Main Theme Carrotes .mp3" id="37_je463"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bq2q7"]
 random_pitch = 1.5
@@ -374,3 +375,7 @@ volume_db = -6.0
 [node name="AudioStreamPlayerSuccess2" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_s7mlu")
 volume_db = -6.0
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_je463")
+autoplay = true

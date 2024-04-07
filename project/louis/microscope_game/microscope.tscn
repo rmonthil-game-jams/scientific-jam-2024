@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1sucnaub2yhn"]
+[gd_scene load_steps=15 format=3 uid="uid://c1sucnaub2yhn"]
 
 [ext_resource type="Script" path="res://louis/microscope_game/microscope.gd" id="1_u0ooi"]
 [ext_resource type="Theme" path="res://louis/font_theme.tres" id="2_5m4lv"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ca05k1cfdkv5e" path="res://assets/audio/Fire accelerator.wav" id="7_ah1fd"]
 [ext_resource type="AudioStream" uid="uid://dfmck03ywxync" path="res://assets/audio/Lentille deplacement.wav" id="7_iopuw"]
 [ext_resource type="AudioStream" uid="uid://5o6wxy71x327" path="res://assets/audio/Microscope zoom.wav" id="7_yogsu"]
+[ext_resource type="AudioStream" uid="uid://dcs8mnvcubsms" path="res://assets/audio/music/Mini jeu Carrotes Music.mp3" id="10_dsphh"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_diwjo"]
 random_pitch = 1.5
@@ -287,6 +288,10 @@ volume_db = -6.0
 [node name="AudioStreamPlayerZoom" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gubw4")
 volume_db = -6.0
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_dsphh")
+autoplay = true
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/ButtonMoveLeft" to="." method="_on_button_move_left_button_down"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/ButtonMoveLeft" to="." method="_on_button_move_left_button_up"]

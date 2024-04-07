@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dapbeuncd0cqp"]
+[gd_scene load_steps=53 format=3 uid="uid://dapbeuncd0cqp"]
 
 [ext_resource type="Script" path="res://remi/ams/ams.gd" id="1_43nqk"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="2_tn8w8"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://bpliisv83b7dl" path="res://assets/audio/ON Charge.wav" id="24_c5ngf"]
 [ext_resource type="AudioStream" uid="uid://i7qieu1m75jk" path="res://assets/audio/OFF decharge.wav" id="25_n3p5n"]
 [ext_resource type="AudioStream" uid="uid://r7bg8pnm30f6" path="res://assets/audio/Aspiration.wav" id="26_1qhsg"]
+[ext_resource type="AudioStream" uid="uid://dcs8mnvcubsms" path="res://assets/audio/music/Mini jeu Carrotes Music.mp3" id="35_euvou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1syu"]
 size = Vector2(1282, 424)
@@ -587,6 +588,10 @@ volume_db = -3.0
 [node name="AudioStreamPlayerParticleFree" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ugcs6")
 volume_db = -24.0
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_euvou")
+autoplay = true
 
 [connection signal="body_exited" from="World/Boundaries" to="." method="_on_boundaries_body_exited"]
 [connection signal="body_entered" from="World/Obstacles" to="." method="_on_obstacles_body_entered"]

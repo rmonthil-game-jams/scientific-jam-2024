@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dh8hpu0urcflg"
+path="res://.godot/imported/Courbes a la Fin Carrotes Music.mp3-83d65767c0c4a7543ae6c70691889d19.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Courbes a la Fin Carrotes Music.mp3"
+dest_files=["res://.godot/imported/Courbes a la Fin Carrotes Music.mp3-83d65767c0c4a7543ae6c70691889d19.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

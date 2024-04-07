@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://coawt8ggq5hss"]
+[gd_scene load_steps=24 format=3 uid="uid://coawt8ggq5hss"]
 
 [ext_resource type="Script" path="res://louis/main_menu/main_menu.gd" id="1_u6e4t"]
 [ext_resource type="Texture2D" uid="uid://d1rp3xd5343xt" path="res://louis/main_menu/main_menu_assets/Group 17fenêtre texte menu.png" id="2_ggsc3"]
@@ -21,6 +21,7 @@
 [ext_resource type="Theme" path="res://louis/font_theme.tres" id="13_sq7a2"]
 [ext_resource type="Texture2D" uid="uid://ciwj66pycwdgl" path="res://louis/main_menu/main_menu_assets/Group_24credits_select.png" id="14_7ot82"]
 [ext_resource type="AudioStream" uid="uid://dsq7nl0wuepka" path="res://assets/audio/Click Switch.wav" id="21_fm2xf"]
+[ext_resource type="AudioStream" uid="uid://bwstt64llqyk2" path="res://assets/audio/music/Main Theme Carrotes .mp3" id="22_mfbol"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ja5nq"]
 random_pitch = 1.5
@@ -372,6 +373,10 @@ text = "Non"
 
 [node name="AudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ja5nq")
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_mfbol")
+autoplay = true
 
 [connection signal="button_up" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonPlay/ButtonPlay" to="." method="_on_button_play_button_up"]
 [connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo/ButtonHowTo" to="." method="_on_button_how_to_toggled"]
