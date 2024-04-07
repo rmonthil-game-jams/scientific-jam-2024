@@ -19,7 +19,7 @@ var co2_scene : PackedScene = preload("res://louis/co2/co_2_molecule.tscn")
 var ch4_scene : PackedScene = preload("res://louis/co2/ch_4_molecule.tscn")
 var n2o_scene : PackedScene = preload("res://louis/co2/n_2o_molecule.tscn")
 @onready var molecules = $Molecules
-@onready var temperature = $Tube/Temperature
+@onready var temperature = $Tube/Node2D/Temperature
 @onready var timer_decrease = $TimerDecrease
 @onready var timer_inside_target = $TimerInsideTarget
 
@@ -60,7 +60,7 @@ func _process(delta):
 
 
 func _on_timer_decrease_timeout():
-	temperature.value = max(temperature.value - 1, 0)
+	temperature.value = max(temperature.value - 1, 1)
 
 
 func _on_temperature_value_changed(value):
@@ -96,14 +96,14 @@ func _on_timer_inside_target_timeout():
 			e.collision_mask = 2
 			e.collision_layer = 2
 			$AudioStreamPlayerSuccess1.play()
-	if inside_target_2 && !n2o_fallen:
+	if inside_target_2 && !n2o_fallen && ch4_fallen:
 		n2o_fallen = true
 		for e in n2o_array:
 			e.fall_enable()
 			e.collision_mask = 4
 			e.collision_layer = 4
 			$AudioStreamPlayerSuccess1.play()
-	if inside_target_3 && !co2_fallen:
+	if inside_target_3 && !co2_fallen && ch4_fallen && n2o_fallen:
 		co2_fallen = true
 		for e in co2_array:
 			e.fall_enable()

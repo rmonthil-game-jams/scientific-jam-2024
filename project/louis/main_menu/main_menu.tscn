@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ccfgtmdyq0dud" path="res://louis/main_menu/main_menu_assets/Group_20credits_hover.png" id="10_qnpmm"]
 [ext_resource type="Texture2D" uid="uid://ds5ktpq63mxei" path="res://louis/main_menu/main_menu_assets/Group_23options_select.png" id="11_8e021"]
 [ext_resource type="Texture2D" uid="uid://cxyo3k8giwmlt" path="res://louis/main_menu/main_menu_assets/Group 16quitter.png" id="12_h6dyn"]
-[ext_resource type="Theme" path="res://louis/font_theme.tres" id="13_sq7a2"]
+[ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="13_sq7a2"]
 [ext_resource type="Texture2D" uid="uid://ciwj66pycwdgl" path="res://louis/main_menu/main_menu_assets/Group_24credits_select.png" id="14_7ot82"]
 [ext_resource type="AudioStream" uid="uid://dsq7nl0wuepka" path="res://assets/audio/Click Switch.wav" id="21_fm2xf"]
 

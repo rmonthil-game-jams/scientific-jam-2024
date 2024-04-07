@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvhkgwdji7m2u"]
+[gd_scene load_steps=20 format=3 uid="uid://cvhkgwdji7m2u"]
 
-[ext_resource type="Theme" path="res://louis/font_theme.tres" id="1_eu6t1"]
+[ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="1_eu6t1"]
 [ext_resource type="Script" path="res://louis/co2/co_2.gd" id="1_ltwmw"]
 [ext_resource type="Texture2D" uid="uid://bh7c0hdky3lxv" path="res://louis/co2/co2_assets/jauge.png" id="2_3w1wi"]
 [ext_resource type="Texture2D" uid="uid://ceeuqge4lx3wf" path="res://louis/co2/co2_assets/bas jauge.png" id="3_xeyhc"]
 [ext_resource type="Texture2D" uid="uid://dxxtq76pwqgyi" path="res://louis/co2/co2_assets/graduations.png" id="4_djcn8"]
+[ext_resource type="Texture2D" uid="uid://b01eajexr5nl0" path="res://louis/co2/co2_assets/jauge_remplissage.png" id="5_c3onu"]
 [ext_resource type="Texture2D" uid="uid://bc5kr6agnfa54" path="res://louis/co2/co2_assets/cible 1.png" id="5_ies8n"]
 [ext_resource type="Texture2D" uid="uid://cxjpqan5m54v8" path="res://louis/co2/co2_assets/cible 2.png" id="6_88bnx"]
 [ext_resource type="Texture2D" uid="uid://cg6q4hjnj3t4d" path="res://louis/co2/co2_assets/cible 3.png" id="7_iwu24"]
@@ -84,6 +85,26 @@ texture = ExtResource("2_3w1wi")
 position = Vector2(0, 364)
 texture = ExtResource("3_xeyhc")
 
+[node name="Node2D" type="Node2D" parent="Tube"]
+position = Vector2(-32, -320)
+scale = Vector2(0.95, 0.95)
+
+[node name="Temperature" type="TextureProgressBar" parent="Tube/Node2D"]
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.151
+anchor_right = 0.133
+anchor_bottom = 0.683
+offset_left = 2.10524
+offset_top = 12.6316
+offset_right = 69.1052
+offset_bottom = 723.632
+grow_vertical = 2
+max_value = 32.0
+value = 1.0
+fill_mode = 3
+texture_progress = ExtResource("5_c3onu")
+
 [node name="Graduations" type="Sprite2D" parent="Tube"]
 position = Vector2(-16, 0)
 texture = ExtResource("4_djcn8")
@@ -99,21 +120,6 @@ texture = ExtResource("6_88bnx")
 [node name="Target3" type="Sprite2D" parent="Tube"]
 position = Vector2(0, -192)
 texture = ExtResource("7_iwu24")
-
-[node name="Temperature" type="ProgressBar" parent="Tube"]
-anchors_preset = -1
-anchor_left = 0.179
-anchor_top = 0.09
-anchor_right = 0.773
-anchor_bottom = 0.937
-offset_left = -40.499
-offset_top = -404.0
-offset_right = -38.613
-offset_bottom = -399.6
-grow_vertical = 2
-max_value = 32.0
-fill_mode = 3
-show_percentage = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -217,7 +223,7 @@ size_flags_vertical = 3
 layout_mode = 2
 theme = ExtResource("1_eu6t1")
 theme_override_colors/font_color = Color(0.219608, 0.239216, 0.294118, 1)
-text = "2024 ppm"
+text = "423 ppm"
 horizontal_alignment = 1
 
 [node name="Molecules" type="Node2D" parent="."]
@@ -246,6 +252,6 @@ volume_db = -6.0
 stream = SubResource("AudioStreamRandomizer_527aa")
 volume_db = -12.0
 
-[connection signal="value_changed" from="Tube/Temperature" to="." method="_on_temperature_value_changed"]
+[connection signal="value_changed" from="Tube/Node2D/Temperature" to="." method="_on_temperature_value_changed"]
 [connection signal="timeout" from="TimerDecrease" to="." method="_on_timer_decrease_timeout"]
 [connection signal="timeout" from="TimerInsideTarget" to="." method="_on_timer_inside_target_timeout"]
