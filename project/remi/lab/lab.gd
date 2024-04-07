@@ -49,10 +49,23 @@ func _ready():
 	match LabState.alexia_state:
 		"ams":
 			$World/YSort/Alexia.global_position.x = $World/YSort/DeskAnchor/Ams.global_position.x
+			TextStack.push_line("J'aime bien imaginer les mollecules se ballader dans l'accelerateur,")
+			await get_tree().create_timer(3.0).timeout
+			TextStack.push_line("ça me rappel les jeux de tir de mon enfance *piou piou*.")
 		"cuve":
 			$World/YSort/Alexia.global_position.x = $World/YSort/DeskAnchor/Cuve.global_position.x
+			TextStack.push_line("Avec un peu d'imagination,")
+			await get_tree().create_timer(3.0).timeout
+			TextStack.push_line("les molécules ressemblent à des bonbons !")
+			await get_tree().create_timer(4.0).timeout
+			TextStack.push_line("Mais un bonbon fait de Co2 ne doit pas avoir bon goût...")
 		"microscope":
 			$World/YSort/Alexia.global_position.x = $World/YSort/DeskAnchor/Microscope.global_position.x
+			TextStack.push_line("C'est toujours drole d'imaginer que les pollens")
+			await get_tree().create_timer(3.0).timeout
+			TextStack.push_line("ne s'entendent pas avec le micro-plastique.")
+			await get_tree().create_timer(4.0).timeout
+			TextStack.push_line("Je crois que je commence à perdre la raison ahaha.")
 	# connect
 	if not LabState.ams_done:
 		$World/YSort/DeskAnchor/Ams.selected.connect(_on_ams_selected.bind($World/YSort/DeskAnchor/Ams))
@@ -70,6 +83,13 @@ func _ready():
 		$World/YSort/DeskAnchor/Microscope/TextureButton.disabled = true
 		$World/YSort/DeskAnchor/Microscope/TextureButton.focus_mode = Control.FOCUS_NONE
 	if LabState.ams_done and LabState.cuve_done and LabState.microscope_done and LabState.remaining_ice_cores_in_the_fridge == 5:
+		TextStack.push_line("Super maintenant que j'ai récolté toutes les données !")
+		await get_tree().create_timer(3.0).timeout
+		TextStack.push_line("Je vais pouvoir récupéré les carotte au frigo.")
+		await get_tree().create_timer(3.0).timeout
+		TextStack.push_line("Je vais pouvoir récupéré les carotte au frigo.")
+		await get_tree().create_timer(3.0).timeout
+		TextStack.push_line("Ca donne faim de parler de carottes !")
 		$World/YSort/Desk1Anchor/Label6.show()
 		$World/YSort/Fridge.selected.connect(_on_fridge_selected)
 		$World/YSort/Desk1Anchor/IceCoreHolder.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder))
@@ -114,7 +134,6 @@ func _on_ams_selected(target: Node2D):
 	# transition animation
 	var tween_transition: Tween = create_tween()
 	tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
-	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
 	get_tree().change_scene_to_file("res://remi/ams/ams.tscn")
 
@@ -130,7 +149,6 @@ func _on_cuve_selected(target: Node2D):
 	# transition animation
 	var tween_transition: Tween = create_tween()
 	tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
-	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
 	# change scene
 	get_tree().change_scene_to_file("res://louis/co2/co_2.tscn")
@@ -147,7 +165,6 @@ func _on_microscope_selected(target: Node2D):
 	# transition animation
 	var tween_transition: Tween = create_tween()
 	tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
-	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
 	# change scene
 	get_tree().change_scene_to_file("res://louis/microscope_game/microscope.tscn")
@@ -166,6 +183,10 @@ func _on_fridge_selected():
 			# create new ice_core
 			$World/YSort/Alexia.carry_ice_core()
 			$World/YSort/Fridge.take()
+			# dialogue
+			TextStack.push_line("Brrrr ... C'est vraiment gelé.")
+			await get_tree().create_timer(3.0).timeout
+			TextStack.push_line("Posons vite cette carotte sur une table.")
 			# pomme
 			if (LabState.remaining_ice_cores_in_the_fridge == 0):
 				$World/YSort/Fridge/TextureButton.disabled = true
@@ -214,7 +235,11 @@ func _on_ice_core_holder_selected(target: Node2D):
 				and $World/YSort/Desk1Anchor/IceCoreHolder3.get_child(1) is IceCore2
 				and $World/YSort/Desk1Anchor/IceCoreHolder4.get_child(1) is IceCore3
 				and $World/YSort/Desk1Anchor/IceCoreHolder5.get_child(1) is IceCore4):
-				pass
+				TextStack.push_line("Les données correspondent !")
+				await get_tree().create_timer(3.0).timeout
+				TextStack.push_line("Les carrottes sont dans le bon ordre !")
+				await get_tree().create_timer(3.0).timeout
+				TextStack.push_line("Passons à la modélisation !")
 				$AudioStreamPlayerSuccess2.play()
 				$World/YSort/EndDeskAnchor/End.activate()
 				$World/YSort/EndDeskAnchor/End/TextureButton.disabled = false
@@ -223,6 +248,12 @@ func _on_ice_core_holder_selected(target: Node2D):
 				$World/YSort/Desk1Anchor/Label7.show()
 			else:
 				$AudioStreamPlayerFail.play()
+				# pass
+				TextStack.push_line("Hmmm ... Non, ca ne semble pas bon. !")
+				await get_tree().create_timer(3.0).timeout
+				TextStack.push_line("Les données ne sont pas continues.")
+				await get_tree().create_timer(3.0).timeout
+				TextStack.push_line("Essayons d'échanger des carottes !")
 
 func _on_end_selected(target: Node2D):
 	$AudioStreamPlayerClickTarget.play()
@@ -234,7 +265,6 @@ func _on_end_selected(target: Node2D):
 	# transition animation
 	var tween_transition: Tween = create_tween()
 	tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
-	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
 	# change scene
 	get_tree().change_scene_to_file("res://remi/model_plot/model.tscn")
