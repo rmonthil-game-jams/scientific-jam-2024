@@ -121,6 +121,45 @@ texture = ExtResource("6_88bnx")
 position = Vector2(0, -192)
 texture = ExtResource("7_iwu24")
 
+[node name="Label1" type="Node2D" parent="Tube"]
+position = Vector2(-222, 180)
+
+[node name="Label" type="Label" parent="Tube/Label1"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+theme = ExtResource("1_eu6t1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Palier 1"
+
+[node name="Label2" type="Node2D" parent="Tube"]
+position = Vector2(-226, -34)
+
+[node name="Label" type="Label" parent="Tube/Label2"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+theme = ExtResource("1_eu6t1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Palier 2"
+
+[node name="Label3" type="Node2D" parent="Tube"]
+position = Vector2(-230, -198)
+
+[node name="Label" type="Label" parent="Tube/Label3"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+theme = ExtResource("1_eu6t1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Palier 3"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 11
@@ -159,11 +198,11 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme = ExtResource("1_eu6t1")
 theme_override_colors/font_color = Color(0.219608, 0.239216, 0.294118, 1)
-text = "Chauffez la cuve en cliquant sur l'écran.
+text = "Chauffez la cuve en cliquant rapidement sur l'écran.
 
 Maintenez la tempéraure à chaque pallier pour filtrer les molécules.
 
-Réalisez les 3 types de molécules pour finir votre analyse."
+Videz les 3 types de molécules pour finir votre analyse."
 autowrap_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]

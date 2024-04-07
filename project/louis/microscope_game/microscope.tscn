@@ -1,11 +1,11 @@
 [gd_scene load_steps=21 format=3 uid="uid://c1sucnaub2yhn"]
 
 [ext_resource type="Script" path="res://louis/microscope_game/microscope.gd" id="1_u0ooi"]
-[ext_resource type="Theme" path="res://louis/font_theme.tres" id="2_5m4lv"]
+[ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="2_5m4lv"]
 [ext_resource type="Texture2D" uid="uid://qhxmdqiggq4p" path="res://louis/microscope_game/microscope_assets/pollen_res.png" id="3_gkb3m"]
 [ext_resource type="Texture2D" uid="uid://d2uqedrlioo4a" path="res://louis/microscope_game/microscope_assets/microplastique_res.png" id="4_ti8um"]
 [ext_resource type="Texture2D" uid="uid://dxx2b4xlryko7" path="res://louis/microscope_game/microscope_assets/lentille.png" id="5_gnjp8"]
-[ext_resource type="PackedScene" path="res://louis/microscope_game/tardigrade.tscn" id="5_lwilx"]
+[ext_resource type="PackedScene" uid="uid://dia1n4r2j5o14" path="res://louis/microscope_game/tardigrade.tscn" id="5_lwilx"]
 [ext_resource type="Texture2D" uid="uid://cngo1t8qdyvpt" path="res://louis/microscope_game/microscope_assets/fleche.png" id="6_tgx8m"]
 [ext_resource type="AudioStream" uid="uid://bo5kh4ydloly7" path="res://assets/audio/music/Winner.wav" id="7_aj6j4"]
 [ext_resource type="AudioStream" uid="uid://dfmck03ywxync" path="res://assets/audio/Lentille deplacement.wav" id="7_iopuw"]
@@ -161,7 +161,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(623, 400)
+size = Vector2i(600, 400)
 render_target_update_mode = 4
 
 [node name="Sample" type="Node2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport"]
