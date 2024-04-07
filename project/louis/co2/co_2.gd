@@ -63,30 +63,32 @@ func _on_timer_decrease_timeout():
 
 func _on_temperature_value_changed(value):
 	GlobalTemp.temperature = value
-	if value < 10:#before end of target 1
+	if value < 11:#before end of target 1
 		timer_decrease.wait_time = 1
 		was_inside_before = inside_target_1
-		inside_target_1 = value >= 6
+		inside_target_1 = value >= 7
 		inside_target_2 = false
 		inside_target_3 = false
-	elif value < 20:#before end of target 2
+	elif value < 21:#before end of target 2
 		timer_decrease.wait_time = 0.8
 		was_inside_before = inside_target_2
-		inside_target_2 = value >= 17
+		inside_target_2 = value >= 18
 		inside_target_1 = false
 		inside_target_3 = false
 	else:#before end of target 3
 		timer_decrease.wait_time = 0.5
 		was_inside_before = inside_target_3
-		inside_target_3 = value >= 25 && value < 27
+		inside_target_3 = value >= 26 && value < 28
 		inside_target_1 = false
 		inside_target_2 = false
 	
 	if (inside_target_1 || inside_target_2 || inside_target_3) && !was_inside_before:
 		timer_inside_target.start()
+		print("start")
 
 
 func _on_timer_inside_target_timeout():
+	print("to")
 	if inside_target_1 && !ch4_fallen:
 		ch4_fallen = true
 		for e in ch4_array:
