@@ -24,10 +24,19 @@ var is_turning: bool = false
 
 func _ready():
 	_particle_source()
+	_play_out_animation()
 	# fade in animation
 	$World.modulate = Color.BLACK
 	var tween: Tween = create_tween()
 	tween.tween_property($World, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
+
+func _play_out_animation():
+	if $World/UI2/FlecheSortie.visible:
+		var tween: Tween = create_tween()
+		tween.tween_property($World/UI2/FlecheSortie, "modulate:a", 1.0, 0.25).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property($World/UI2/FlecheSortie, "modulate:a", 0.5, 0.25).set_trans(Tween.TRANS_QUAD)
+		await tween.finished
+		_play_out_animation.call_deferred()
 
 func _process(delta: float):
 	if is_turning:
@@ -37,6 +46,9 @@ func _process(delta: float):
 			$World/ProgressBar/ProgressBar.value += ENERGY_INCREASE_FACTOR * angle_diff/TAU
 			$World/AcceleratorInput.rotation = new_right.angle()
 	$World/ProgressBar/ProgressBar.value -= ENERGY_DECREASE_RATE * delta
+	$World/UI2/FlecheHaut1.modulate.a = 0.125 + 0.875/100.0 * $World/ProgressBar/ProgressBar.value
+	$World/UI2/FlecheHaut2.modulate.a = 0.125 + 0.875/100.0 * $World/ProgressBar/ProgressBar.value
+	$World/UI2/FlecheHaut3.modulate.a = 0.125 + 0.875/100.0 * $World/ProgressBar/ProgressBar.value
 	# update
 	$World/Accelerator.gravity_direction = Vector2.RIGHT.rotated(-0.5 * PI/2 * $World/ProgressBar/ProgressBar.value/100.0)
 
@@ -94,6 +106,12 @@ func _on_target_2_body_entered(body):
 		$World/Leds2.get_child(current_led2_on_number).show()
 		if current_led2_on_number == LED2_NUMBER:
 			$AudioStreamPlayerSuccess2.play()
+			$World/UI2/FlecheHaut1.hide()
+			$World/UI2/FlecheHaut2.hide()
+			$World/UI2/FlecheHaut3.hide()
+			$World/UI2/FlecheSortie.hide()
+			$World/UI2/FlecheLacher.show()
+			$World/UI2/FlecheImpulsion.show()
 			is_sourcing = false
 			# animation
 			for index in range(current_led2_on_number):
@@ -109,6 +127,10 @@ func _on_launcher_input_pressed():
 	new_particle = preload("res://remi/ams/particle_a.tscn").instantiate()
 	new_particle.position = $World/Source2.position
 	$World.add_child(new_particle)
+	# anim arrow
+	var tween: Tween = create_tween()
+	tween.tween_property($World/UI2/FlecheLacher, "modulate:a", 1.0, 0.0625).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property($World/UI2/FlecheLacher, "modulate:a", 0.25, 0.25).set_trans(Tween.TRANS_QUAD)
 	# enable deviator
 	is_charging = false
 	$World/DeviatorInput/TextureButton.disabled = false
@@ -133,7 +155,9 @@ func _on_deviator_input_pressed():
 	for body in $World/Deviator.get_overlapping_bodies():
 		body.linear_velocity = Vector2.ZERO
 	tween = create_tween()
-	tween.tween_property($World/ProgressBar2/ProgressBar, "value", 0.0, 1.0)
+	tween.tween_property($World/UI2/FlecheImpulsion, "modulate:a", 1.0, 0.0625)
+	tween.tween_property($World/UI2/FlecheImpulsion, "modulate:a", 0.0, 1.0)
+	tween.parallel().tween_property($World/ProgressBar2/ProgressBar, "value", 0.0, 1.0)
 	await tween.finished
 	$World/Deviator.gravity_direction = Vector2.RIGHT
 	$World/Deviator.gravity /= 2.0

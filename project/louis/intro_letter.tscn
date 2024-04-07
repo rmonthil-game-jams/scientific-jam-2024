@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bocxf7flm5w60"]
+[gd_scene load_steps=4 format=3 uid="uid://d6h63lxc8yb"]
 
 [ext_resource type="Script" path="res://louis/letters.gd" id="1_mjyn7"]
 [ext_resource type="Texture2D" uid="uid://dgmdv8ikxso45" path="res://louis/intro_assets/Intro-LettreDirigeant-1.png" id="2_0usr6"]

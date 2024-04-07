@@ -46,6 +46,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("left_click"):
+		$AudioStreamPlayerChargeUp.play()
 		clicks += 1
 	
 	if clicks == 3:
@@ -94,18 +95,24 @@ func _on_timer_inside_target_timeout():
 			e.fall_enable()
 			e.collision_mask = 2
 			e.collision_layer = 2
+			$AudioStreamPlayerSuccess1.play()
 	if inside_target_2 && !n2o_fallen:
 		n2o_fallen = true
 		for e in n2o_array:
 			e.fall_enable()
 			e.collision_mask = 4
 			e.collision_layer = 4
+			$AudioStreamPlayerSuccess1.play()
 	if inside_target_3 && !co2_fallen:
 		co2_fallen = true
 		for e in co2_array:
 			e.fall_enable()
 			e.collision_mask = 8
 			e.collision_layer = 8
+		# we succeeded
+		LabState.cuve_done = true
+		$AudioStreamPlayerSuccess1.play()
+		$AudioStreamPlayerSuccess2.play()
 		# transition
 		await get_tree().create_timer(2.0).timeout
 		var tween_transition: Tween = create_tween()

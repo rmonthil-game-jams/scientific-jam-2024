@@ -208,19 +208,19 @@ position = Vector2(3056, -138)
 texture = ExtResource("20_j1k5o")
 
 [node name="IceCoreHolder" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
-position = Vector2(-10, -245)
+position = Vector2(-4, -245)
 
 [node name="IceCoreHolder2" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
 position = Vector2(2326, -255)
 
 [node name="IceCoreHolder3" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
-position = Vector2(1533, -249)
+position = Vector2(1529, -249)
 
 [node name="IceCoreHolder4" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
-position = Vector2(750, -253)
+position = Vector2(776, -253)
 
 [node name="IceCoreHolder5" parent="World/YSort/Desk1Anchor" instance=ExtResource("15_ecbqv")]
-position = Vector2(3069, -250)
+position = Vector2(3056, -250)
 
 [node name="Label" type="Label" parent="World/YSort/Desk1Anchor"]
 offset_left = -152.0
@@ -239,19 +239,21 @@ vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="World/YSort/Desk1Anchor"]
 visible = false
-offset_left = -786.0
-offset_top = -507.0
-offset_right = -358.0
-offset_bottom = -357.0
+offset_left = -825.0
+offset_top = -505.0
+offset_right = -325.0
+offset_bottom = -253.0
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
-text = "L'analyse terminée,
-Il faut retrouver l'ordre 
-des carottes glaciaires."
+text = "Analyse terminée.
+Retrouvez l'ordre des 
+carottes glaciaires.
+Les données doivent être
+CONTINUES dans le temps."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -316,6 +318,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="World/YSort/Desk1Anchor"]
+visible = false
 offset_left = 3675.0
 offset_top = -647.0
 offset_right = 4533.0
@@ -346,7 +349,6 @@ texture = ExtResource("18_pirlv")
 [node name="TextStack" parent="Gui" instance=ExtResource("5_4dofh")]
 offset_left = -10.0
 offset_right = 10.0
-mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 0
 

@@ -68,7 +68,7 @@ func _on_button_play_button_up():
 	var tween_transition: Tween = create_tween()
 	tween_transition.tween_property(main_menu, "modulate", Color.BLACK, 1.5).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
-	get_tree().change_scene_to_file("res://louis/main_menu/main_menu.tscn")
+	get_tree().change_scene_to_file("res://louis/close_up_capsule.tscn")
 
 
 func _on_button_exit_button_up():

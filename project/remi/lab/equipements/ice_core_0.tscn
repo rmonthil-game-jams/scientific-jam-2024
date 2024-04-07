@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxkbfmt1gpmih"]
+[gd_scene load_steps=8 format=3 uid="uid://cxkbfmt1gpmih"]
 
 [ext_resource type="PackedScene" uid="uid://ckmm4kiepleal" path="res://remi/lab/equipment.tscn" id="1_01gbb"]
 [ext_resource type="Texture2D" uid="uid://np6w3f0e2fko" path="res://remi/lab/assets/Carotte.png" id="2_nk1hg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://hknv12ys7g2s" path="res://remi/lab/assets/Carotte on.png" id="3_24eau"]
 [ext_resource type="Texture2D" uid="uid://c6gerog7vnpeo" path="res://remi/lab/assets/Carotte hover.png" id="4_31gkt"]
 [ext_resource type="Texture2D" uid="uid://u60dwogdy5h4" path="res://remi/lab/assets/Carotte focus.png" id="5_q4ky4"]
+[ext_resource type="FontFile" uid="uid://djhmic6riyixb" path="res://assets/MochiyPopPOne-Regular.ttf" id="7_ppvuq"]
 
 [node name="IceCore" instance=ExtResource("1_01gbb")]
 script = ExtResource("2_w45ie")
@@ -44,3 +45,48 @@ default_color = Color(0.498039, 0.756863, 1, 1)
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="Line2D" type="Line2D" parent="Plots" index="3"]
+position = Vector2(-23, 22)
+points = PackedVector2Array(0, -260, 0, -30)
+width = 4.0
+default_color = Color(0.556863, 0.556863, 0.556863, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="Plots/Line2D" index="0"]
+offset_left = 12.0
+offset_top = -203.0
+offset_right = 284.0
+offset_bottom = -161.0
+theme_override_colors/font_color = Color(0.403922, 0.831373, 0.278431, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ppvuq")
+theme_override_font_sizes/font_size = 24
+text = "Radioactivité"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Plots/Line2D" index="1"]
+offset_left = 12.0
+offset_top = -237.0
+offset_right = 223.0
+offset_bottom = -195.0
+theme_override_colors/font_color = Color(0.831373, 0.529412, 0.176471, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ppvuq")
+theme_override_font_sizes/font_size = 24
+text = "Température"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Plots/Line2D" index="2"]
+offset_left = 12.0
+offset_top = -270.0
+offset_right = 237.0
+offset_bottom = -228.0
+theme_override_colors/font_color = Color(0.498039, 0.52549, 0.831373, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_ppvuq")
+theme_override_font_sizes/font_size = 24
+text = "Biodiversité"
+vertical_alignment = 1

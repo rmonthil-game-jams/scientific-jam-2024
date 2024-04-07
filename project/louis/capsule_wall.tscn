@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://byvi278ea0dky"]
+[gd_scene load_steps=4 format=3 uid="uid://byvpy2yvfhpo3"]
 
 [ext_resource type="Script" path="res://louis/capsule_wall.gd" id="1_qbyjr"]
 [ext_resource type="Texture2D" uid="uid://kurud7girm88" path="res://louis/intro_assets/totem.png" id="2_c2haj"]
+[ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="3_h8y0i"]
 
 [node name="CapsuleWall" type="Control"]
 layout_mode = 3
@@ -29,5 +30,10 @@ position = Vector2(576, 324)
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h8y0i")
+volume_db = -9.0
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

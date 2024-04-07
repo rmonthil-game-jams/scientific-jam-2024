@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvqxgekq762m4"]
+[gd_scene load_steps=10 format=3 uid="uid://catuir4wjruo5"]
 
 [ext_resource type="Script" path="res://louis/inside_capsule.gd" id="1_sivfe"]
 [ext_resource type="Texture2D" uid="uid://b32esjrm3pi3s" path="res://louis/intro_assets/intro_3_fond.png" id="2_pictc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5tanvr2t1wwg" path="res://louis/intro_assets/intro_3_capsule_carrotes_1.png" id="6_pfbxv"]
 [ext_resource type="Texture2D" uid="uid://cifnpxyc38ser" path="res://louis/intro_assets/intro_3_lumiere_capsule.png" id="7_7gh7t"]
 [ext_resource type="Texture2D" uid="uid://r4tbv7cn16ii" path="res://louis/intro_assets/intro_3_fumee_capsule.png" id="8_o26rc"]
+[ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="9_axmyh"]
 
 [node name="InsideCapsule" type="Control"]
 layout_mode = 3
@@ -100,6 +101,11 @@ autostart = true
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_axmyh")
+volume_db = -9.0
+autoplay = true
 
 [connection signal="timeout" from="TimerNext" to="." method="_on_timer_next_timeout"]
 [connection signal="timeout" from="TimerBlur" to="." method="_on_timer_blur_timeout"]

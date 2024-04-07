@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvhkgwdji7m2u"]
+[gd_scene load_steps=19 format=3 uid="uid://cvhkgwdji7m2u"]
 
-[ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="1_eu6t1"]
+[ext_resource type="Theme" path="res://louis/font_theme.tres" id="1_eu6t1"]
 [ext_resource type="Script" path="res://louis/co2/co_2.gd" id="1_ltwmw"]
 [ext_resource type="Texture2D" uid="uid://bh7c0hdky3lxv" path="res://louis/co2/co2_assets/jauge.png" id="2_3w1wi"]
 [ext_resource type="Texture2D" uid="uid://ceeuqge4lx3wf" path="res://louis/co2/co2_assets/bas jauge.png" id="3_xeyhc"]
@@ -11,6 +11,28 @@
 [ext_resource type="Texture2D" uid="uid://udka23pfakdv" path="res://louis/co2/co2_assets/notice.png" id="8_0r804"]
 [ext_resource type="Texture2D" uid="uid://d1xn4koecl6nu" path="res://louis/co2/co2_assets/etiquette.png" id="9_dosaa"]
 [ext_resource type="Texture2D" uid="uid://b7d0pqtam5oau" path="res://louis/co2/co2_assets/CO2.png" id="10_ye01y"]
+[ext_resource type="AudioStream" uid="uid://dn0s1fxlam62i" path="res://assets/audio/Bulles Temperature.mp3" id="12_gqpia"]
+[ext_resource type="AudioStream" uid="uid://brnkurl44mu3m" path="res://assets/audio/Molecules crashing.wav" id="13_qcdrq"]
+[ext_resource type="AudioStream" uid="uid://bpliisv83b7dl" path="res://assets/audio/ON Charge.wav" id="15_co0ko"]
+[ext_resource type="AudioStream" uid="uid://i7qieu1m75jk" path="res://assets/audio/OFF decharge.wav" id="16_lo35u"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3jws8"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("13_qcdrq")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h7qax"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("15_co0ko")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_527aa"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("16_lo35u")
+stream_0/weight = 1.0
 
 [node name="CO2" type="Control"]
 layout_mode = 3
@@ -41,17 +63,17 @@ grow_vertical = 2
 color = Color(0.243137, 0.266667, 0.32549, 1)
 
 [node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -227.5
-offset_right = 227.5
-offset_bottom = 59.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
 grow_horizontal = 2
 theme = ExtResource("1_eu6t1")
 theme_override_font_sizes/font_size = 24
 text = "Éliminez les molécules parasites"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tube" type="Sprite2D" parent="."]
 position = Vector2(141, 270)
@@ -131,7 +153,12 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme = ExtResource("1_eu6t1")
 theme_override_colors/font_color = Color(0.219608, 0.239216, 0.294118, 1)
-text = "Instructions à écrire ici"
+text = "Chauffez la cuve en cliquant sur l'écran.
+
+Maintenez la tempéraure à chaque pallier pour filtrer les molécules.
+
+Réalisez les 3 types de molécules pour finir votre analyse."
+autowrap_mode = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -201,6 +228,23 @@ autostart = true
 [node name="TimerInsideTarget" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="AudioStreamPlayerAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_gqpia")
+volume_db = -3.0
+autoplay = true
+
+[node name="AudioStreamPlayerSuccess1" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3jws8")
+volume_db = -3.0
+
+[node name="AudioStreamPlayerSuccess2" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_h7qax")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerChargeUp" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_527aa")
+volume_db = -12.0
 
 [connection signal="value_changed" from="Tube/Temperature" to="." method="_on_temperature_value_changed"]
 [connection signal="timeout" from="TimerDecrease" to="." method="_on_timer_decrease_timeout"]

@@ -87,13 +87,13 @@ func _ready():
 	var tween: Tween = create_tween()
 	tween.tween_property($World, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
 	tween.parallel().tween_property($Gui/TextStack, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
-	# test text
-	if not LabState.alexia_state:
-		$Gui/TextStack.push_line("Test Test Test 0 !")
-		await get_tree().create_timer(2.0).timeout
-		$Gui/TextStack.push_line("Test Test Test 1 !")
-		await get_tree().create_timer(2.0).timeout
-		$Gui/TextStack.push_line("Test Test Test 2 !")
+	## test text
+	#if not LabState.alexia_state:
+		#$Gui/TextStack.push_line("Test Test Test 0 !")
+		#await get_tree().create_timer(2.0).timeout
+		#$Gui/TextStack.push_line("Test Test Test 1 !")
+		#await get_tree().create_timer(2.0).timeout
+		#$Gui/TextStack.push_line("Test Test Test 2 !")
 
 # input
 func _unhandled_input(event: InputEvent):
@@ -134,7 +134,7 @@ func _on_cuve_selected(target: Node2D):
 	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
 	# change scene
-	get_tree().change_scene_to_file("res://louis/microscope_game/microscope.tscn")
+	get_tree().change_scene_to_file("res://louis/co2/co_2.tscn")
 
 func _on_microscope_selected(target: Node2D):
 	$AudioStreamPlayerClickTarget.play()

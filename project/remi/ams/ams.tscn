@@ -1,16 +1,23 @@
-[gd_scene load_steps=45 format=3 uid="uid://dapbeuncd0cqp"]
+[gd_scene load_steps=52 format=3 uid="uid://dapbeuncd0cqp"]
 
 [ext_resource type="Script" path="res://remi/ams/ams.gd" id="1_43nqk"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="2_tn8w8"]
 [ext_resource type="Texture2D" uid="uid://cqqexe585a2lt" path="res://remi/ams/assets/accelerateur.png" id="3_at1t4"]
 [ext_resource type="Texture2D" uid="uid://pvophqtht0m1" path="res://remi/ams/assets/ADP deriver ouvert.png" id="4_vcrmb"]
 [ext_resource type="Texture2D" uid="uid://cenkmig3jiwbo" path="res://remi/ams/assets/accelerateur_table.png" id="5_3qcxi"]
+[ext_resource type="Texture2D" uid="uid://bm6xxx5vkqqx6" path="res://remi/ams/assets/fleche entree.png" id="5_82tco"]
 [ext_resource type="Texture2D" uid="uid://dsafvxfj5qulr" path="res://remi/ams/assets/ADP deriver hover.png" id="5_ak51g"]
 [ext_resource type="Texture2D" uid="uid://notb25vmn1g4" path="res://remi/ams/assets/deriver_ouvert.png" id="5_ue744"]
+[ext_resource type="Texture2D" uid="uid://coxsqq540ctjt" path="res://remi/ams/assets/fleche haut 1.png" id="6_ujhle"]
 [ext_resource type="Texture2D" uid="uid://dmq0faonppods" path="res://remi/ams/assets/deriver_ferme.png" id="7_0dqo0"]
+[ext_resource type="Texture2D" uid="uid://cerjcjiapygw2" path="res://remi/ams/assets/fleche haut 2.png" id="7_0853n"]
+[ext_resource type="Texture2D" uid="uid://yxnvy2hf3owe" path="res://remi/ams/assets/fleche haut 3.png" id="8_kxjw1"]
+[ext_resource type="Texture2D" uid="uid://dq76e6q11vym4" path="res://remi/ams/assets/fleche impulsion.png" id="9_8v2wg"]
 [ext_resource type="Texture2D" uid="uid://fsbylcvjw08l" path="res://remi/ams/assets/feu_ouvert.png" id="9_quov6"]
+[ext_resource type="Texture2D" uid="uid://dffdyg82w6xvg" path="res://remi/ams/assets/fleche lacher.png" id="10_064bx"]
 [ext_resource type="Texture2D" uid="uid://c0g2exahbd64j" path="res://remi/ams/assets/feu_ouvert_hover.png" id="10_jupd2"]
 [ext_resource type="Texture2D" uid="uid://bnaf3xry7pd1x" path="res://remi/ams/assets/manivelle.png" id="10_muofa"]
+[ext_resource type="Texture2D" uid="uid://blqlopfs0c8vi" path="res://remi/ams/assets/fleche sortie.png" id="11_3onox"]
 [ext_resource type="Texture2D" uid="uid://dyryuarct6tno" path="res://remi/ams/assets/manivelle_hover.png" id="11_b6ida"]
 [ext_resource type="Texture2D" uid="uid://cn14njqek8fpo" path="res://remi/ams/assets/feu_ferme.png" id="11_vmnbl"]
 [ext_resource type="FontFile" uid="uid://djhmic6riyixb" path="res://assets/MochiyPopPOne-Regular.ttf" id="12_woiae"]
@@ -107,7 +114,7 @@ stream_0/weight = 1.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rp1lt"]
 random_pitch = 1.5
 streams_count = 1
-stream_0/stream = ExtResource("23_74lal")
+stream_0/stream = ExtResource("24_c5ngf")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ee4yv"]
@@ -185,7 +192,7 @@ shape = SubResource("RectangleShape2D_pespy")
 position = Vector2(-961, -61)
 
 [node name="Source2" type="Marker2D" parent="World"]
-position = Vector2(272, -336)
+position = Vector2(277, -308)
 
 [node name="Accelerator" type="Area2D" parent="World"]
 position = Vector2(-184, -118)
@@ -510,6 +517,44 @@ texture = ExtResource("20_kkkjl")
 [node name="Sprite2D6" type="Sprite2D" parent="World/Leds2"]
 visible = false
 texture = ExtResource("21_pel0c")
+
+[node name="UI2" type="Node2D" parent="World"]
+
+[node name="FlecheEntree" type="Sprite2D" parent="World/UI2"]
+visible = false
+position = Vector2(-557, -61)
+texture = ExtResource("5_82tco")
+
+[node name="FlecheHaut1" type="Sprite2D" parent="World/UI2"]
+modulate = Color(0.502, 0.749, 1, 0.125)
+position = Vector2(-1, -93)
+texture = ExtResource("6_ujhle")
+
+[node name="FlecheHaut2" type="Sprite2D" parent="World/UI2"]
+modulate = Color(0.502, 0.749, 1, 0.125)
+position = Vector2(116, -135)
+texture = ExtResource("7_0853n")
+
+[node name="FlecheHaut3" type="Sprite2D" parent="World/UI2"]
+modulate = Color(0.502, 0.749, 1, 0.125)
+position = Vector2(-147, -93)
+texture = ExtResource("8_kxjw1")
+
+[node name="FlecheImpulsion" type="Sprite2D" parent="World/UI2"]
+visible = false
+modulate = Color(1, 0.517647, 0.501961, 0)
+position = Vector2(605, -92)
+texture = ExtResource("9_8v2wg")
+
+[node name="FlecheLacher" type="Sprite2D" parent="World/UI2"]
+visible = false
+modulate = Color(0.525, 1, 0.502, 0.25)
+position = Vector2(352, -309)
+texture = ExtResource("10_064bx")
+
+[node name="FlecheSortie" type="Sprite2D" parent="World/UI2"]
+position = Vector2(99, -304)
+texture = ExtResource("11_3onox")
 
 [node name="AudioStreamPlayerManivelle" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_8u2c0")

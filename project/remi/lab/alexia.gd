@@ -67,7 +67,9 @@ func play_walking_animation():
 func _play_walking_animation():
 	tween_walking = create_tween()
 	tween_walking.tween_property($Anchor, "rotation", -WALKING_ANGLE*TAU, WALKING_DURATION).set_trans(Tween.TRANS_QUAD)
+	tween_walking.tween_callback($AudioStreamPlayer2DStep.play)
 	tween_walking.tween_property($Anchor, "rotation", WALKING_ANGLE*TAU, WALKING_DURATION).set_trans(Tween.TRANS_QUAD)
+	tween_walking.tween_callback($AudioStreamPlayer2DStep.play)
 	tween_walking.tween_callback(_play_walking_animation)
 	await tween_walking.finished
 

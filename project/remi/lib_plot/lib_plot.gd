@@ -1,5 +1,8 @@
 extends Node
 
+func _ready():
+	randomize()
+
 ## plot
 func generate_x(bound_inf: float, bound_sup: float, number: int) -> Array[float]:
 	var output: Array[float]

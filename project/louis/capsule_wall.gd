@@ -11,7 +11,6 @@ func _ready():
 	tween.tween_property(capsule_wall, "modulate", Color.WHITE, 0.2).set_trans(Tween.TRANS_QUAD)
 
 
-
 func _on_timer_timeout():
 	var tween_transition = create_tween()
 	tween_transition.tween_property(capsule_wall, "modulate", Color.BLACK, 1.5).set_trans(Tween.TRANS_QUAD)

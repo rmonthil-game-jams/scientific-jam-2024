@@ -25,6 +25,6 @@ func model_radioactivity(t: float, nuclear_war_intensity: float, fossil_fuel_int
 	return Y_FACTOR_RADIOACTIVITY * (5.0 * exp(-(pow((x - 2250)/1000, 2))/(2*0.00005))/sqrt(2*PI*0.00005)+2.8) * nuclear_war_intensity
 
 func _ready():
-	LibPlot.plot_func($Plots/Line2DBiodiversity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_biodiversity(x, 1.0, 0.5, 0.22), 256.0, 256.0, "biodiversity")
-	LibPlot.plot_func($Plots/Line2DRadioactivity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_radioactivity(x, 1.0, 0.5, 0.22), 256.0, 256.0, "radioactivity")
-	LibPlot.plot_func($Plots/Line2DTemperature, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_temperature(x, 1.0, 0.5, 0.22), 256.0, 256.0, "temperature")
+	LibPlot.plot_func($Plots/Line2DBiodiversity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_biodiversity(x, 1.0, 0.5, 0.22), 3*128.0, 2.125*128.0, "biodiversity")
+	LibPlot.plot_func($Plots/Line2DRadioactivity, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_radioactivity(x, 1.0, 0.5, 0.22), 3*128.0, 2.125*128.0, "radioactivity")
+	LibPlot.plot_func($Plots/Line2DTemperature, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_temperature(x, 1.0, 0.5, 0.22), 3*128.0, 2.125*128.0, "temperature")

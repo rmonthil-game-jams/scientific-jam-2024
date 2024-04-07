@@ -22,9 +22,7 @@ func _on_timer_next_timeout():
 	await tween_transition.finished
 	get_tree().change_scene_to_file("res://louis/capsule_wall.tscn")
 
-
 func _on_timer_blur_timeout():
-	print("coucou")
 	var tween = create_tween()
 	tween.tween_property(texture_rect_3, "modulate", Color(1,1,1,0), 0.5).set_trans(Tween.TRANS_QUAD)
 	tween.set_parallel().tween_property(texture_rect_5, "modulate", Color(1,1,1,0), 0.5)

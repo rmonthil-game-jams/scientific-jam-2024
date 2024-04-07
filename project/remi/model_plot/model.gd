@@ -56,7 +56,18 @@ func _on_button_pressed():
 	$AudioStreamPlayerClickDefault.play()
 	if abs($Input/Control/HBoxContainer/GridContainer/NuclearWarStart.value - 1.0) + abs($Input/Control/HBoxContainer/GridContainer/FossilFuelConsumptionRate.value - 0.5) + abs($Input/Control/HBoxContainer/GridContainer/DeforestationRate.value - 0.22) < 0.15:
 		$AudioStreamPlayerSuccess2.play()
-		print("Success")
+		# transition
+		var tween: Tween
+		for child in get_children():
+			if child is Node2D:
+				tween = create_tween()
+				tween.tween_property(child, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+		await tween.finished
+		# outro
+		get_tree().change_scene_to_file("res://louis/outro_letter.tscn")
 	else:
 		$AudioStreamPlayerFail.play()
-		print("Fail")
+		$Input/Control/LabelFail.show()
+		var tween: Tween = create_tween()
+		$Input/Control/LabelFail.modulate.a = 1.0
+		tween.tween_property($Input/Control/LabelFail, "modulate:a", 0.0, 2.0).set_trans(Tween.TRANS_QUAD)

@@ -25,10 +25,10 @@ func _plot(line_2d: Line2D, filename: String, factor: float, minus: float):
 	lines.reverse()
 	lines.remove_at(0)
 	var x: Array[float] = []
-	x.resize(lines.size()/4)
+	x.resize(1.1*lines.size()/4)
 	var y: Array[float] = []
-	y.resize(lines.size()/4)
-	for index in range(lines.size()/4):
+	y.resize(1.1*lines.size()/4)
+	for index in range(1.1*lines.size()/4):
 		x[index] = float(lines[index].split(',')[0])
 		y[index] = float(lines[index].split(',')[1])
 	# post_processing
@@ -36,7 +36,7 @@ func _plot(line_2d: Line2D, filename: String, factor: float, minus: float):
 	var x_0: float = x[0]
 	var x_max: float = x.max() - x_0
 	## center
-	for index in range(lines.size()/4):
+	for index in range(1.1*lines.size()/4):
 		x[index] = (x[index] - x_0) / x_max
 		y[index] = factor * (y[index] - minus)
 	# plot
