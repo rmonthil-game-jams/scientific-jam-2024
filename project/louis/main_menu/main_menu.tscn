@@ -1,14 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://coawt8ggq5hss"]
+[gd_scene load_steps=26 format=3 uid="uid://coawt8ggq5hss"]
 
 [ext_resource type="Script" path="res://louis/main_menu/main_menu.gd" id="1_u6e4t"]
 [ext_resource type="Texture2D" uid="uid://d1rp3xd5343xt" path="res://louis/main_menu/main_menu_assets/Group 17fenêtre texte menu.png" id="2_ggsc3"]
 [ext_resource type="Texture2D" uid="uid://c7i45ysiswpbx" path="res://louis/intro_assets/intro_1_decor.png" id="2_kbqp7"]
-[ext_resource type="Texture2D" uid="uid://bgp5guwk7luqh" path="res://louis/main_menu/main_menu_assets/Group 15placeholder logo.png" id="3_2ye61"]
 [ext_resource type="Texture2D" uid="uid://pmgu8lj4qkse" path="res://louis/main_menu/main_menu_assets/Group 11jouer.png" id="3_05i5m"]
 [ext_resource type="Texture2D" uid="uid://c4248yoqmwpxm" path="res://louis/intro_assets/intro_1_agent.png" id="3_cuv5h"]
 [ext_resource type="Texture2D" uid="uid://clt3olygk6x32" path="res://louis/intro_assets/intro_1_capsule.png" id="3_w2ukh"]
 [ext_resource type="Texture2D" uid="uid://bpu5dn8p1ivo2" path="res://louis/main_menu/main_menu_assets/Group_17jouer_hover.png" id="4_muqud"]
 [ext_resource type="Texture2D" uid="uid://cw4loxx2jg6uv" path="res://louis/main_menu/main_menu_assets/Group 12comment jouer.png" id="4_wjodd"]
+[ext_resource type="Texture2D" uid="uid://bbqqw3nuya0fo" path="res://louis/main_menu/main_menu_assets/Fichier_3Les_Carottes_Sont_Cuites_logo.png" id="5_1owyy"]
 [ext_resource type="Texture2D" uid="uid://dt46rqif7b8hf" path="res://louis/main_menu/main_menu_assets/Group_21jouer_select.png" id="5_l0w5t"]
 [ext_resource type="Texture2D" uid="uid://btm624ukwdcti" path="res://louis/main_menu/main_menu_assets/Group 13options.png" id="5_oq78x"]
 [ext_resource type="Texture2D" uid="uid://irkq1cam6cdg" path="res://louis/main_menu/main_menu_assets/Group 14crédits.png" id="6_kr1nl"]
@@ -21,6 +21,8 @@
 [ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="13_sq7a2"]
 [ext_resource type="Texture2D" uid="uid://ciwj66pycwdgl" path="res://louis/main_menu/main_menu_assets/Group_24credits_select.png" id="14_7ot82"]
 [ext_resource type="AudioStream" uid="uid://dsq7nl0wuepka" path="res://assets/audio/Click Switch.wav" id="21_fm2xf"]
+[ext_resource type="Texture2D" uid="uid://de5i7j1aarwqx" path="res://louis/main_menu/main_menu_assets/Group_29quitter_select.png" id="21_le1xq"]
+[ext_resource type="Texture2D" uid="uid://delrj5k6eeiah" path="res://louis/main_menu/main_menu_assets/Group_28quitter_hover.png" id="22_jltjd"]
 [ext_resource type="AudioStream" uid="uid://bwstt64llqyk2" path="res://assets/audio/music/Main Theme Carrotes .mp3" id="22_mfbol"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ja5nq"]
@@ -79,7 +81,7 @@ theme_override_constants/margin_top = 32
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainerMain/VBoxContainerMenu/MarginContainerTitle"]
 layout_mode = 2
-texture = ExtResource("3_2ye61")
+texture = ExtResource("5_1owyy")
 expand_mode = 1
 
 [node name="MarginContainerButtons" type="MarginContainer" parent="HBoxContainerMain/VBoxContainerMenu"]
@@ -222,6 +224,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("13_sq7a2")
 text = "Musique:"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer"]
@@ -244,6 +247,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("13_sq7a2")
 text = "Effets sonores:"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer2"]
@@ -266,6 +270,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("13_sq7a2")
 text = "Fullscreen:"
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3"]
@@ -304,6 +309,8 @@ theme_override_constants/margin_right = 16
 [node name="ButtonExit" type="TextureButton" parent="MarginContainerButtonExit"]
 layout_mode = 2
 texture_normal = ExtResource("12_h6dyn")
+texture_pressed = ExtResource("21_le1xq")
+texture_hover = ExtResource("22_jltjd")
 ignore_texture_size = true
 stretch_mode = 4
 
@@ -357,6 +364,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="ButtonYes" type="Button" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonYes"]
 layout_mode = 2
+theme = ExtResource("13_sq7a2")
 text = "Oui"
 
 [node name="MarginContainerButtonNo" type="MarginContainer" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer"]
@@ -369,14 +377,17 @@ theme_override_constants/margin_bottom = 20
 
 [node name="ButtonNo" type="Button" parent="MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonNo"]
 layout_mode = 2
+theme = ExtResource("13_sq7a2")
 text = "Non"
 
 [node name="AudioStreamPlayerClick" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ja5nq")
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_mfbol")
 autoplay = true
+bus = &"Music"
 
 [connection signal="button_up" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonPlay/ButtonPlay" to="." method="_on_button_play_button_up"]
 [connection signal="toggled" from="HBoxContainerMain/VBoxContainerMenu/MarginContainerButtons/VBoxContainerButtons/MarginContainerButtonHowTo/ButtonHowTo" to="." method="_on_button_how_to_toggled"]
