@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cvhkgwdji7m2u"]
+[gd_scene load_steps=21 format=3 uid="uid://cvhkgwdji7m2u"]
 
 [ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="1_eu6t1"]
 [ext_resource type="Script" path="res://louis/co2/co_2.gd" id="1_ltwmw"]
@@ -14,8 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://b7d0pqtam5oau" path="res://louis/co2/co2_assets/CO2.png" id="10_ye01y"]
 [ext_resource type="AudioStream" uid="uid://dn0s1fxlam62i" path="res://assets/audio/Bulles Temperature.mp3" id="12_gqpia"]
 [ext_resource type="AudioStream" uid="uid://brnkurl44mu3m" path="res://assets/audio/Molecules crashing.wav" id="13_qcdrq"]
-[ext_resource type="AudioStream" uid="uid://bpliisv83b7dl" path="res://assets/audio/ON Charge.wav" id="15_co0ko"]
+[ext_resource type="AudioStream" uid="uid://bo5kh4ydloly7" path="res://assets/audio/music/Winner.wav" id="15_udmvi"]
 [ext_resource type="AudioStream" uid="uid://i7qieu1m75jk" path="res://assets/audio/OFF decharge.wav" id="16_lo35u"]
+[ext_resource type="AudioStream" uid="uid://dcs8mnvcubsms" path="res://assets/audio/music/Mini jeu Carrotes Music.mp3" id="17_yjghf"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3jws8"]
 random_pitch = 1.5
@@ -26,7 +27,7 @@ stream_0/weight = 1.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h7qax"]
 random_pitch = 1.5
 streams_count = 1
-stream_0/stream = ExtResource("15_co0ko")
+stream_0/stream = ExtResource("15_udmvi")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_527aa"]
@@ -278,18 +279,28 @@ one_shot = true
 stream = ExtResource("12_gqpia")
 volume_db = -3.0
 autoplay = true
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerSuccess1" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_3jws8")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerSuccess2" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_h7qax")
 volume_db = -6.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerChargeUp" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_527aa")
 volume_db = -12.0
+bus = &"Sounds"
+
+[node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_yjghf")
+volume_db = -3.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="value_changed" from="Tube/Node2D/Temperature" to="." method="_on_temperature_value_changed"]
 [connection signal="timeout" from="TimerDecrease" to="." method="_on_timer_decrease_timeout"]
