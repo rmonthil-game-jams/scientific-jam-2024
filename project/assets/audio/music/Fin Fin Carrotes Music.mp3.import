@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cehcvhgia120x"
+path="res://.godot/imported/Fin Fin Carrotes Music.mp3-d65fa68336bf32523ffaa048164d12b2.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Fin Fin Carrotes Music.mp3"
+dest_files=["res://.godot/imported/Fin Fin Carrotes Music.mp3-d65fa68336bf32523ffaa048164d12b2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
