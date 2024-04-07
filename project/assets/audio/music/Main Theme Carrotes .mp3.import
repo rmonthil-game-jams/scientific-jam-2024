@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Main Theme Carrotes .mp3-cf8f2f54f6f8cc0089b7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

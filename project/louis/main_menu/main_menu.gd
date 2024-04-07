@@ -60,7 +60,7 @@ func hide_dialogs():
 	rich_text_label_credits.hide()
 
 func volume(bus_index, value):
-	AudioServer.set_bus_volume_db(bus_index, log(value))
+	AudioServer.set_bus_volume_db(bus_index, 3*log(value))
 
 
 func _on_button_play_button_up():
