@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dapbeuncd0cqp"]
+[gd_scene load_steps=54 format=3 uid="uid://dapbeuncd0cqp"]
 
 [ext_resource type="Script" path="res://remi/ams/ams.gd" id="1_43nqk"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="2_tn8w8"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://bpliisv83b7dl" path="res://assets/audio/ON Charge.wav" id="24_c5ngf"]
 [ext_resource type="AudioStream" uid="uid://i7qieu1m75jk" path="res://assets/audio/OFF decharge.wav" id="25_n3p5n"]
 [ext_resource type="AudioStream" uid="uid://r7bg8pnm30f6" path="res://assets/audio/Aspiration.wav" id="26_1qhsg"]
+[ext_resource type="AudioStream" uid="uid://bo5kh4ydloly7" path="res://assets/audio/music/Winner.wav" id="31_3vtrl"]
 [ext_resource type="AudioStream" uid="uid://dcs8mnvcubsms" path="res://assets/audio/music/Mini jeu Carrotes Music.mp3" id="35_euvou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1syu"]
@@ -109,13 +110,13 @@ stream_0/weight = 1.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_75tpa"]
 random_pitch = 1.5
 streams_count = 1
-stream_0/stream = ExtResource("23_74lal")
+stream_0/stream = ExtResource("31_3vtrl")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rp1lt"]
 random_pitch = 1.5
 streams_count = 1
-stream_0/stream = ExtResource("24_c5ngf")
+stream_0/stream = ExtResource("31_3vtrl")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ee4yv"]
@@ -575,7 +576,7 @@ volume_db = -6.0
 
 [node name="AudioStreamPlayerFire" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ee4yv")
-volume_db = -6.0
+volume_db = -3.0
 
 [node name="AudioStreamPlayerChargeUp" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ycrhs")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1sucnaub2yhn"]
+[gd_scene load_steps=16 format=3 uid="uid://c1sucnaub2yhn"]
 
 [ext_resource type="Script" path="res://louis/microscope_game/microscope.gd" id="1_u0ooi"]
 [ext_resource type="Theme" path="res://louis/font_theme.tres" id="2_5m4lv"]
@@ -6,21 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://cbxfh0bqepgg4" path="res://louis/microscope_game/microscope_assets/icone plastique.png" id="4_x52tj"]
 [ext_resource type="Texture2D" uid="uid://dxx2b4xlryko7" path="res://louis/microscope_game/microscope_assets/lentille.png" id="5_gnjp8"]
 [ext_resource type="Texture2D" uid="uid://cngo1t8qdyvpt" path="res://louis/microscope_game/microscope_assets/fleche.png" id="6_tgx8m"]
-[ext_resource type="AudioStream" uid="uid://ca05k1cfdkv5e" path="res://assets/audio/Fire accelerator.wav" id="7_ah1fd"]
+[ext_resource type="AudioStream" uid="uid://bo5kh4ydloly7" path="res://assets/audio/music/Winner.wav" id="7_aj6j4"]
 [ext_resource type="AudioStream" uid="uid://dfmck03ywxync" path="res://assets/audio/Lentille deplacement.wav" id="7_iopuw"]
 [ext_resource type="AudioStream" uid="uid://5o6wxy71x327" path="res://assets/audio/Microscope zoom.wav" id="7_yogsu"]
+[ext_resource type="AudioStream" uid="uid://c4stw1i3kdkwp" path="res://assets/audio/music/Loser.wav" id="8_7dfv6"]
 [ext_resource type="AudioStream" uid="uid://dcs8mnvcubsms" path="res://assets/audio/music/Mini jeu Carrotes Music.mp3" id="10_dsphh"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_diwjo"]
 random_pitch = 1.5
 streams_count = 1
-stream_0/stream = ExtResource("7_ah1fd")
+stream_0/stream = ExtResource("7_aj6j4")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6bvmt"]
 random_pitch = 1.5
 streams_count = 1
-stream_0/stream = ExtResource("7_ah1fd")
+stream_0/stream = ExtResource("8_7dfv6")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w1317"]

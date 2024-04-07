@@ -154,22 +154,23 @@ func _on_microscope_selected(target: Node2D):
 	get_tree().change_scene_to_file("res://louis/microscope_game/microscope.tscn")
 
 func _on_fridge_selected():
-	$AudioStreamPlayerClickTarget.play()
-	# wait animation end
-	play_move_alexia_animation_to_target($World/YSort/Fridge.global_position)
-	await tween_moving.finished
-	$World/YSort/Alexia.stop_idle_animation()
-	await $World/YSort/Alexia.tween_idle.finished
-	# set lab state
-	if LabState.remaining_ice_cores_in_the_fridge > 0:
-		LabState.remaining_ice_cores_in_the_fridge -= 1
-		# create new ice_core
-		$World/YSort/Alexia.carry_ice_core()
-		$World/YSort/Fridge.take()
-		# pomme
-		if (LabState.remaining_ice_cores_in_the_fridge == 0):
-			$World/YSort/Fridge/TextureButton.disabled = true
-			$World/YSort/Fridge/TextureButton.focus_mode = Control.FOCUS_NONE
+	if not $World/YSort/Alexia.is_carrying:
+		$AudioStreamPlayerClickTarget.play()
+		# wait animation end
+		play_move_alexia_animation_to_target($World/YSort/Fridge.global_position)
+		await tween_moving.finished
+		$World/YSort/Alexia.stop_idle_animation()
+		await $World/YSort/Alexia.tween_idle.finished
+		# set lab state
+		if LabState.remaining_ice_cores_in_the_fridge > 0:
+			LabState.remaining_ice_cores_in_the_fridge -= 1
+			# create new ice_core
+			$World/YSort/Alexia.carry_ice_core()
+			$World/YSort/Fridge.take()
+			# pomme
+			if (LabState.remaining_ice_cores_in_the_fridge == 0):
+				$World/YSort/Fridge/TextureButton.disabled = true
+				$World/YSort/Fridge/TextureButton.focus_mode = Control.FOCUS_NONE
 
 func _on_ice_core_selected(equipement: Node2D):
 	$AudioStreamPlayerClickTarget.play()
