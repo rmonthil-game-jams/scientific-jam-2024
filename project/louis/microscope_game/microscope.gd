@@ -20,7 +20,7 @@ var micro_plastic_scene : PackedScene = preload("res://louis/microscope_game/mic
 
 var optimal_focus_value: float
 func _ready():
-	optimal_focus_value = pow(randf_range(-1.0, 1.0), 2)
+	optimal_focus_value = snapped(pow(randf_range(-1.0, 1.0), 0.5), 0.1)
 	_set_pixelization(round(1.0 + 12.0 * abs(0.0 - optimal_focus_value)))
 	generate_bodies()
 	v_slider.value = 0

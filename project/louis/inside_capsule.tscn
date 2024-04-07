@@ -104,7 +104,7 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_axmyh")
-volume_db = -9.0
+volume_db = -3.0
 autoplay = true
 
 [connection signal="timeout" from="TimerNext" to="." method="_on_timer_next_timeout"]
