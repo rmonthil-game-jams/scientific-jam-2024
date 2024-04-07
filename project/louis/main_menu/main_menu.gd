@@ -50,6 +50,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	t += delta
+	if 0.7*t == 2 * PI:
+		t = 0
 	capsule.position.y = capsule_initial_y + 7 * sin(0.7*t)
 
 

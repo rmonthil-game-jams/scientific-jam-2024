@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddfxscqngi6l4"]
 
 [ext_resource type="PackedScene" uid="uid://c47w0lc5iumgs" path="res://louis/microscope_game/micro_body.tscn" id="1_ffbbj"]
-[ext_resource type="Texture2D" uid="uid://der4k33hdssaq" path="res://louis/microscope_game/microscope_assets/pollen.png" id="2_7gly5"]
+[ext_resource type="Texture2D" uid="uid://qhxmdqiggq4p" path="res://louis/microscope_game/microscope_assets/pollen_res.png" id="2_cak7v"]
 
 [node name="Pollen" instance=ExtResource("1_ffbbj")]
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_7gly5")
+texture = ExtResource("2_cak7v")

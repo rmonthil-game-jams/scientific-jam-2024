@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1sucnaub2yhn"]
+[gd_scene load_steps=21 format=3 uid="uid://c1sucnaub2yhn"]
 
 [ext_resource type="Script" path="res://louis/microscope_game/microscope.gd" id="1_u0ooi"]
-[ext_resource type="Theme" path="res://louis/font_theme.tres" id="2_5m4lv"]
-[ext_resource type="Texture2D" uid="uid://b0it4whx126xh" path="res://louis/microscope_game/microscope_assets/icone pollen.png" id="3_53rks"]
-[ext_resource type="Texture2D" uid="uid://cbxfh0bqepgg4" path="res://louis/microscope_game/microscope_assets/icone plastique.png" id="4_x52tj"]
+[ext_resource type="Theme" uid="uid://dbhter505cm8r" path="res://louis/font_theme.tres" id="2_5m4lv"]
+[ext_resource type="Texture2D" uid="uid://qhxmdqiggq4p" path="res://louis/microscope_game/microscope_assets/pollen_res.png" id="3_gkb3m"]
+[ext_resource type="Texture2D" uid="uid://d2uqedrlioo4a" path="res://louis/microscope_game/microscope_assets/microplastique_res.png" id="4_ti8um"]
 [ext_resource type="Texture2D" uid="uid://dxx2b4xlryko7" path="res://louis/microscope_game/microscope_assets/lentille.png" id="5_gnjp8"]
+[ext_resource type="PackedScene" uid="uid://dia1n4r2j5o14" path="res://louis/microscope_game/tardigrade.tscn" id="5_lwilx"]
 [ext_resource type="Texture2D" uid="uid://cngo1t8qdyvpt" path="res://louis/microscope_game/microscope_assets/fleche.png" id="6_tgx8m"]
 [ext_resource type="AudioStream" uid="uid://bo5kh4ydloly7" path="res://assets/audio/music/Winner.wav" id="7_aj6j4"]
 [ext_resource type="AudioStream" uid="uid://dfmck03ywxync" path="res://assets/audio/Lentille deplacement.wav" id="7_iopuw"]
@@ -36,6 +37,18 @@ streams_count = 1
 stream_0/stream = ExtResource("7_yogsu")
 stream_0/weight = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpbaf"]
+size = Vector2(20, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pxmd"]
+size = Vector2(20, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asa6s"]
+size = Vector2(722, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un233"]
+size = Vector2(720, 20)
+
 [node name="Microscope" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -44,6 +57,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u0ooi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67451, 0.745098, 0.74902, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -78,6 +100,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "Pollen"
 horizontal_alignment = 1
@@ -88,7 +111,7 @@ size_flags_horizontal = 3
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("3_53rks")
+texture = ExtResource("3_gkb3m")
 stretch_mode = 3
 
 [node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer"]
@@ -101,6 +124,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 24
 text = "Micro 
 Plastique"
@@ -112,7 +136,7 @@ size_flags_horizontal = 3
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
-texture = ExtResource("4_x52tj")
+texture = ExtResource("4_ti8um")
 stretch_mode = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
@@ -122,6 +146,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Trouver le bon nombre de Pollen !
 Attention au micro-plastique !"
@@ -152,6 +177,10 @@ polygon = PackedVector2Array(-629, -224, -660, 304, 610, 336, 590, -246)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample/Plate"]
 
 [node name="MicroBodies" type="Node2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample"]
+
+[node name="Tardigrade" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample/MicroBodies" instance=ExtResource("5_lwilx")]
+linear_damp = 0.0
+angular_damp = 0.0
 
 [node name="CircleLense" type="Sprite2D" parent="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample"]
 scale = Vector2(0.55, 0.55)
@@ -186,6 +215,7 @@ flip_h = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "DEPLACEMENT"
 horizontal_alignment = 1
@@ -214,6 +244,7 @@ theme_override_constants/separation = 0
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "FOCUS"
 horizontal_alignment = 1
@@ -230,6 +261,7 @@ step = 0.1
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
@@ -248,6 +280,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Nombre de pollen ?"
 horizontal_alignment = 1
 
@@ -255,6 +288,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 alignment = 1
 
@@ -265,12 +299,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "VALIDER"
 
 [node name="LabelValidated" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme = ExtResource("2_5m4lv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -298,6 +334,24 @@ bus = &"Sounds"
 stream = ExtResource("10_dsphh")
 autoplay = true
 bus = &"Music"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-360, 0)
+shape = SubResource("RectangleShape2D_mpbaf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(360, 0)
+shape = SubResource("RectangleShape2D_8pxmd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_asa6s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 80)
+shape = SubResource("RectangleShape2D_un233")
 
 [connection signal="button_down" from="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/ButtonMoveLeft" to="." method="_on_button_move_left_button_down"]
 [connection signal="button_up" from="HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer/ButtonMoveLeft" to="." method="_on_button_move_left_button_up"]
