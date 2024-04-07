@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=42 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
 [ext_resource type="PackedScene" uid="uid://c7562hhd8en41" path="res://remi/lab/alexia.tscn" id="2_kv3l1"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="3_er4tn"]
 [ext_resource type="Texture2D" uid="uid://dnlu4g4fpoafy" path="res://remi/lab/assets/fond 3.png" id="4_8c3ds"]
-[ext_resource type="PackedScene" uid="uid://d1a5sgpejl0w7" path="res://remi/text_stack/text_stack.tscn" id="5_4dofh"]
 [ext_resource type="Texture2D" uid="uid://ckur8q0gamic3" path="res://remi/lab/assets/table.png" id="5_ltqkj"]
 [ext_resource type="Texture2D" uid="uid://dickiwe2gov2w" path="res://remi/lab/assets/meuble.png" id="8_sh0ga"]
 [ext_resource type="PackedScene" uid="uid://cb36jofe2qkf3" path="res://remi/lab/targets/ams.tscn" id="9_lfy5p"]
@@ -344,14 +343,6 @@ position = Vector2(-169, -110)
 [node name="Table6" type="Sprite2D" parent="World/YSort/EndDeskAnchor"]
 position = Vector2(-169, 150)
 texture = ExtResource("18_pirlv")
-
-[node name="Gui" type="CanvasLayer" parent="."]
-
-[node name="TextStack" parent="Gui" instance=ExtResource("5_4dofh")]
-offset_left = -10.0
-offset_right = 10.0
-theme_override_constants/separation = 10
-alignment = 0
 
 [node name="AudioStreamPlayerClickDefault" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_bq2q7")

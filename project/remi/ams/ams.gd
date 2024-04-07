@@ -6,10 +6,10 @@ const SOURCE_Y_VARIANCE: float = 16.0
 const PARTICLE_INITIAL_VELOCITY: float = 64.0
 
 const DEVIATOR_ACCELERATION: float = 2e3
-const ACCELERATOR_ACCELERATION: float = 8e2
+const ACCELERATOR_ACCELERATION: float = 4e2
 
-const ENERGY_INCREASE_FACTOR: float = 20
-const ENERGY_DECREASE_RATE: float = 2e1
+const ENERGY_INCREASE_FACTOR: float = 10
+const ENERGY_DECREASE_RATE: float = 20
 
 const ParticleA = preload("res://remi/ams/particle_a.tscn")
 

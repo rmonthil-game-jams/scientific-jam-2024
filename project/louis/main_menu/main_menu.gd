@@ -24,6 +24,13 @@ var capsule_initial_y : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# set up state back to zero just in case
+	LabState.alexia_state = ""
+	LabState.ams_done = false
+	LabState.cuve_done = false
+	LabState.microscope_done = false
+	LabState.remaining_ice_cores_in_the_fridge = 5
+	# more
 	h_slider_music.set_focus_mode(Control.FOCUS_NONE)
 	h_slider_sounds.set_focus_mode(Control.FOCUS_NONE)
 	check_button_fullscreen.set_focus_mode(Control.FOCUS_NONE)

@@ -83,17 +83,16 @@ func _ready():
 		$World/YSort/Fridge/TextureButton.focus_mode = Control.FOCUS_NONE
 	# fade in animation
 	$World.modulate = Color.BLACK
-	$Gui/TextStack.modulate = Color.BLACK
 	var tween: Tween = create_tween()
 	tween.tween_property($World, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
-	tween.parallel().tween_property($Gui/TextStack, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
-	## test text
-	#if not LabState.alexia_state:
-		#$Gui/TextStack.push_line("Test Test Test 0 !")
-		#await get_tree().create_timer(2.0).timeout
-		#$Gui/TextStack.push_line("Test Test Test 1 !")
-		#await get_tree().create_timer(2.0).timeout
-		#$Gui/TextStack.push_line("Test Test Test 2 !")
+	# test text
+	if not LabState.alexia_state:
+		await get_tree().create_timer(0.5).timeout
+		TextStack.push_line("Bon maintenant que les carrotes sont au frigo,")
+		await get_tree().create_timer(3.0).timeout
+		TextStack.push_line("je peux les analyser!")
+		await get_tree().create_timer(4.0).timeout
+		TextStack.push_line("Utilisons les instruments sur la table !")
 
 # input
 func _unhandled_input(event: InputEvent):

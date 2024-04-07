@@ -561,38 +561,47 @@ texture = ExtResource("11_3onox")
 [node name="AudioStreamPlayerManivelle" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_8u2c0")
 volume_db = -6.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerAmbience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_pkdl7")
 autoplay = true
+bus = &"Music"
 
 [node name="AudioStreamPlayerSuccess1" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_75tpa")
 volume_db = -6.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerSuccess2" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_rp1lt")
 volume_db = -6.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerFire" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ee4yv")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerChargeUp" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ycrhs")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerChargeDown" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_uugra")
 volume_db = -3.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerParticleFree" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ugcs6")
 volume_db = -24.0
+bus = &"Sounds"
 
 [node name="AudioStreamPlayerMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_euvou")
 autoplay = true
+bus = &"Music"
 
 [connection signal="body_exited" from="World/Boundaries" to="." method="_on_boundaries_body_exited"]
 [connection signal="body_entered" from="World/Obstacles" to="." method="_on_obstacles_body_entered"]

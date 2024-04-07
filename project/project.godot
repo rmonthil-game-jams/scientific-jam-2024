@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 LabState="*res://remi/lab/lab_state.tscn"
 LibPlot="*res://remi/lib_plot/lib_plot.tscn"
 GlobalTemp="*res://louis/co2/global_temp.gd"
+TextStack="*res://remi/text_stack/text_stack.tscn"
 
 [display]
 
