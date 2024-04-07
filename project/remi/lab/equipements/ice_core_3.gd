@@ -13,9 +13,9 @@ func _on_texture_button_pressed():
 	selected.emit()
 
 func _ready():
-	_plot($Plots/Line2DTemperature, "res://remi/data_plot/data/CO2 data.csv", Y_FACTOR_TEMPERATURE, Y_MINUS_TEMPERATURE)
-	_plot($Plots/Line2DRadioactivity, "res://remi/data_plot/data/36Cl data.csv", Y_FACTOR_RADIOACTIVITY, 0.0)
-	_plot($Plots/Line2DBiodiversity, "res://remi/data_plot/data/pollen data.csv", Y_FACTOR_POLLEN, 0.0)
+	_plot($Plots/Line2DTemperature, "res://remi/data_plot/data/co2_data.txt", Y_FACTOR_TEMPERATURE, Y_MINUS_TEMPERATURE)
+	_plot($Plots/Line2DRadioactivity, "res://remi/data_plot/data/36cl_data.txt", Y_FACTOR_RADIOACTIVITY, 0.0)
+	_plot($Plots/Line2DBiodiversity, "res://remi/data_plot/data/pollen_data.txt", Y_FACTOR_POLLEN, 0.0)
 
 func _plot(line_2d: Line2D, filename: String, factor: float, minus: float):
 	# read
