@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtx2r0nhxgk1s"]
+
+[ext_resource type="Script" path="res://louis/co2/agitation.gd" id="1_wepdv"]
+[ext_resource type="Texture2D" uid="uid://de812pmloljlp" path="res://louis/co2/co2_assets/molecule 2.png" id="1_xa84p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxdo8"]
+radius = 20.025
+
+[node name="ch4_molecule" type="CharacterBody2D"]
+script = ExtResource("1_wepdv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_xa84p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qxdo8")

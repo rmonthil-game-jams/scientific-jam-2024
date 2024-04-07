@@ -18,9 +18,17 @@ var capsule_initial_y : float
 @onready var shadow = $TextureRect/Shadow
 @onready var margin_container_dialog = $HBoxContainerMain/VBoxContainer/MarginContainerDialog
 @onready var margin_container_button_exit = $MarginContainerButtonExit
+@onready var check_button_fullscreen = $HBoxContainerMain/VBoxContainer/MarginContainerDialog/TextureRectDialog/MarginContainerInner/VBoxContainerOptions/HBoxContainer3/MarginContainer2/CheckButtonFullscreen
+@onready var button_yes = $MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonYes/ButtonYes
+@onready var button_no = $MarginContainerExitDialog/TextureRect/VBoxContainer/HBoxContainer/MarginContainerButtonNo/ButtonNo
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	h_slider_music.set_focus_mode(Control.FOCUS_NONE)
+	h_slider_sounds.set_focus_mode(Control.FOCUS_NONE)
+	check_button_fullscreen.set_focus_mode(Control.FOCUS_NONE)
+	button_yes.set_focus_mode(Control.FOCUS_NONE)
+	button_no.set_focus_mode(Control.FOCUS_NONE)
 	margin_container_exit_dialog.hide()
 	shadow.modulate = Color(1,1,1,0)
 	hide_dialogs()
@@ -53,13 +61,13 @@ func _on_button_play_button_up():
 	tween.tween_property(v_box_container_buttons, "modulate", Color(1,1,1,0), 1.0).set_trans(Tween.TRANS_QUAD)
 	tween.parallel().tween_property(shadow, "modulate", Color(1,1,1,1), 1.0)
 	tween.parallel().tween_property(margin_container_dialog, "modulate", Color(1,1,1,0), 1.0)
-	tween.parallel().tween_property(margin_container_button_exit, "modulate", Color(1,1,1,0), 1.0)
+	margin_container_button_exit.hide()
 	await tween.finished
 	await get_tree().create_timer(1.5).timeout
 	var tween_transition: Tween = create_tween()
 	tween_transition.tween_property(main_menu, "modulate", Color.BLACK, 1.5).set_trans(Tween.TRANS_QUAD)
 	await tween_transition.finished
-	get_tree().change_scene_to_file("res://louis/close_up_capsule.tscn")
+	get_tree().change_scene_to_file("res://louis/main_menu/main_menu.tscn")
 
 
 func _on_button_exit_button_up():
