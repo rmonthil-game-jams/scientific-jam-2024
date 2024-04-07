@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://i7qieu1m75jk"
+path="res://.godot/imported/OFF decharge.wav-9c4ded9c2788da9e834acc420d394f4d.sample"
+
+[deps]
+
+source_file="res://assets/audio/OFF decharge.wav"
+dest_files=["res://.godot/imported/OFF decharge.wav-9c4ded9c2788da9e834acc420d394f4d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

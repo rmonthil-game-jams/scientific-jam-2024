@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gi25bdr2h3cv"
+path="res://.godot/imported/FIRE Start.wav-9ae1170dd3fd38eb2b1e92d165adce6f.sample"
+
+[deps]
+
+source_file="res://assets/audio/FIRE Start.wav"
+dest_files=["res://.godot/imported/FIRE Start.wav-9ae1170dd3fd38eb2b1e92d165adce6f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

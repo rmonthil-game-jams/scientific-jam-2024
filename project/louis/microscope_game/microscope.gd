@@ -11,9 +11,9 @@ var moving_right : bool = false
 @onready var line_edit = $HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/LineEdit
 @onready var v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/VSlider
 @onready var label_v_slider = $HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/LabelVSlider
-@onready var sample = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample
-@onready var micro_bodies = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/MicroBodies
-@onready var circle_lense = $HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense
+@onready var sample = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample
+@onready var micro_bodies = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample/MicroBodies
+@onready var circle_lense = $HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample/CircleLense
 
 var pollen_scene : PackedScene = preload("res://louis/microscope_game/pollen.tscn")
 var micro_plastic_scene : PackedScene = preload("res://louis/microscope_game/micro_plastic.tscn")
@@ -54,11 +54,12 @@ func generate_bodies():
 		micro_bodies.add_child(micro_plastic)
 
 func success():
+	$AudioStreamPlayerSuccess.play()
 	# change state of game
 	LabState.microscope_done = true
 	# color
 	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.add_theme_color_override("font_color", Color.GREEN)
-	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.text = "SUCCESS"
+	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.text = "REUSSITE"
 	await get_tree().create_timer(0.5).timeout
 	# transition
 	var tween_transition: Tween = create_tween()
@@ -67,8 +68,9 @@ func success():
 	get_tree().change_scene_to_file("res://remi/lab/lab.tscn")
 
 func failure():
+	$AudioStreamPlayerFailure.play()
 	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.add_theme_color_override("font_color", Color.RED)
-	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.text = "FAILURE"
+	$HBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/LabelValidated.text = "ECHEC"
 
 
 
@@ -80,27 +82,30 @@ func _on_button_button_down():
 		failure()
 
 func _on_v_slider_value_changed(value):
+	$AudioStreamPlayerZoom.play()
 	label_v_slider.text = str(value)
 	_set_pixelization(round(1.0 + 12.0 * abs(value - optimal_focus_value)))
 
 func _set_pixelization(value: int):
-	$HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer.stretch_shrink = value
-	$HBoxContainer/VBoxContainer2/HBoxContainer/SubViewportContainer/SubViewport/Sample/CircleLense/Camera2D.zoom = Vector2.ONE * (1.0/value)
+	$HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer.stretch_shrink = value
+	$HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Sample/CircleLense/Camera2D.zoom = Vector2.ONE * (1.0/value)
 
 func _on_button_move_right_button_down():
+	$AudioStreamPlayerMove.play()
 	moving_right = true
 
-
-
 func _on_button_move_left_button_down():
+	$AudioStreamPlayerMove.play()
 	moving_left = true
 
 
 func _on_button_move_left_button_up():
+	$AudioStreamPlayerMove.stop()
 	moving_left = false
 
 
 func _on_button_move_right_button_up():
+	$AudioStreamPlayerMove.stop()
 	moving_right = false
 
 

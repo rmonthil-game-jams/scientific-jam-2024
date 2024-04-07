@@ -58,17 +58,21 @@ func _spawn_particle():
 
 func _on_boundaries_body_exited(body: RigidBody2D):
 	body.queue_free()
+	$AudioStreamPlayerParticleFree.play()
 
 func _on_accelerator_input_button_down():
 	is_turning = true
+	$AudioStreamPlayerManivelle.play()
 
 func _on_accelerator_input_button_up():
 	is_turning = false
+	$AudioStreamPlayerManivelle.stop()
 
 func _on_source_input_pressed():
 	_spawn_particle()
 
 func _on_target_body_entered(body):
+	$AudioStreamPlayerSuccess2.play()
 	# change state of game
 	LabState.ams_done = true
 	# transition
@@ -79,14 +83,17 @@ func _on_target_body_entered(body):
 
 func _on_obstacles_body_entered(body):
 	body.queue_free()
+	$AudioStreamPlayerParticleFree.play()
 
 func _on_target_2_body_entered(body):
 	body.queue_free()
 	# more
 	if current_led2_on_number < LED2_NUMBER:
+		$AudioStreamPlayerSuccess1.play()
 		current_led2_on_number += 1
 		$World/Leds2.get_child(current_led2_on_number).show()
 		if current_led2_on_number == LED2_NUMBER:
+			$AudioStreamPlayerSuccess2.play()
 			is_sourcing = false
 			# animation
 			for index in range(current_led2_on_number):
@@ -97,6 +104,7 @@ func _on_target_2_body_entered(body):
 			$World/LauncherInput/TextureButton.disabled = false
 
 func _on_launcher_input_pressed():
+	$AudioStreamPlayerFire.play()
 	var new_particle: RigidBody2D = null
 	new_particle = preload("res://remi/ams/particle_a.tscn").instantiate()
 	new_particle.position = $World/Source2.position
@@ -108,6 +116,7 @@ func _on_launcher_input_pressed():
 
 var is_charging: bool = false
 func _on_deviator_input_pressed():
+	$AudioStreamPlayerChargeUp.play()
 	$World/DeviatorInput/TextureButton.disabled = true
 	$World/DeviatorInput/TextureButton.focus_mode = Control.FOCUS_NONE
 	$World/LauncherInput/TextureButton.disabled = true
@@ -117,6 +126,7 @@ func _on_deviator_input_pressed():
 	var tween: Tween = create_tween()
 	tween.tween_property($World/ProgressBar2/ProgressBar, "value", 100.0, 0.5)
 	await tween.finished
+	$AudioStreamPlayerChargeDown.play()
 	# effect
 	$World/Deviator.gravity_direction = Vector2.DOWN
 	$World/Deviator.gravity *= 2.0

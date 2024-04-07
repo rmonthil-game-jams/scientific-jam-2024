@@ -59,7 +59,7 @@ func _ready():
 	else:
 		$World/YSort/DeskAnchor/Ams/TextureButton.disabled = true
 		$World/YSort/DeskAnchor/Ams/TextureButton.focus_mode = Control.FOCUS_NONE
-	if false and not LabState.cuve_done:
+	if not LabState.cuve_done:
 		$World/YSort/DeskAnchor/Cuve.selected.connect(_on_cuve_selected.bind($World/YSort/DeskAnchor/Cuve))
 	else:
 		$World/YSort/DeskAnchor/Cuve/TextureButton.disabled = true
@@ -69,8 +69,8 @@ func _ready():
 	else:
 		$World/YSort/DeskAnchor/Microscope/TextureButton.disabled = true
 		$World/YSort/DeskAnchor/Microscope/TextureButton.focus_mode = Control.FOCUS_NONE
-	#if LabState.ams_done and LabState.cuve_done and LabState.microscope_done and LabState.remaining_ice_cores_in_the_fridge == 5:
-	if LabState.ams_done and LabState.microscope_done and LabState.remaining_ice_cores_in_the_fridge == 5:
+	if LabState.ams_done and LabState.cuve_done and LabState.microscope_done and LabState.remaining_ice_cores_in_the_fridge == 5:
+		$World/YSort/Desk1Anchor/Label6.show()
 		$World/YSort/Fridge.selected.connect(_on_fridge_selected)
 		$World/YSort/Desk1Anchor/IceCoreHolder.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder))
 		$World/YSort/Desk1Anchor/IceCoreHolder2.selected.connect(_on_ice_core_holder_selected.bind($World/YSort/Desk1Anchor/IceCoreHolder2))
@@ -99,10 +99,12 @@ func _ready():
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+			$AudioStreamPlayerClickDefault.play()
 			play_move_alexia_animation_to_target($World.get_global_mouse_position())
 
 # signals
 func _on_ams_selected(target: Node2D):
+	$AudioStreamPlayerClickTarget.play()
 	# wait animation end
 	play_move_alexia_animation_to_target(target.global_position)
 	await tween_moving.finished
@@ -118,11 +120,24 @@ func _on_ams_selected(target: Node2D):
 	get_tree().change_scene_to_file("res://remi/ams/ams.tscn")
 
 func _on_cuve_selected(target: Node2D):
+	$AudioStreamPlayerClickTarget.play()
+	# wait animation end
 	play_move_alexia_animation_to_target(target.global_position)
 	await tween_moving.finished
-	# TODO: start cuve level (with transition)
+	$World/YSort/Alexia.stop_idle_animation()
+	await $World/YSort/Alexia.tween_idle.finished
+	# set lab state
+	LabState.alexia_state = "cuve"
+	# transition animation
+	var tween_transition: Tween = create_tween()
+	tween_transition.tween_property($World, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	tween_transition.parallel().tween_property($Gui/TextStack, "modulate", Color.BLACK, 1.0).set_trans(Tween.TRANS_QUAD)
+	await tween_transition.finished
+	# change scene
+	get_tree().change_scene_to_file("res://louis/microscope_game/microscope.tscn")
 
 func _on_microscope_selected(target: Node2D):
+	$AudioStreamPlayerClickTarget.play()
 	# wait animation end
 	play_move_alexia_animation_to_target(target.global_position)
 	await tween_moving.finished
@@ -139,6 +154,7 @@ func _on_microscope_selected(target: Node2D):
 	get_tree().change_scene_to_file("res://louis/microscope_game/microscope.tscn")
 
 func _on_fridge_selected():
+	$AudioStreamPlayerClickTarget.play()
 	# wait animation end
 	play_move_alexia_animation_to_target($World/YSort/Fridge.global_position)
 	await tween_moving.finished
@@ -156,6 +172,7 @@ func _on_fridge_selected():
 			$World/YSort/Fridge/TextureButton.focus_mode = Control.FOCUS_NONE
 
 func _on_ice_core_selected(equipement: Node2D):
+	$AudioStreamPlayerClickTarget.play()
 	# wait animation end
 	play_move_alexia_animation_to_target(equipement.global_position)
 	await tween_moving.finished
@@ -175,6 +192,7 @@ func _on_ice_core_selected(equipement: Node2D):
 	current_ice_core.get_parent().remove_child(current_ice_core)
 
 func _on_ice_core_holder_selected(target: Node2D):
+	$AudioStreamPlayerClickTarget.play()
 	# wait animation end
 	play_move_alexia_animation_to_target(target.global_position)
 	await tween_moving.finished
@@ -197,15 +215,17 @@ func _on_ice_core_holder_selected(target: Node2D):
 				and $World/YSort/Desk1Anchor/IceCoreHolder4.get_child(1) is IceCore3
 				and $World/YSort/Desk1Anchor/IceCoreHolder5.get_child(1) is IceCore4):
 				pass
+				$AudioStreamPlayerSuccess2.play()
 				$World/YSort/EndDeskAnchor/End.activate()
 				$World/YSort/EndDeskAnchor/End/TextureButton.disabled = false
 				$World/YSort/EndDeskAnchor/End/TextureButton.focus_mode = Control.FOCUS_ALL
 				$World/YSort/EndDeskAnchor/End.selected.connect(_on_end_selected.bind($World/YSort/EndDeskAnchor/End))
 				$World/YSort/Desk1Anchor/Label7.show()
 			else:
-				print("failure") # TODO: Feedback
+				$AudioStreamPlayerFail.play()
 
 func _on_end_selected(target: Node2D):
+	$AudioStreamPlayerClickTarget.play()
 	# wait animation end
 	play_move_alexia_animation_to_target(target.global_position)
 	await tween_moving.finished

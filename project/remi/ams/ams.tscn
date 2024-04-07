@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dapbeuncd0cqp"]
+[gd_scene load_steps=45 format=3 uid="uid://dapbeuncd0cqp"]
 
 [ext_resource type="Script" path="res://remi/ams/ams.gd" id="1_43nqk"]
 [ext_resource type="Texture2D" uid="uid://chb25w1bqscux" path="res://remi/lab/assets/Fond 2.png" id="2_tn8w8"]
@@ -21,6 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://dlnennscfg1pj" path="res://remi/ams/assets/jauge_3.png" id="19_61e0r"]
 [ext_resource type="Texture2D" uid="uid://deeuivwuys8v3" path="res://remi/ams/assets/jauge_4.png" id="20_kkkjl"]
 [ext_resource type="Texture2D" uid="uid://bjml42nqtw0ew" path="res://remi/ams/assets/jauge_5.png" id="21_pel0c"]
+[ext_resource type="AudioStream" uid="uid://447f8c3f8omb" path="res://assets/audio/Dynamo bruit.wav" id="22_om2kl"]
+[ext_resource type="AudioStream" uid="uid://cyhii24t0vd4f" path="res://assets/audio/Accelerateur ambience.mp3" id="22_pkdl7"]
+[ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="23_74lal"]
+[ext_resource type="AudioStream" uid="uid://bpliisv83b7dl" path="res://assets/audio/ON Charge.wav" id="24_c5ngf"]
+[ext_resource type="AudioStream" uid="uid://i7qieu1m75jk" path="res://assets/audio/OFF decharge.wav" id="25_n3p5n"]
+[ext_resource type="AudioStream" uid="uid://r7bg8pnm30f6" path="res://assets/audio/Aspiration.wav" id="26_1qhsg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1syu"]
 size = Vector2(1282, 424)
@@ -85,6 +91,48 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8u2c0"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("22_om2kl")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_75tpa"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("23_74lal")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rp1lt"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("23_74lal")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ee4yv"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("23_74lal")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ycrhs"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("24_c5ngf")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uugra"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("25_n3p5n")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ugcs6"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("26_1qhsg")
+stream_0/weight = 1.0
 
 [node name="AMS" type="Node"]
 script = ExtResource("1_43nqk")
@@ -462,6 +510,38 @@ texture = ExtResource("20_kkkjl")
 [node name="Sprite2D6" type="Sprite2D" parent="World/Leds2"]
 visible = false
 texture = ExtResource("21_pel0c")
+
+[node name="AudioStreamPlayerManivelle" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8u2c0")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_pkdl7")
+autoplay = true
+
+[node name="AudioStreamPlayerSuccess1" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_75tpa")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerSuccess2" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rp1lt")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerFire" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ee4yv")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerChargeUp" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ycrhs")
+volume_db = -3.0
+
+[node name="AudioStreamPlayerChargeDown" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uugra")
+volume_db = -3.0
+
+[node name="AudioStreamPlayerParticleFree" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_ugcs6")
+volume_db = -24.0
 
 [connection signal="body_exited" from="World/Boundaries" to="." method="_on_boundaries_body_exited"]
 [connection signal="body_entered" from="World/Obstacles" to="." method="_on_obstacles_body_entered"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://5o6wxy71x327"
+path="res://.godot/imported/Microscope zoom.wav-66f635a792d3591f41a1477695f6e1ec.sample"
+
+[deps]
+
+source_file="res://assets/audio/Microscope zoom.wav"
+dest_files=["res://.godot/imported/Microscope zoom.wav-66f635a792d3591f41a1477695f6e1ec.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -24,11 +24,14 @@ func _ready():
 	_update_data_plots()
 	_update_model_plots()
 	# fade in animation
-	$World.modulate = Color.BLACK
-	var tween: Tween = create_tween()
-	tween.tween_property($World, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
+	for child in get_children():
+		if child is Node2D:
+			child.modulate = Color.BLACK
+			var tween: Tween = create_tween()
+			tween.tween_property(child, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUAD)
 
 func _on_nuclear_war_start_value_changed(value: float):
+	$AudioStreamPlayerClickDefault.play()
 	_update_model_plots()
 
 func _update_model_plots():
@@ -42,13 +45,18 @@ func _update_data_plots():
 	LibPlot.plot_func($DataGraph/Line2DTemperature, LibPlot.generate_x(0.0, 1.0, 64), func(x): return model_temperature(x, 1.0, 0.5, 0.22), 700.0, 400.0, "temperature")
 
 func _on_fossil_fuel_consumption_rate_value_changed(value: float):
+	$AudioStreamPlayerClickDefault.play()
 	_update_model_plots()
 
 func _on_deforestation_rate_value_changed(value: float):
+	$AudioStreamPlayerClickDefault.play()
 	_update_model_plots()
 
 func _on_button_pressed():
+	$AudioStreamPlayerClickDefault.play()
 	if abs($Input/Control/HBoxContainer/GridContainer/NuclearWarStart.value - 1.0) + abs($Input/Control/HBoxContainer/GridContainer/FossilFuelConsumptionRate.value - 0.5) + abs($Input/Control/HBoxContainer/GridContainer/DeforestationRate.value - 0.22) < 0.15:
-		print("success")
+		$AudioStreamPlayerSuccess2.play()
+		print("Success")
 	else:
-		print("fail")
+		$AudioStreamPlayerFail.play()
+		print("Fail")

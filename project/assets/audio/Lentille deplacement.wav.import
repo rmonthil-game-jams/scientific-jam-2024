@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dfmck03ywxync"
+path="res://.godot/imported/Lentille deplacement.wav-e9c2b28871941ed3c1202c444445bec2.sample"
+
+[deps]
+
+source_file="res://assets/audio/Lentille deplacement.wav"
+dest_files=["res://.godot/imported/Lentille deplacement.wav-e9c2b28871941ed3c1202c444445bec2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

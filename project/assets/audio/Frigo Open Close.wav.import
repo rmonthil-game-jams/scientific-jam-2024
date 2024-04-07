@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7lrkolofm6v2"
+path="res://.godot/imported/Frigo Open Close.wav-dcfbd5d0e25ef3d450a9c0e8e88ea021.sample"
+
+[deps]
+
+source_file="res://assets/audio/Frigo Open Close.wav"
+dest_files=["res://.godot/imported/Frigo Open Close.wav-dcfbd5d0e25ef3d450a9c0e8e88ea021.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://db5mxwicdtw26"]
+[gd_scene load_steps=42 format=3 uid="uid://db5mxwicdtw26"]
 
 [ext_resource type="Script" path="res://remi/lab/lab.gd" id="1_tsc10"]
 [ext_resource type="Texture2D" uid="uid://druh3i61lp54k" path="res://remi/lab/assets/fond1.png" id="2_1r5bo"]
@@ -32,6 +32,40 @@
 [ext_resource type="Texture2D" uid="uid://bxvdqc5yp51mw" path="res://remi/lab/assets/tableaux 5-1.png" id="25_ljjei"]
 [ext_resource type="FontFile" uid="uid://djhmic6riyixb" path="res://assets/MochiyPopPOne-Regular.ttf" id="30_mjud1"]
 [ext_resource type="PackedScene" uid="uid://bmo4kclrgl70r" path="res://remi/lab/targets/end.tscn" id="31_uk5as"]
+[ext_resource type="AudioStream" uid="uid://dsq7nl0wuepka" path="res://assets/audio/Click Switch.wav" id="33_nj37o"]
+[ext_resource type="AudioStream" uid="uid://r7bg8pnm30f6" path="res://assets/audio/Aspiration.wav" id="33_qk1q0"]
+[ext_resource type="AudioStream" uid="uid://d25pmruq3l3ti" path="res://assets/audio/Labolatoire ambience.mp3" id="34_ku103"]
+[ext_resource type="AudioStream" uid="uid://gi25bdr2h3cv" path="res://assets/audio/FIRE Start.wav" id="36_lhli2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bq2q7"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("33_nj37o")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pye76"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("33_qk1q0")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t2aev"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("36_lhli2")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yv013"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("36_lhli2")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s7mlu"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("36_lhli2")
+stream_0/weight = 1.0
 
 [node name="Lab" type="Node"]
 script = ExtResource("1_tsc10")
@@ -53,7 +87,8 @@ texture = ExtResource("4_8c3ds")
 
 [node name="Background4" type="Sprite2D" parent="World/Background"]
 position = Vector2(5767, 0)
-texture = ExtResource("4_8c3ds")
+scale = Vector2(-1, 1)
+texture = ExtResource("2_1r5bo")
 
 [node name="YSort" type="Node2D" parent="World"]
 y_sort_enabled = true
@@ -65,9 +100,11 @@ position = Vector2(-396, 412)
 position = Vector2(396, -412)
 zoom = Vector2(0.6, 0.6)
 limit_left = -950
+limit_right = 6500
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_vertical_enabled = true
+drag_horizontal_offset = -0.5
 drag_left_margin = 1.0
 drag_right_margin = 1.0
 
@@ -201,6 +238,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label6" type="Label" parent="World/YSort/Desk1Anchor"]
+visible = false
 offset_left = -786.0
 offset_top = -507.0
 offset_right = -358.0
@@ -213,7 +251,7 @@ theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "L'analyse terminée,
 Il faut retrouver l'ordre 
-des carottes glaciaires"
+des carottes glaciaires."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -278,9 +316,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label7" type="Label" parent="World/YSort/Desk1Anchor"]
-offset_left = 3822.0
+offset_left = 3675.0
 offset_top = -647.0
-offset_right = 4680.0
+offset_right = 4533.0
 offset_bottom = -548.0
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.501961)
@@ -289,7 +327,7 @@ theme_override_constants/shadow_offset_y = 4
 theme_override_fonts/font = ExtResource("30_mjud1")
 theme_override_font_sizes/font_size = 32
 text = "Qu'est-ce qui nous attends dans le futur ?
-Analisons ce qui a pu provoquer ces résultats !"
+Analysons ce qui a pu provoquer ces résultats !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -297,10 +335,10 @@ vertical_alignment = 1
 position = Vector2(5937, 0)
 
 [node name="End" parent="World/YSort/EndDeskAnchor" instance=ExtResource("31_uk5as")]
-position = Vector2(0, -110)
+position = Vector2(-169, -110)
 
 [node name="Table6" type="Sprite2D" parent="World/YSort/EndDeskAnchor"]
-position = Vector2(0, 150)
+position = Vector2(-169, 150)
 texture = ExtResource("18_pirlv")
 
 [node name="Gui" type="CanvasLayer" parent="."]
@@ -311,3 +349,26 @@ offset_right = 10.0
 mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 0
+
+[node name="AudioStreamPlayerClickDefault" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bq2q7")
+
+[node name="AudioStreamPlayerClickTarget" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_pye76")
+
+[node name="AudioStreamPlayerAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_ku103")
+volume_db = -9.0
+autoplay = true
+
+[node name="AudioStreamPlayerSuccess" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_t2aev")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerFail" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_yv013")
+volume_db = -6.0
+
+[node name="AudioStreamPlayerSuccess2" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_s7mlu")
+volume_db = -6.0

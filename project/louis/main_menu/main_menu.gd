@@ -49,6 +49,7 @@ func volume(bus_index, value):
 
 
 func _on_button_play_button_up():
+	$AudioStreamPlayerClick.play()
 	var tween: Tween = create_tween()
 	tween.tween_property(v_box_container_buttons, "modulate", Color(1,1,1,0), 1.0).set_trans(Tween.TRANS_QUAD)
 	tween.parallel().tween_property(shadow, "modulate", Color(1,1,1,1), 1.0)
@@ -63,16 +64,20 @@ func _on_button_play_button_up():
 
 
 func _on_button_exit_button_up():
+	$AudioStreamPlayerClick.play()
 	margin_container_exit_dialog.show()
 
 func _on_button_no_button_up():
+	$AudioStreamPlayerClick.play()
 	margin_container_exit_dialog.hide()
 
 func _on_button_yes_button_up():
+	$AudioStreamPlayerClick.play()
 	get_tree().quit()
 
 
 func _on_button_how_to_toggled(toggled_on):
+	$AudioStreamPlayerClick.play()
 	hide_dialogs()
 	if toggled_on:
 		button_options.button_pressed = false
@@ -84,6 +89,7 @@ func _on_button_how_to_toggled(toggled_on):
 		rich_text_label_how_to.hide()
 
 func _on_button_options_toggled(toggled_on):
+	$AudioStreamPlayerClick.play()
 	hide_dialogs()
 	if toggled_on:
 		button_how_to.button_pressed = false
@@ -95,6 +101,7 @@ func _on_button_options_toggled(toggled_on):
 		v_box_container_options.hide()
 
 func _on_button_credits_toggled(toggled_on):
+	$AudioStreamPlayerClick.play()
 	hide_dialogs()
 	if toggled_on:
 		button_how_to.button_pressed = false
@@ -107,6 +114,7 @@ func _on_button_credits_toggled(toggled_on):
 
 
 func _on_check_button_fullscreen_toggled(toggled_on):
+	$AudioStreamPlayerClick.play()
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -115,7 +123,9 @@ func _on_check_button_fullscreen_toggled(toggled_on):
 
 
 func _on_h_slider_music_value_changed(value):
+	$AudioStreamPlayerClick.play()
 	volume(1, value)
 
 func _on_h_slider_sounds_value_changed(value):
+	$AudioStreamPlayerClick.play()
 	volume(2, value)
